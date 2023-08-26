@@ -1,0 +1,39 @@
+{
+  "name": "@referral-programs/domain-module",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./src/index.ts"
+  },
+  "main": "src/index.ts",
+  "dependencies": {
+    "@monstrs/guard-clause": "^0.0.7",
+    "@monstrs/query-types": "^0.0.7",
+    "bignumber.js": "^9.1.1",
+    "json-rules-engine": "^6.4.0",
+    "nanoid": "^4.0.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "@jest/globals": "^29.6.4",
+    "@nestjs/common": "^10.2.1",
+    "@nestjs/core": "^10.2.1",
+    "@nestjs/cqrs": "^10.2.5",
+    "@nestjs/testing": "^10.2.1",
+    "@types/node": "^20.5.6",
+    "@types/uuid": "^9.0.2",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.8.1"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10",
+    "@nestjs/core": "^10",
+    "@nestjs/cqrs": "^10",
+    "reflect-metadata": "^0.1",
+    "rxjs": "^7"
+  }
+}

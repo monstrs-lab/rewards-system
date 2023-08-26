@@ -1,0 +1,24 @@
+{
+  "name": "referral-program-modules",
+  "private": true,
+  "workspaces": [
+    "service/*"
+  ],
+  "resolutions": {
+    "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@monstrs/tools-runtime": "^0.2.15",
+    "@types/node": "^20.5.6",
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "yarn@3.6.1",
+  "tools": {
+    "schematic": {
+      "collection": "@monstrs/schematics",
+      "schematic": "project",
+      "type": "libraries",
+      "migration": "1643131477515"
+    }
+  }
+}
