@@ -14,6 +14,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:."\
     },\
     {\
+      "name": "@referral-programs/referral-programs-rpc",\
+      "reference": "workspace:rpc/referral-programs-rpc"\
+    },\
+    {\
       "name": "@referral-programs/domain-module",\
       "reference": "workspace:service/domain-module"\
     },\
@@ -27,6 +31,7 @@ const RAW_RUNTIME_STATE =
   "fallbackExclusionList": [\
     ["@referral-programs/domain-module", ["virtual:e316475617b542f5715a41c378a7484e7ac5edbc43cbda7ca3c636b0f9be1388e63b0506f0d78f135962469d97c230a2940ae4c03c4fdf460fb783b618354084#workspace:service/domain-module", "workspace:service/domain-module"]],\
     ["@referral-programs/infrastructure-module", ["workspace:service/infrastructure-module"]],\
+    ["@referral-programs/referral-programs-rpc", ["workspace:rpc/referral-programs-rpc"]],\
     ["referral-program-modules", ["workspace:."]]\
   ],\
   "fallbackPool": [\
@@ -839,6 +844,193 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@bcoe-v8-coverage-npm-0.2.3-9e27b3c57e-6b80ae4cb3.zip/node_modules/@bcoe/v8-coverage/",\
         "packageDependencies": [\
           ["@bcoe/v8-coverage", "npm:0.2.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-npm-1.26.1-f2844a750e/node_modules/@bufbuild/buf/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf", "npm:1.26.1"],\
+          ["@bufbuild/buf-darwin-arm64", "npm:1.26.1"],\
+          ["@bufbuild/buf-darwin-x64", "npm:1.26.1"],\
+          ["@bufbuild/buf-linux-aarch64", "npm:1.26.1"],\
+          ["@bufbuild/buf-linux-x64", "npm:1.26.1"],\
+          ["@bufbuild/buf-win32-arm64", "npm:1.26.1"],\
+          ["@bufbuild/buf-win32-x64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf-darwin-arm64", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-darwin-arm64-npm-1.26.1-2ce224900f/node_modules/@bufbuild/buf-darwin-arm64/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf-darwin-arm64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf-darwin-x64", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-darwin-x64-npm-1.26.1-312b426069/node_modules/@bufbuild/buf-darwin-x64/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf-darwin-x64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf-linux-aarch64", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-linux-aarch64-npm-1.26.1-68bbf4561b/node_modules/@bufbuild/buf-linux-aarch64/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf-linux-aarch64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf-linux-x64", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-linux-x64-npm-1.26.1-9474e90714/node_modules/@bufbuild/buf-linux-x64/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf-linux-x64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf-win32-arm64", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-win32-arm64-npm-1.26.1-5785ca6c85/node_modules/@bufbuild/buf-win32-arm64/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf-win32-arm64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/buf-win32-x64", [\
+      ["npm:1.26.1", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-buf-win32-x64-npm-1.26.1-a10fd37b5b/node_modules/@bufbuild/buf-win32-x64/",\
+        "packageDependencies": [\
+          ["@bufbuild/buf-win32-x64", "npm:1.26.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/connect", [\
+      ["npm:0.13.0", {\
+        "packageLocation": "./.yarn/cache/@bufbuild-connect-npm-0.13.0-be350d96c9-df27b68f9b.zip/node_modules/@bufbuild/connect/",\
+        "packageDependencies": [\
+          ["@bufbuild/connect", "npm:0.13.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0", {\
+        "packageLocation": "./.yarn/__virtual__/@bufbuild-connect-virtual-a4d9f6baa1/0/cache/@bufbuild-connect-npm-0.13.0-be350d96c9-df27b68f9b.zip/node_modules/@bufbuild/connect/",\
+        "packageDependencies": [\
+          ["@bufbuild/connect", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@types/bufbuild__protobuf", null]\
+        ],\
+        "packagePeers": [\
+          "@bufbuild/protobuf",\
+          "@types/bufbuild__protobuf"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/connect-node", [\
+      ["npm:0.13.0", {\
+        "packageLocation": "./.yarn/cache/@bufbuild-connect-node-npm-0.13.0-3401b8a019-a73677309f.zip/node_modules/@bufbuild/connect-node/",\
+        "packageDependencies": [\
+          ["@bufbuild/connect-node", "npm:0.13.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0", {\
+        "packageLocation": "./.yarn/__virtual__/@bufbuild-connect-node-virtual-92063d6567/0/cache/@bufbuild-connect-node-npm-0.13.0-3401b8a019-a73677309f.zip/node_modules/@bufbuild/connect-node/",\
+        "packageDependencies": [\
+          ["@bufbuild/connect-node", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/connect", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@types/bufbuild__protobuf", null],\
+          ["headers-polyfill", "npm:3.1.2"]\
+        ],\
+        "packagePeers": [\
+          "@bufbuild/protobuf",\
+          "@types/bufbuild__protobuf"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/protobuf", [\
+      ["npm:1.3.0", {\
+        "packageLocation": "./.yarn/cache/@bufbuild-protobuf-npm-1.3.0-da600c7f9c-c1a5fdec23.zip/node_modules/@bufbuild/protobuf/",\
+        "packageDependencies": [\
+          ["@bufbuild/protobuf", "npm:1.3.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/protoc-gen-connect-es", [\
+      ["npm:0.13.0", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-protoc-gen-connect-es-virtual-d00ad5d767/node_modules/@bufbuild/protoc-gen-connect-es/",\
+        "packageDependencies": [\
+          ["@bufbuild/protoc-gen-connect-es", "npm:0.13.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-protoc-gen-connect-es-virtual-d00ad5d767/node_modules/@bufbuild/protoc-gen-connect-es/",\
+        "packageDependencies": [\
+          ["@bufbuild/protoc-gen-connect-es", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/connect", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@bufbuild/protoc-gen-es", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:1.3.0"],\
+          ["@bufbuild/protoplugin", "npm:1.3.0"],\
+          ["@types/bufbuild__connect", null],\
+          ["@types/bufbuild__protoc-gen-es", null]\
+        ],\
+        "packagePeers": [\
+          "@bufbuild/connect",\
+          "@bufbuild/protoc-gen-es",\
+          "@types/bufbuild__connect",\
+          "@types/bufbuild__protoc-gen-es"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/protoc-gen-es", [\
+      ["npm:1.3.0", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-protoc-gen-es-virtual-3e765e9df3/node_modules/@bufbuild/protoc-gen-es/",\
+        "packageDependencies": [\
+          ["@bufbuild/protoc-gen-es", "npm:1.3.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:1.3.0", {\
+        "packageLocation": "./.yarn/unplugged/@bufbuild-protoc-gen-es-virtual-3e765e9df3/node_modules/@bufbuild/protoc-gen-es/",\
+        "packageDependencies": [\
+          ["@bufbuild/protoc-gen-es", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:1.3.0"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@bufbuild/protoplugin", "npm:1.3.0"],\
+          ["@types/bufbuild__protobuf", null]\
+        ],\
+        "packagePeers": [\
+          "@bufbuild/protobuf",\
+          "@types/bufbuild__protobuf"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@bufbuild/protoplugin", [\
+      ["npm:1.3.0", {\
+        "packageLocation": "./.yarn/cache/@bufbuild-protoplugin-npm-1.3.0-80665a77c5-cf5b4fe12b.zip/node_modules/@bufbuild/protoplugin/",\
+        "packageDependencies": [\
+          ["@bufbuild/protoplugin", "npm:1.3.0"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@typescript/vfs", "npm:1.5.0"],\
+          ["typescript", "patch:typescript@npm%3A5.1.6#optional!builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1993,6 +2185,52 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@monstrs/protoc-gen-abstractions", [\
+      ["npm:0.0.4", {\
+        "packageLocation": "./.yarn/cache/@monstrs-protoc-gen-abstractions-npm-0.0.4-c2f88da1ef-8eb5a119d1.zip/node_modules/@monstrs/protoc-gen-abstractions/",\
+        "packageDependencies": [\
+          ["@monstrs/protoc-gen-abstractions", "npm:0.0.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.0.4", {\
+        "packageLocation": "./.yarn/__virtual__/@monstrs-protoc-gen-abstractions-virtual-04dc699dfc/0/cache/@monstrs-protoc-gen-abstractions-npm-0.0.4-c2f88da1ef-8eb5a119d1.zip/node_modules/@monstrs/protoc-gen-abstractions/",\
+        "packageDependencies": [\
+          ["@monstrs/protoc-gen-abstractions", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.0.4"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@bufbuild/protoplugin", "npm:1.3.0"],\
+          ["@types/bufbuild__protobuf", null]\
+        ],\
+        "packagePeers": [\
+          "@bufbuild/protobuf",\
+          "@types/bufbuild__protobuf"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@monstrs/protoc-gen-interfaces", [\
+      ["npm:0.0.3", {\
+        "packageLocation": "./.yarn/cache/@monstrs-protoc-gen-interfaces-npm-0.0.3-79abec8fc1-55cd58f644.zip/node_modules/@monstrs/protoc-gen-interfaces/",\
+        "packageDependencies": [\
+          ["@monstrs/protoc-gen-interfaces", "npm:0.0.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.0.3", {\
+        "packageLocation": "./.yarn/__virtual__/@monstrs-protoc-gen-interfaces-virtual-0d34be7889/0/cache/@monstrs-protoc-gen-interfaces-npm-0.0.3-79abec8fc1-55cd58f644.zip/node_modules/@monstrs/protoc-gen-interfaces/",\
+        "packageDependencies": [\
+          ["@monstrs/protoc-gen-interfaces", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.0.3"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@bufbuild/protoplugin", "npm:1.3.0"],\
+          ["@types/bufbuild__protobuf", null]\
+        ],\
+        "packagePeers": [\
+          "@bufbuild/protobuf",\
+          "@types/bufbuild__protobuf"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@monstrs/query-types", [\
       ["npm:0.0.7", {\
         "packageLocation": "./.yarn/cache/@monstrs-query-types-npm-0.0.7-b7c185ff11-f7934dfe50.zip/node_modules/@monstrs/query-types/",\
@@ -2528,6 +2766,23 @@ const RAW_RUNTIME_STATE =
           ["rxjs", "npm:7.8.1"],\
           ["ts-node", "virtual:e316475617b542f5715a41c378a7484e7ac5edbc43cbda7ca3c636b0f9be1388e63b0506f0d78f135962469d97c230a2940ae4c03c4fdf460fb783b618354084#npm:10.9.1"],\
           ["typescript", "patch:typescript@npm%3A5.1.6#optional!builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@referral-programs/referral-programs-rpc", [\
+      ["workspace:rpc/referral-programs-rpc", {\
+        "packageLocation": "./rpc/referral-programs-rpc/",\
+        "packageDependencies": [\
+          ["@referral-programs/referral-programs-rpc", "workspace:rpc/referral-programs-rpc"],\
+          ["@bufbuild/buf", "npm:1.26.1"],\
+          ["@bufbuild/connect", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/connect-node", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/protobuf", "npm:1.3.0"],\
+          ["@bufbuild/protoc-gen-connect-es", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.13.0"],\
+          ["@bufbuild/protoc-gen-es", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:1.3.0"],\
+          ["@monstrs/protoc-gen-abstractions", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.0.4"],\
+          ["@monstrs/protoc-gen-interfaces", "virtual:d3da4ba764b37ca9af98654b0b797a4aeb3734fb8b4a613beb6b907a8b87857e2934dc71a13897586bee09855daa2f41de1f843f9e0a0dbd065ae4aca95d9a0b#npm:0.0.3"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -3392,6 +3647,16 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/visitor-keys", "npm:5.62.0"],\
           ["@typescript-eslint/types", "npm:5.62.0"],\
           ["eslint-visitor-keys", "npm:3.4.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@typescript/vfs", [\
+      ["npm:1.5.0", {\
+        "packageLocation": "./.yarn/cache/@typescript-vfs-npm-1.5.0-f8621cadc2-9b5d0a8086.zip/node_modules/@typescript/vfs/",\
+        "packageDependencies": [\
+          ["@typescript/vfs", "npm:1.5.0"],\
+          ["debug", "virtual:5daecec5378cca9d2b655781dda98457b520644332776e02f43c02749432d960b0fe724013f680814901d9397550da22c63b2a93b9f47877762783265d253473#npm:4.3.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -6198,6 +6463,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/hash-it-npm-6.0.0-2a5630925c-edac58ed7b.zip/node_modules/hash-it/",\
         "packageDependencies": [\
           ["hash-it", "npm:6.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["headers-polyfill", [\
+      ["npm:3.1.2", {\
+        "packageLocation": "./.yarn/cache/headers-polyfill-npm-3.1.2-da04988de4-147b2a7012.zip/node_modules/headers-polyfill/",\
+        "packageDependencies": [\
+          ["headers-polyfill", "npm:3.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
