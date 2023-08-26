@@ -10,13 +10,14 @@
   },
   "main": "src/index.ts",
   "scripts": {
-    "orm": "node --loader ts-node/esm --loader $(pwd)/../../../.pnp.loader.mjs --loader $(pwd)/../../../.pnp-ts.loader.mjs $(yarn bin mikro-orm)"
+    "orm": "node --loader ts-node/esm --loader $(pwd)/../../.pnp.loader.mjs --loader $(pwd)/../../.pnp-ts.loader.mjs $(yarn bin mikro-orm)"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^1.3.0",
     "@mikro-orm/core": "^5.7.14",
     "@mikro-orm/nestjs": "^5.2.1",
     "@mikro-orm/postgresql": "^5.7.14",
+    "@monstrs/nestjs-mikro-orm-config": "^0.1.1",
     "@monstrs/rpc-query-payloads": "^0.0.11",
     "@referral-programs/domain-module": "workspace:0.0.1",
     "@referral-programs/referral-programs-rpc": "workspace:0.0.1",
