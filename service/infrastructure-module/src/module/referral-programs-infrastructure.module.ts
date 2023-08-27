@@ -1,28 +1,26 @@
-import type { OnModuleInit }                 from '@nestjs/common'
-import type { DynamicModule }                from '@nestjs/common'
+import type { OnModuleInit }             from '@nestjs/common'
+import type { DynamicModule }            from '@nestjs/common'
 
-import { Module }                            from '@nestjs/common'
-import { ValidationModule }                  from '@monstrs/nestjs-validation'
-import { ServerBufConnect }                  from '@wolfcoded/nestjs-bufconnect'
-import { ServerProtocol }                    from '@wolfcoded/nestjs-bufconnect'
-import { MicroservisesRegistryModule }       from '@monstrs/nestjs-microservices-registry'
-import { MikroOrmModule }                    from '@mikro-orm/nestjs'
-import { MikroORM }                          from '@mikro-orm/core'
-import { MikroORMRequestContextModule }      from '@monstrs/nestjs-mikro-orm-request-context'
-import { PostgreSqlDriver }                  from '@mikro-orm/postgresql'
-import { MikroORMConfigModule }              from '@monstrs/nestjs-mikro-orm-config'
-import { MikroORMConfig }                    from '@monstrs/nestjs-mikro-orm-config'
-import { CqrsModule }                        from '@nestjs/cqrs'
+import { Module }                        from '@nestjs/common'
+import { ValidationModule }              from '@monstrs/nestjs-validation'
+import { ServerBufConnect }              from '@wolfcoded/nestjs-bufconnect'
+import { ServerProtocol }                from '@wolfcoded/nestjs-bufconnect'
+import { MicroservisesRegistryModule }   from '@monstrs/nestjs-microservices-registry'
+import { MikroOrmModule }                from '@mikro-orm/nestjs'
+import { MikroORM }                      from '@mikro-orm/core'
+import { MikroORMRequestContextModule }  from '@monstrs/nestjs-mikro-orm-request-context'
+import { PostgreSqlDriver }              from '@mikro-orm/postgresql'
+import { MikroORMConfigModule }          from '@monstrs/nestjs-mikro-orm-config'
+import { MikroORMConfig }                from '@monstrs/nestjs-mikro-orm-config'
+import { CqrsModule }                    from '@nestjs/cqrs'
 
-import { ReferralProgramRepository }         from '@referral-programs/domain-module'
-import { ReferralProgramsDomainModule }      from '@referral-programs/domain-module'
-import { ReferralProgramsApplicationModule } from '@referral-programs/application-module'
+import { ReferralProgramRepository }     from '@referral-programs/domain-module'
 
-import * as controllers                      from '../controllers/index.js'
-import * as mappers                          from '../mappers/index.js'
-import * as entities                         from '../entities/index.js'
-import * as migrations                       from '../migrations/index.js'
-import { ReferralProgramRepositoryImpl }     from '../repositories/index.js'
+import * as controllers                  from '../controllers/index.js'
+import * as mappers                      from '../mappers/index.js'
+import * as entities                     from '../entities/index.js'
+import * as migrations                   from '../migrations/index.js'
+import { ReferralProgramRepositoryImpl } from '../repositories/index.js'
 
 @Module({})
 export class ReferralProgramsInfrastructureModule implements OnModuleInit {
@@ -62,11 +60,9 @@ export class ReferralProgramsInfrastructureModule implements OnModuleInit {
         MikroORMRequestContextModule.forInterceptor(),
         CqrsModule.forRoot(),
         ValidationModule.register(),
-        ReferralProgramsApplicationModule.register(),
-        ReferralProgramsDomainModule.register(),
       ],
       providers: [...Object.values(mappers), ...repositories],
-      exports: [ReferralProgramsDomainModule, ...repositories],
+      exports: [...repositories],
     }
   }
 

@@ -35,7 +35,7 @@ export class UpdateReferralProgramRulePayload {
 
   @IsConditionsValid()
   get conditions(): TopLevelCondition {
-    return this.request.conditions!.toJson() as TopLevelCondition
+    return this.request.conditions?.toJson() as TopLevelCondition
   }
 
   @ValidateNested()
