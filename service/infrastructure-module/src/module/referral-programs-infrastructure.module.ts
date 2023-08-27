@@ -52,8 +52,8 @@ export class ReferralProgramsInfrastructureModule implements OnModuleInit {
           imports: [
             MikroORMConfigModule.register({
               driver: PostgreSqlDriver,
-              migrationsList: migrations,
               migrationsTableName: 'mikro_orm_migrations_referral_programs',
+              migrationsList: migrations,
               entities,
             }),
           ],
@@ -66,7 +66,7 @@ export class ReferralProgramsInfrastructureModule implements OnModuleInit {
         ReferralProgramsDomainModule.register(),
       ],
       providers: [...Object.values(mappers), ...repositories],
-      exports: [...repositories],
+      exports: [ReferralProgramsDomainModule, ...repositories],
     }
   }
 

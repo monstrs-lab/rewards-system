@@ -13,7 +13,7 @@
     "@monstrs/guard-clause": "^0.0.7",
     "@monstrs/query-types": "^0.0.7",
     "bignumber.js": "^9.1.1",
-    "json-rules-engine": "^6.4.0",
+    "json-rules-engine": "^6.4.1",
     "nanoid": "^4.0.2",
     "uuid": "^9.0.0"
   },
