@@ -1,0 +1,42 @@
+diff --git a/index.cjs b/index.cjs
+index 43748bb0b6a3af6984b0474b79ae0474da8c8f3a..7cbb25d8ace77b88535d18e8e5b80bca8c5e3144 100644
+--- a/index.cjs
++++ b/index.cjs
+@@ -584,6 +584,9 @@ class ServerBufConnect extends microservices.Server {
+             const router = this.buildRouter();
+             this.server = new HTTPServer(this.Options, router);
+             await this.server.listen();
++            if (callback) {
++                callback()
++            }
+         }
+         catch (error) {
+             callback(error);
+diff --git a/index.js b/index.js
+index bd6701caac9f0fa2fc6e7453976d9ecb66dc083b..08f2223f8ca61313f29e7bc2692622c8a31f0d28 100644
+--- a/index.js
++++ b/index.js
+@@ -561,6 +561,9 @@ class ServerBufConnect extends Server {
+             const router = this.buildRouter();
+             this.server = new HTTPServer(this.Options, router);
+             await this.server.listen();
++            if (callback) {
++                callback()
++            }
+         }
+         catch (error) {
+             callback(error);
+diff --git a/package.json b/package.json
+index d92510844ef2aa10dbef06528bed7b5b0a2129c2..d6727d348a9b38d6ad9583999567ac3fb628dbae 100644
+--- a/package.json
++++ b/package.json
+@@ -6,7 +6,8 @@
+   "publishConfig": {
+     "access": "public"
+   },
+-  "main": "index.cjs",
++  "type": "module",
++  "main": "index.js",
+   "module": "index.js",
+   "types": "index.d.ts",
+   "dependencies": {

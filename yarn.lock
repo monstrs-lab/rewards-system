@@ -693,19 +693,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bufbuild/connect-node@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "@bufbuild/connect-node@npm:0.13.0"
-  dependencies:
-    "@bufbuild/connect": "npm:0.13.0"
-    headers-polyfill: "npm:^3.1.2"
-  peerDependencies:
-    "@bufbuild/protobuf": ^1.2.1
-  checksum: a73677309f7f7044b8e78059e0b2b60b58dc628fa3dc423522e63f5b0f3dbcd5e15854f268d48053fdcf321a033da74d597db401ac19c553afbaefe2ada2c86e
-  languageName: node
-  linkType: hard
-
-"@bufbuild/connect-node@npm:^0.8.4":
+"@bufbuild/connect-node@npm:0.8.6":
   version: 0.8.6
   resolution: "@bufbuild/connect-node@npm:0.8.6"
   dependencies:
@@ -717,16 +705,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bufbuild/connect@npm:0.13.0, @bufbuild/connect@npm:^0.13.0":
-  version: 0.13.0
-  resolution: "@bufbuild/connect@npm:0.13.0"
-  peerDependencies:
-    "@bufbuild/protobuf": ^1.2.1
-  checksum: df27b68f9ba2e4ec77e63fc460f613a07390ac092be8be9151f50f970efecd683ac8f18bc524d1922eaf9de0a199008da35ac8240f9a8744f2293a12872c72f1
-  languageName: node
-  linkType: hard
-
-"@bufbuild/connect@npm:0.8.6, @bufbuild/connect@npm:^0.8.4, @bufbuild/connect@npm:^0.8.6":
+"@bufbuild/connect@npm:0.8.6":
   version: 0.8.6
   resolution: "@bufbuild/connect@npm:0.8.6"
   peerDependencies:
@@ -2278,6 +2257,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@referral-programs/infrastructure-module@workspace:service/infrastructure-module"
   dependencies:
+    "@bufbuild/connect": "npm:^0.13.0"
+    "@bufbuild/connect-node": "npm:^0.13.0"
     "@bufbuild/protobuf": "npm:^1.3.0"
     "@faker-js/faker": "npm:^8.0.2"
     "@jest/globals": "npm:^29.6.4"
@@ -2319,10 +2300,16 @@ __metadata:
     typescript: "npm:^5.2.2"
     uuid: "npm:^9.0.0"
   peerDependencies:
+    "@bufbuild/connect": ^0.13
+    "@bufbuild/connect-node": ^0.13
+    "@monstrs/nestjs-microservices-registry": ^0.1.0
     "@nestjs/common": ^10
     "@nestjs/core": ^10
     "@nestjs/cqrs": ^10
     "@nestjs/microservices": ^10
+    "@referral-programs/application-module": "workspace:0.0.1"
+    "@referral-programs/domain-module": "workspace:0.0.1"
+    "@referral-programs/referral-programs-rpc": "workspace:0.0.1"
     class-transformer: ^0.5
     class-validator: ^0.14
     reflect-metadata: ^0.1
@@ -2349,10 +2336,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@referral-programs/service-entrypoint@workspace:entrypoints/service-entrypoint"
   dependencies:
+    "@bufbuild/connect": "npm:^0.13.0"
+    "@bufbuild/connect-node": "npm:^0.13.0"
     "@bufbuild/protobuf": "npm:^1.3.0"
     "@faker-js/faker": "npm:^8.0.2"
     "@jest/globals": "npm:^29.6.4"
     "@monstrs/nestjs-logger": "npm:^0.4.1"
+    "@monstrs/nestjs-microservices-registry": "npm:^0.1.0"
     "@monstrs/protobuf-rpc": "npm:0.0.6"
     "@nestjs/common": "npm:^10.2.1"
     "@nestjs/core": "npm:^10.2.1"
@@ -2362,6 +2352,8 @@ __metadata:
     "@nestjs/platform-socket.io": "npm:^10.2.1"
     "@nestjs/testing": "npm:^10.2.1"
     "@nestjs/websockets": "npm:^10.2.1"
+    "@referral-programs/application-module": "workspace:0.0.1"
+    "@referral-programs/domain-module": "workspace:0.0.1"
     "@referral-programs/infrastructure-module": "workspace:0.0.1"
     "@referral-programs/referral-programs-rpc": "workspace:0.0.1"
     "@types/node": "npm:^20.5.6"
@@ -3227,7 +3219,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wolfcoded/nestjs-bufconnect@npm:^1.0.0-beta.3":
+"@wolfcoded/nestjs-bufconnect@npm:1.0.0-beta.3":
   version: 1.0.0-beta.3
   resolution: "@wolfcoded/nestjs-bufconnect@npm:1.0.0-beta.3"
   dependencies:
@@ -3242,6 +3234,24 @@ __metadata:
     reflect-metadata: ^0.1.13
     rxjs: ^7.2.0
   checksum: e9765b391d207cd2e8cedb1899c9bd28caa89bd98c90188f7c45d91477df40190b3f857e0fbff1f4491b927e97d4f0827afedf6aab30e284e5e3cf1f44823941
+  languageName: node
+  linkType: hard
+
+"@wolfcoded/nestjs-bufconnect@patch:@wolfcoded/nestjs-bufconnect@npm%3A1.0.0-beta.3#~/.yarn/patches/@wolfcoded-nestjs-bufconnect-npm-1.0.0-beta.3-23836c45da.patch":
+  version: 1.0.0-beta.3
+  resolution: "@wolfcoded/nestjs-bufconnect@patch:@wolfcoded/nestjs-bufconnect@npm%3A1.0.0-beta.3#~/.yarn/patches/@wolfcoded-nestjs-bufconnect-npm-1.0.0-beta.3-23836c45da.patch::version=1.0.0-beta.3&hash=cadadf"
+  dependencies:
+    "@bufbuild/connect": "npm:^0.8.4"
+    "@bufbuild/connect-node": "npm:^0.8.4"
+    "@bufbuild/protobuf": "npm:^1.2.0"
+  peerDependencies:
+    "@nestjs/common": ^9.0.0
+    "@nestjs/core": ^9.0.0
+    "@nestjs/microservices": ^9.0.0
+    "@nestjs/platform-express": ^9.0.0
+    reflect-metadata: ^0.1.13
+    rxjs: ^7.2.0
+  checksum: 13110e94484e3e4faf8d0421f40ca27823292ae95d857a269e2b6966173d78647d94025e0378086d8d6a4394c3f7afd9b7dc1eda79ae5f3ca953ccac87ecce90
   languageName: node
   linkType: hard
 
