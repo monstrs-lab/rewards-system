@@ -1236,7 +1236,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mikro-orm/postgresql@npm:^5.7.14":
+"@mikro-orm/postgresql@npm:*, @mikro-orm/postgresql@npm:^5.7.14":
   version: 5.7.14
   resolution: "@mikro-orm/postgresql@npm:5.7.14"
   dependencies:
@@ -1405,6 +1405,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@monstrs/mikro-orm-query-builder@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@monstrs/mikro-orm-query-builder@npm:0.0.9"
+  dependencies:
+    "@mikro-orm/postgresql": "npm:*"
+    "@monstrs/query-types": "npm:^0.0.7"
+    lodash.set: "npm:^4.3.2"
+  peerDependencies:
+    "@mikro-orm/postgresql": "*"
+  peerDependenciesMeta:
+    "@mikro-orm/core":
+      optional: true
+  checksum: 6927072eb160783b3e09cf0a3080d63432b8c31d9933571c865a5ba62ec398b44d92298659b97d4b8b9a23485e2dcda0ee0e0042ba1c2458918809cd4b3cfdaf
+  languageName: node
+  linkType: hard
+
 "@monstrs/nestjs-buf-errors@npm:^0.1.2":
   version: 0.1.2
   resolution: "@monstrs/nestjs-buf-errors@npm:0.1.2"
@@ -1426,6 +1442,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@monstrs/nestjs-microservices-registry@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@monstrs/nestjs-microservices-registry@npm:0.1.0"
+  dependencies:
+    fast-hash-code: "npm:^2.1.0"
+  peerDependencies:
+    "@nestjs/common": ^10
+    "@nestjs/core": ^10
+    reflect-metadata: ^0.1
+    rxjs: ^7
+  checksum: 7abc5a3022af3eb93dbb05f406a455c258fb87d50c290eaf0a536b876705055a24c17c337142c26f1c4d7efaf54f1cb59a68df1e20c1e15d856b8dca03302d13
+  languageName: node
+  linkType: hard
+
 "@monstrs/nestjs-mikro-orm-config@npm:^0.1.1":
   version: 0.1.1
   resolution: "@monstrs/nestjs-mikro-orm-config@npm:0.1.1"
@@ -1440,6 +1470,19 @@ __metadata:
     reflect-metadata: ^0.1
     rxjs: ^7
   checksum: b4035429f4e477a59e5ef300ad8ab7b795ef764e571cf6680b213a7c70ca0572fbd2aacd3497028b7eafb3bb6977c756c2b17c8f7d451cefe92be07cdada8f82
+  languageName: node
+  linkType: hard
+
+"@monstrs/nestjs-mikro-orm-request-context@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@monstrs/nestjs-mikro-orm-request-context@npm:0.1.1"
+  peerDependencies:
+    "@mikro-orm/core": ^5
+    "@nestjs/common": ^10
+    "@nestjs/core": ^10
+    reflect-metadata: ^0.1
+    rxjs: ^7
+  checksum: c414c3413963f85c61aa0e6c9b7a94b2b28c323c8ba905025387cfbeb93c2cc85b23dc34b4775c2c0e2e5c048c357122306999fe0853e1479be3b4a0049e9509
   languageName: node
   linkType: hard
 
@@ -1892,8 +1935,11 @@ __metadata:
     "@mikro-orm/postgresql": "npm:^5.7.14"
     "@mikro-orm/seeder": "npm:^5.7.14"
     "@monstrs/base-types": "npm:^0.0.2"
+    "@monstrs/mikro-orm-query-builder": "npm:^0.0.9"
     "@monstrs/nestjs-buf-errors": "npm:^0.1.2"
+    "@monstrs/nestjs-microservices-registry": "npm:^0.1.0"
     "@monstrs/nestjs-mikro-orm-config": "npm:^0.1.1"
+    "@monstrs/nestjs-mikro-orm-request-context": "npm:^0.1.1"
     "@monstrs/nestjs-validation": "npm:^0.1.1"
     "@monstrs/rpc-query-payloads": "npm:^0.0.11"
     "@nestjs/common": "npm:^10.2.1"
@@ -4609,6 +4655,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-hash-code@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "fast-hash-code@npm:2.1.0"
+  checksum: 36c91672dffed7fb526422d2059b3bc620090a27f724079c3f0fea8c70b613923d2bf09b17c74032cef78cb29f7a698bf0f7457df1518234f1c91835aff78285
+  languageName: node
+  linkType: hard
+
 "fast-json-stable-stringify@npm:2.x, fast-json-stable-stringify@npm:^2.0.0, fast-json-stable-stringify@npm:^2.1.0":
   version: 2.1.0
   resolution: "fast-json-stable-stringify@npm:2.1.0"
@@ -6364,6 +6417,13 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 402fa16a1edd7538de5b5903a90228aa48eb5533986ba7fa26606a49db2572bf414ff73a2c9f5d5fd36b31c46a5d5c7e1527749c07cbcf965ccff5fbdf32c506
+  languageName: node
+  linkType: hard
+
+"lodash.set@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "lodash.set@npm:4.3.2"
+  checksum: c641d31905e51df43170dce8a1d11a1cff11356e2e2e75fe2615995408e9687d58c3e1d64c3c284c2df2bc519f79a98af737d2944d382ff82ffd244ff6075c29
   languageName: node
   linkType: hard
 
