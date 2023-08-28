@@ -230,6 +230,31 @@ export interface UpdateReferralProgramRuleResponse {
 }
 
 /**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleRequest
+ */
+export interface DeleteReferralProgramRuleRequest {
+  /**
+   * @generated from field: string referral_program_rule_id = 1;
+   */
+  referralProgramRuleId: string
+
+  /**
+   * @generated from field: string referral_program_id = 2;
+   */
+  referralProgramId: string
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleResponse
+ */
+export interface DeleteReferralProgramRuleResponse {
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ReferralProgram result = 1;
+   */
+  result?: ReferralProgram
+}
+
+/**
  * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProgramsRequest
  */
 export interface ListReferralProgramsRequest {

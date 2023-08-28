@@ -230,6 +230,31 @@ export abstract class UpdateReferralProgramRuleResponse {
 }
 
 /**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleRequest
+ */
+export abstract class DeleteReferralProgramRuleRequest {
+  /**
+   * @generated from field: string referral_program_rule_id = 1;
+   */
+  abstract readonly referralProgramRuleId: string
+
+  /**
+   * @generated from field: string referral_program_id = 2;
+   */
+  abstract readonly referralProgramId: string
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleResponse
+ */
+export abstract class DeleteReferralProgramRuleResponse {
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ReferralProgram result = 1;
+   */
+  abstract readonly result?: ReferralProgram
+}
+
+/**
  * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProgramsRequest
  */
 export abstract class ListReferralProgramsRequest {

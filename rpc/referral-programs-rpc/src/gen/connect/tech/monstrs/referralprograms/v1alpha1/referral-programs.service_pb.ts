@@ -680,6 +680,121 @@ export class UpdateReferralProgramRuleResponse extends Message<UpdateReferralPro
 }
 
 /**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleRequest
+ */
+export class DeleteReferralProgramRuleRequest extends Message<DeleteReferralProgramRuleRequest> {
+  /**
+   * @generated from field: string referral_program_rule_id = 1;
+   */
+  referralProgramRuleId = ''
+
+  /**
+   * @generated from field: string referral_program_id = 2;
+   */
+  referralProgramId = ''
+
+  constructor(data?: PartialMessage<DeleteReferralProgramRuleRequest>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName =
+    'tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleRequest'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'referral_program_rule_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'referral_program_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): DeleteReferralProgramRuleRequest {
+    return new DeleteReferralProgramRuleRequest().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): DeleteReferralProgramRuleRequest {
+    return new DeleteReferralProgramRuleRequest().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): DeleteReferralProgramRuleRequest {
+    return new DeleteReferralProgramRuleRequest().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a:
+      | DeleteReferralProgramRuleRequest
+      | PlainMessage<DeleteReferralProgramRuleRequest>
+      | undefined,
+    b: DeleteReferralProgramRuleRequest | PlainMessage<DeleteReferralProgramRuleRequest> | undefined
+  ): boolean {
+    return proto3.util.equals(DeleteReferralProgramRuleRequest, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleResponse
+ */
+export class DeleteReferralProgramRuleResponse extends Message<DeleteReferralProgramRuleResponse> {
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ReferralProgram result = 1;
+   */
+  result?: ReferralProgram
+
+  constructor(data?: PartialMessage<DeleteReferralProgramRuleResponse>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName =
+    'tech.monstrs.referralprograms.v1alpha1.DeleteReferralProgramRuleResponse'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'result', kind: 'message', T: ReferralProgram },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): DeleteReferralProgramRuleResponse {
+    return new DeleteReferralProgramRuleResponse().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): DeleteReferralProgramRuleResponse {
+    return new DeleteReferralProgramRuleResponse().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): DeleteReferralProgramRuleResponse {
+    return new DeleteReferralProgramRuleResponse().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a:
+      | DeleteReferralProgramRuleResponse
+      | PlainMessage<DeleteReferralProgramRuleResponse>
+      | undefined,
+    b:
+      | DeleteReferralProgramRuleResponse
+      | PlainMessage<DeleteReferralProgramRuleResponse>
+      | undefined
+  ): boolean {
+    return proto3.util.equals(DeleteReferralProgramRuleResponse, a, b)
+  }
+}
+
+/**
  * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProgramsRequest
  */
 export class ListReferralProgramsRequest extends Message<ListReferralProgramsRequest> {

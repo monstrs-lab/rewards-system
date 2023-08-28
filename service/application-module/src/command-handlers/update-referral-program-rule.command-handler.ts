@@ -22,6 +22,11 @@ export class UpdateReferralProgramRuleCommandHandler
 
     assert.ok(referralProgram, `Referral program with id '${command.referralProgramId}' not found`)
 
+    assert.ok(
+      referralProgram.rules.find((rule) => rule.id === command.referralProgramRuleId),
+      `Referral program rule with id '${command.referralProgramRuleId}' not found`
+    )
+
     await this.referralProgramRepository.save(
       referralProgram.updateRule(
         ReferralProgramRule.create(

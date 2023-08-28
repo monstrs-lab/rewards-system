@@ -21,7 +21,7 @@ export class CreateReferralProgramCommandHandler
   async execute(command: CreateReferralProgramCommand): Promise<void> {
     const exists = await this.referralProgramRepository.findByCode(command.code)
 
-    assert.ok(!exists, `Referral program with code '${command.code}' already exists.`)
+    assert.ok(!exists, `Referral program with code '${command.code}' already exists`)
 
     await this.referralProgramRepository.save(
       this.referralProgramFactory
