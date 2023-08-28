@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import type { ExtractProperties }     from '@monstrs/base-types'
 import type { ReferralProgram }       from '@referral-programs/domain-module'
 
@@ -75,6 +77,8 @@ export class ReferralProgramMapper {
                 conditions: field.conditions.conditions,
               })),
             })
+
+            ruleEntity.conditions = rule.conditions.conditions
           }
         })
       } else {
@@ -92,6 +96,12 @@ export class ReferralProgramMapper {
         })
 
         entity.rules.add(ruleEntity)
+      }
+    })
+
+    entity.rules.getItems().forEach((ruleEntity) => {
+      if (!aggregate.rules.find((rule) => rule.id === ruleEntity.id)) {
+        entity.rules.remove(ruleEntity)
       }
     })
 

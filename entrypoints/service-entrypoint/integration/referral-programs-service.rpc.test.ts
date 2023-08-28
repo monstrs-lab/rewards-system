@@ -68,7 +68,7 @@ describe('referral-programs-service', () => {
 
     describe('referral programs', () => {
       describe('create referral program', () => {
-        it('check empty name validation', async () => {
+        it('check invalid name validation', async () => {
           expect.assertions(1)
 
           try {
@@ -93,7 +93,7 @@ describe('referral-programs-service', () => {
           }
         })
 
-        it('check empty code validation', async () => {
+        it('check invalid code validation', async () => {
           expect.assertions(1)
 
           try {
@@ -180,7 +180,7 @@ describe('referral-programs-service', () => {
           } catch (error) {
             if (error instanceof ConnectError) {
               expect(error.rawMessage).toBe(
-                `Referral program with code '${result!.code}' already exists.`
+                `Referral program with code '${result!.code}' already exists`
               )
             }
           }
@@ -188,7 +188,7 @@ describe('referral-programs-service', () => {
       })
 
       describe('update referral program', () => {
-        it('check empty id validation', async () => {
+        it('check invalid id validation', async () => {
           expect.assertions(1)
 
           try {
@@ -213,7 +213,7 @@ describe('referral-programs-service', () => {
           }
         })
 
-        it('check empty name validation', async () => {
+        it('check invalid name validation', async () => {
           expect.assertions(1)
 
           try {
@@ -265,6 +265,26 @@ describe('referral-programs-service', () => {
           }
         })
 
+        it('check update not found referral program', async () => {
+          expect.assertions(1)
+
+          const referralProgramId = faker.string.uuid()
+
+          try {
+            await client.updateReferralProgram({
+              referralProgramId,
+              name: faker.word.sample(),
+              percentage: faker.number.int(100),
+            })
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(error.rawMessage).toBe(
+                `Referral program with id '${referralProgramId}' not found`
+              )
+            }
+          }
+        })
+
         it('check update referral program', async () => {
           const name = faker.word.sample()
           const percentage = faker.number.int(100)
@@ -287,7 +307,7 @@ describe('referral-programs-service', () => {
       })
 
       describe('add referral program rule', () => {
-        it('check empty referral program id validation', async () => {
+        it('check invalid referral program id validation', async () => {
           expect.assertions(1)
 
           try {
@@ -312,7 +332,7 @@ describe('referral-programs-service', () => {
           }
         })
 
-        it('check empty name validation', async () => {
+        it('check invalid name validation', async () => {
           expect.assertions(1)
 
           try {
@@ -337,7 +357,7 @@ describe('referral-programs-service', () => {
           }
         })
 
-        it('check empty conditions validation', async () => {
+        it('check invalid conditions validation', async () => {
           expect.assertions(1)
 
           try {
@@ -448,7 +468,7 @@ describe('referral-programs-service', () => {
           }
         })
 
-        it('check invalid field conditions validation', async () => {
+        it('check add referral program rule', async () => {
           const { result: referralProgram } = await client.createReferralProgram({
             name: faker.word.sample(),
             code: faker.word.sample(),
@@ -485,6 +505,292 @@ describe('referral-programs-service', () => {
           expect(result?.rules.at(0)?.fields.at(0)?.conditions?.toJson()).toEqual(
             fields.at(0)?.conditions.toJson()
           )
+        })
+      })
+
+      describe('update referral program rule', () => {
+        it('check invalid referral program rule id validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgramRule({})
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'referralProgramRuleId',
+                    property: 'referralProgramRuleId',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'isUuid',
+                        constraint: 'referralProgramRuleId must be a UUID',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check invalid referral program id validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgramRule({})
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'referralProgramId',
+                    property: 'referralProgramId',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'isUuid',
+                        constraint: 'referralProgramId must be a UUID',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check invalid name validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgramRule({})
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'name',
+                    property: 'name',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'isNotEmpty',
+                        constraint: 'name should not be empty',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check invalid conditions validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgramRule({})
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'conditions',
+                    property: 'conditions',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'IsConditionsValidConstraint',
+                        constraint: 'Invalid conditions schema',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check invalid field percentage validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgramRule({
+              fields: [
+                {
+                  percentage: 200,
+                },
+              ],
+            })
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'fields.0.percentage',
+                    property: 'percentage',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'max',
+                        constraint: 'percentage must not be greater than 100',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check invalid field conditions validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgramRule({
+              fields: [
+                {
+                  conditions: {
+                    some: [],
+                  } as any,
+                },
+              ],
+            })
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'fields.0.conditions',
+                    property: 'conditions',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'IsConditionsValidConstraint',
+                        constraint: 'Invalid conditions schema',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check unknown referral program rule', async () => {
+          expect.assertions(1)
+
+          const referralProgramRuleId = faker.string.uuid()
+
+          const { result: referralProgram } = await client.createReferralProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: faker.number.int(100),
+          })
+
+          try {
+            await client.updateReferralProgramRule({
+              referralProgramRuleId,
+              referralProgramId: referralProgram!.id,
+              name: faker.word.sample(),
+              order: faker.number.int(100),
+              conditions: Struct.fromJson({ all: [] }),
+              fields: [],
+            })
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(error.rawMessage).toBe(
+                `Referral program rule with id '${referralProgramRuleId}' not found`
+              )
+            }
+          }
+        })
+
+        it('check update referral program rule', async () => {
+          const { result: referralProgram } = await client.createReferralProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: faker.number.int(100),
+          })
+
+          const name = faker.word.sample()
+          const order = faker.number.int(100)
+          const conditions = Struct.fromJson({
+            all: [],
+          })
+          const fields = [
+            {
+              percentage: faker.number.int(100),
+              conditions: Struct.fromJson({
+                all: [],
+              }),
+            },
+          ]
+
+          const { result: referralProgramWithRule } = await client.addReferralProgramRule({
+            referralProgramId: referralProgram!.id,
+            name: faker.word.sample(),
+            order: faker.number.int(100),
+            conditions: Struct.fromJson({
+              any: [],
+            }),
+            fields: [
+              {
+                percentage: faker.number.int(100),
+                conditions: Struct.fromJson({
+                  any: [],
+                }),
+              },
+            ],
+          })
+
+          const { result } = await client.updateReferralProgramRule({
+            referralProgramRuleId: referralProgramWithRule?.rules.at(0)?.id,
+            referralProgramId: referralProgram!.id,
+            name,
+            order,
+            conditions,
+            fields,
+          })
+
+          expect(result?.rules.at(0)?.id).toBe(referralProgramWithRule?.rules.at(0)?.id)
+          expect(result?.rules.at(0)?.name).toBe(name)
+          expect(result?.rules.at(0)?.order).toBe(order)
+          expect(result?.rules.at(0)?.conditions?.toJson()).toEqual(conditions.toJson())
+          expect(result?.rules.at(0)?.fields.at(0)?.percentage).toBe(fields.at(0)?.percentage)
+          expect(result?.rules.at(0)?.fields.at(0)?.conditions?.toJson()).toEqual(
+            fields.at(0)?.conditions.toJson()
+          )
+        })
+      })
+
+      describe('delete referral program rule', () => {
+        it('check delete referral program rule', async () => {
+          const { result: referralProgram } = await client.createReferralProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: faker.number.int(100),
+          })
+
+          const { result: referralProgramWithRule } = await client.addReferralProgramRule({
+            referralProgramId: referralProgram!.id,
+            name: faker.word.sample(),
+            order: faker.number.int(100),
+            conditions: Struct.fromJson({
+              any: [],
+            }),
+            fields: [
+              {
+                percentage: faker.number.int(100),
+                conditions: Struct.fromJson({
+                  any: [],
+                }),
+              },
+            ],
+          })
+
+          const { result } = await client.deleteReferralProgramRule({
+            referralProgramId: referralProgram!.id,
+            referralProgramRuleId: referralProgramWithRule?.rules.at(0)?.id,
+          })
+
+          expect(result?.rules).toEqual([])
         })
       })
     })

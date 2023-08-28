@@ -1,4 +1,5 @@
 export * from './add-referral-program-rule.command.js'
 export * from './update-referral-program-rule.command.js'
+export * from './delete-referral-program-rule.command.js'
 export * from './create-referral-program.command.js'
 export * from './update-referral-program.command.js'

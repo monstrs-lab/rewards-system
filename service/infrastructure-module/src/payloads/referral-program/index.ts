@@ -1,5 +1,6 @@
 export * from './add-referral-program-rule.payload.js'
 export * from './create-referral-program.payload.js'
+export * from './delete-referral-program-rule.payload.js'
 export * from './update-referral-program-rule.payload.js'
 export * from './update-referral-program.payload.js'
 export * from './list-referral-programs.payload.js'

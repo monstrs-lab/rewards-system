@@ -9,6 +9,8 @@ import { AddReferralProgramRuleRequest }     from './referral-programs.service_p
 import { AddReferralProgramRuleResponse }    from './referral-programs.service_pb.js'
 import { CreateReferralProgramRequest }      from './referral-programs.service_pb.js'
 import { CreateReferralProgramResponse }     from './referral-programs.service_pb.js'
+import { DeleteReferralProgramRuleRequest }  from './referral-programs.service_pb.js'
+import { DeleteReferralProgramRuleResponse } from './referral-programs.service_pb.js'
 import { ListReferralProgramsRequest }       from './referral-programs.service_pb.js'
 import { ListReferralProgramsResponse }      from './referral-programs.service_pb.js'
 import { UpdateReferralProgramRequest }      from './referral-programs.service_pb.js'
@@ -56,6 +58,15 @@ export const ReferralProgramsService = {
       name: 'UpdateReferralProgramRule',
       I: UpdateReferralProgramRuleRequest,
       O: UpdateReferralProgramRuleResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc tech.monstrs.referralprograms.v1alpha1.ReferralProgramsService.DeleteReferralProgramRule
+     */
+    deleteReferralProgramRule: {
+      name: 'DeleteReferralProgramRule',
+      I: DeleteReferralProgramRuleRequest,
+      O: DeleteReferralProgramRuleResponse,
       kind: MethodKind.Unary,
     },
     /**

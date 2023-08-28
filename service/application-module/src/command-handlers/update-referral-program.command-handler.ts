@@ -17,7 +17,7 @@ export class UpdateReferralProgramCommandHandler
   async execute(command: UpdateReferralProgramCommand): Promise<void> {
     const referralProgram = await this.referralProgramRepository.findById(command.referralProgramId)
 
-    assert.ok(referralProgram, 'ReferralProgram not found')
+    assert.ok(referralProgram, `Referral program with id '${command.referralProgramId}' not found`)
 
     await this.referralProgramRepository.save(
       referralProgram.update(command.name, command.percentage)

@@ -10,6 +10,7 @@ service ReferralProgramsService {
   rpc UpdateReferralProgram(UpdateReferralProgramRequest) returns (UpdateReferralProgramResponse) {}
   rpc AddReferralProgramRule(AddReferralProgramRuleRequest) returns (AddReferralProgramRuleResponse) {}
   rpc UpdateReferralProgramRule(UpdateReferralProgramRuleRequest) returns (UpdateReferralProgramRuleResponse) {}
+  rpc DeleteReferralProgramRule(DeleteReferralProgramRuleRequest) returns (DeleteReferralProgramRuleResponse) {}
   rpc ListReferralPrograms(ListReferralProgramsRequest) returns (ListReferralProgramsResponse) {}
 }
 
@@ -76,6 +77,15 @@ message UpdateReferralProgramRuleRequest {
 }
 
 message UpdateReferralProgramRuleResponse {
+  ReferralProgram result = 1;
+}
+
+message DeleteReferralProgramRuleRequest {
+  string referral_program_rule_id = 1;
+  string referral_program_id = 2;
+}
+
+message DeleteReferralProgramRuleResponse {
   ReferralProgram result = 1;
 }
 

@@ -7,6 +7,8 @@ import type { AddReferralProgramRuleRequest }     from '@referral-programs/refer
 import type { AddReferralProgramRuleResponse }    from '@referral-programs/referral-programs-rpc/interfaces'
 import type { UpdateReferralProgramRuleRequest }  from '@referral-programs/referral-programs-rpc/interfaces'
 import type { UpdateReferralProgramRuleResponse } from '@referral-programs/referral-programs-rpc/interfaces'
+import type { DeleteReferralProgramRuleRequest }  from '@referral-programs/referral-programs-rpc/interfaces'
+import type { DeleteReferralProgramRuleResponse } from '@referral-programs/referral-programs-rpc/interfaces'
 import type { ListReferralProgramsRequest }       from '@referral-programs/referral-programs-rpc/interfaces'
 import type { ListReferralProgramsResponse }      from '@referral-programs/referral-programs-rpc/interfaces'
 import type { CreateReferralProgramRequest }      from '@referral-programs/referral-programs-rpc/interfaces'
@@ -31,17 +33,20 @@ import { CreateReferralProgramCommand }           from '@referral-programs/appli
 import { UpdateReferralProgramCommand }           from '@referral-programs/application-module'
 import { AddReferralProgramRuleCommand }          from '@referral-programs/application-module'
 import { UpdateReferralProgramRuleCommand }       from '@referral-programs/application-module'
+import { DeleteReferralProgramRuleCommand }       from '@referral-programs/application-module'
 
 import { ListReferralProgramsPayload }            from '../payloads/index.js'
 import { CreateReferralProgramPayload }           from '../payloads/index.js'
 import { UpdateReferralProgramPayload }           from '../payloads/index.js'
 import { AddReferralProgramRulePayload }          from '../payloads/index.js'
 import { UpdateReferralProgramRulePayload }       from '../payloads/index.js'
+import { DeleteReferralProgramRulePayload }       from '../payloads/index.js'
 import { ListReferralProgramsSerializer }         from '../serializers/index.js'
 import { CreateReferralProgramSerializer }        from '../serializers/index.js'
 import { UpdateReferralProgramSerializer }        from '../serializers/index.js'
 import { AddReferralProgramRuleSerializer }       from '../serializers/index.js'
 import { UpdateReferralProgramRuleSerializer }    from '../serializers/index.js'
+import { DeleteReferralProgramRuleSerializer }    from '../serializers/index.js'
 
 @Controller()
 @BufService(ReferralProgramsService)
@@ -161,6 +166,28 @@ export class ReferralProgramsController implements ServiceImpl<typeof ReferralPr
     await this.commandBus.execute(command)
 
     return new UpdateReferralProgramRuleSerializer(
+      await this.queryBus.execute<GetReferralProgramByIdQuery, ReferralProgram>(
+        new GetReferralProgramByIdQuery(command.referralProgramId)
+      )
+    )
+  }
+
+  @BufMethod()
+  async deleteReferralProgramRule(
+    request: DeleteReferralProgramRuleRequest
+  ): Promise<DeleteReferralProgramRuleResponse> {
+    const payload = new DeleteReferralProgramRulePayload(request)
+
+    await this.validator.validate(payload)
+
+    const command = new DeleteReferralProgramRuleCommand(
+      payload.referralProgramRuleId,
+      payload.referralProgramId
+    )
+
+    await this.commandBus.execute(command)
+
+    return new DeleteReferralProgramRuleSerializer(
       await this.queryBus.execute<GetReferralProgramByIdQuery, ReferralProgram>(
         new GetReferralProgramByIdQuery(command.referralProgramId)
       )
