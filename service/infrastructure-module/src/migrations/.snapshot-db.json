@@ -45,6 +45,13 @@
       "schema": "public",
       "indexes": [
         {
+          "columnNames": ["code"],
+          "composite": false,
+          "keyName": "referral_programs_code_unique",
+          "primary": false,
+          "unique": true
+        },
+        {
           "keyName": "referral_programs_pkey",
           "columnNames": ["id"],
           "composite": false,

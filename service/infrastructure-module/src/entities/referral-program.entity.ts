@@ -5,6 +5,7 @@ import { PrimaryKey }                from '@mikro-orm/core'
 import { OneToMany }                 from '@mikro-orm/core'
 import { Cascade }                   from '@mikro-orm/core'
 import { Collection }                from '@mikro-orm/core'
+import { Unique }                    from '@mikro-orm/core'
 
 import { ReferralProgramRuleEntity } from './referral-program-rule.entity.js'
 
@@ -14,6 +15,7 @@ export class ReferralProgramEntity extends BaseEntity<ReferralProgramEntity, 'id
   id!: string
 
   @Property()
+  @Unique()
   code!: string
 
   @Property()

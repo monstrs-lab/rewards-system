@@ -1,7 +1,6 @@
 import { NestLogger }                              from '@monstrs/nestjs-logger'
 import { NestFactory }                             from '@nestjs/core'
-
-import { MicroservisesRegistry }                   from '@referral-programs/infrastructure-module'
+import { MicroservisesRegistry }                   from '@monstrs/nestjs-microservices-registry'
 
 import { ReferralProgramsServiceEntrypointModule } from './referral-programs-service-entrypoint.module.js'
 
