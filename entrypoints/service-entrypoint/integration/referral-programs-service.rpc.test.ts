@@ -161,9 +161,132 @@ describe('referral-programs-service', () => {
           expect(result?.code).toBe(code)
           expect(result?.percentage).toBe(percentage)
         })
+
+        it('check code already exists', async () => {
+          expect.assertions(1)
+
+          const { result } = await client.createReferralProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: faker.number.int(100),
+          })
+
+          try {
+            await client.createReferralProgram({
+              name: result!.name,
+              code: result!.code,
+              percentage: result!.percentage,
+            })
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(error.rawMessage).toBe(
+                `Referral program with code '${result!.code}' already exists.`
+              )
+            }
+          }
+        })
       })
 
-      describe('create add referral program rule', () => {
+      describe('update referral program', () => {
+        it('check empty id validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgram({})
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'referralProgramId',
+                    property: 'referralProgramId',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'isUuid',
+                        constraint: 'referralProgramId must be a UUID',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check empty name validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgram({})
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'name',
+                    property: 'name',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'isNotEmpty',
+                        constraint: 'name should not be empty',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check invalid percentage validation', async () => {
+          expect.assertions(1)
+
+          try {
+            await client.updateReferralProgram({
+              percentage: 200,
+            })
+          } catch (error) {
+            if (error instanceof ConnectError) {
+              expect(findValidationErrorDetails(error)).toEqual(
+                expect.arrayContaining([
+                  expect.objectContaining({
+                    id: 'percentage',
+                    property: 'percentage',
+                    messages: expect.arrayContaining([
+                      expect.objectContaining({
+                        id: 'max',
+                        constraint: 'percentage must not be greater than 100',
+                      }),
+                    ]),
+                  }),
+                ])
+              )
+            }
+          }
+        })
+
+        it('check update referral program', async () => {
+          const name = faker.word.sample()
+          const percentage = faker.number.int(100)
+
+          const { result: referralProgram } = await client.createReferralProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: faker.number.int(100),
+          })
+
+          const { result } = await client.updateReferralProgram({
+            referralProgramId: referralProgram!.id,
+            name,
+            percentage,
+          })
+
+          expect(result?.name).toBe(name)
+          expect(result?.percentage).toBe(percentage)
+        })
+      })
+
+      describe('add referral program rule', () => {
         it('check empty referral program id validation', async () => {
           expect.assertions(1)
 
