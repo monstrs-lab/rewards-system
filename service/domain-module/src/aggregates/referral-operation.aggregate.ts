@@ -1,12 +1,12 @@
-import { AggregateRoot }                                   from '@nestjs/cqrs'
-import { Guard }                                           from '@monstrs/guard-clause'
-import { Against }                                         from '@monstrs/guard-clause'
+import { AggregateRoot }                   from '@nestjs/cqrs'
+import { Guard }                           from '@monstrs/guard-clause'
+import { Against }                         from '@monstrs/guard-clause'
 
-import { ReferralOperationSource }                         from '../entities/index.js'
-import { ReferralOperationConfirmedEvent }                 from '../events/index.js'
-import { ReferralOperationCreatedEvent }                   from '../events/index.js'
-import { ReferralOperationStatus }                         from '../enums/index.js'
-import { ReferralOperationNotAllowedForConfirmationError } from '../errors/index.js'
+import { ReferralOperationSource }         from '../entities/index.js'
+import { ReferralOperationConfirmedEvent } from '../events/index.js'
+import { ReferralOperationCreatedEvent }   from '../events/index.js'
+import { ReferralOperationStatus }         from '../enums/index.js'
+import { NotAllowedForConfirmationError }  from '../errors/index.js'
 
 export class ReferralOperation extends AggregateRoot {
   #id!: string
@@ -104,7 +104,7 @@ export class ReferralOperation extends AggregateRoot {
 
   confirm(): ReferralOperation {
     if (this.status !== ReferralOperationStatus.PENDING) {
-      throw new ReferralOperationNotAllowedForConfirmationError()
+      throw new NotAllowedForConfirmationError()
     }
 
     this.apply(new ReferralOperationConfirmedEvent(this.id))

@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 
 import type { ReferralOperation }                         from '@referral-programs/domain-module'
+import type { FindReferralProfitsByQueryResult }          from '@referral-programs/domain-module'
 import type { FindReferralOperationsByQueryResult }       from '@referral-programs/domain-module'
 import type { ServiceImpl }                               from '@referral-programs/referral-programs-rpc'
+import type { ListReferralProfitsRequest }                from '@referral-programs/referral-programs-rpc/interfaces'
+import type { ListReferralProfitsResponse }               from '@referral-programs/referral-programs-rpc/interfaces'
 import type { ListReferralOperationsRequest }             from '@referral-programs/referral-programs-rpc/interfaces'
 import type { ListReferralOperationsResponse }            from '@referral-programs/referral-programs-rpc/interfaces'
 import type { CreateReferralOperationRequest }            from '@referral-programs/referral-programs-rpc/interfaces'
@@ -23,16 +26,19 @@ import { BufService }                                     from '@wolfcoded/nestj
 import { v4 as uuid }                                     from 'uuid'
 
 import { ReferralOperationsService }                      from '@referral-programs/referral-programs-rpc/connect'
+import { GetReferralProfitsQuery }                        from '@referral-programs/application-module'
 import { GetReferralOperationsQuery }                     from '@referral-programs/application-module'
 import { GetReferralOperationByIdQuery }                  from '@referral-programs/application-module'
 import { CreateReferralOperationCommand }                 from '@referral-programs/application-module'
 import { ConfirmReferralOperationCommand }                from '@referral-programs/application-module'
 import { CreateAndConfirmReferralOperationCommand }       from '@referral-programs/application-module'
 
+import { ListReferralProfitsPayload }                     from '../payloads/index.js'
 import { ListReferralOperationsPayload }                  from '../payloads/index.js'
 import { CreateReferralOperationPayload }                 from '../payloads/index.js'
 import { ConfirmReferralOperationPayload }                from '../payloads/index.js'
 import { CreateAndConfirmReferralOperationPayload }       from '../payloads/index.js'
+import { ListReferralProfitsSerializer }                  from '../serializers/index.js'
 import { ListReferralOperationsSerializer }               from '../serializers/index.js'
 import { CreateReferralOperationSerializer }              from '../serializers/index.js'
 import { ConfirmReferralOperationSerializer }             from '../serializers/index.js'
@@ -130,6 +136,21 @@ export class ReferralOperationsController implements ServiceImpl<typeof Referral
     return new ListReferralOperationsSerializer(
       await this.queryBus.execute<GetReferralOperationsQuery, FindReferralOperationsByQueryResult>(
         new GetReferralOperationsQuery(payload.pager, payload.order, payload.query)
+      )
+    )
+  }
+
+  @BufMethod()
+  async listReferralProfits(
+    request: ListReferralProfitsRequest
+  ): Promise<ListReferralProfitsResponse> {
+    const payload = new ListReferralProfitsPayload(request)
+
+    await this.validator.validate(payload)
+
+    return new ListReferralProfitsSerializer(
+      await this.queryBus.execute<GetReferralProfitsQuery, FindReferralProfitsByQueryResult>(
+        new GetReferralProfitsQuery(payload.pager, payload.order, payload.query)
       )
     )
   }

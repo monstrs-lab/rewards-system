@@ -85,6 +85,61 @@ export abstract class ReferralOperation_Source {
 }
 
 /**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ReferralProfit
+ */
+export abstract class ReferralProfit {
+  /**
+   * @generated from field: string id = 1;
+   */
+  abstract readonly id: string
+
+  /**
+   * @generated from field: string operation_id = 2;
+   */
+  abstract readonly operationId: string
+
+  /**
+   * @generated from field: string agent_id = 3;
+   */
+  abstract readonly agentId: string
+
+  /**
+   * @generated from field: string referrer_id = 4;
+   */
+  abstract readonly referrerId: string
+
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ReferralOperationStatus status = 5;
+   */
+  abstract readonly status: ReferralOperationStatus
+
+  /**
+   * @generated from field: double amount = 6;
+   */
+  abstract readonly amount: number
+
+  /**
+   * @generated from field: double profit = 7;
+   */
+  abstract readonly profit: number
+
+  /**
+   * @generated from field: int32 percentage = 8;
+   */
+  abstract readonly percentage: number
+
+  /**
+   * @generated from field: int32 level = 9;
+   */
+  abstract readonly level: number
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   */
+  abstract readonly createdAt?: Timestamp
+}
+
+/**
  * @generated from message tech.monstrs.referralprograms.v1alpha1.CreateReferralOperationRequest
  */
 export abstract class CreateReferralOperationRequest {
@@ -222,6 +277,61 @@ export abstract class ListReferralOperationsResponse {
    * @generated from field: repeated tech.monstrs.referralprograms.v1alpha1.ReferralOperation referral_operations = 1;
    */
   abstract readonly referralOperations: ReferralOperation[]
+
+  /**
+   * @generated from field: bool has_next_page = 2;
+   */
+  abstract readonly hasNextPage: boolean
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest
+ */
+export abstract class ListReferralProfitsRequest {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+   */
+  abstract readonly pager?: Query_Pager
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+   */
+  abstract readonly order?: Query_Order
+
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest.ReferralProfitsQuery query = 3;
+   */
+  abstract readonly query?: ListReferralProfitsRequest_ReferralProfitsQuery
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest.ReferralProfitsQuery
+ */
+export abstract class ListReferralProfitsRequest_ReferralProfitsQuery {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+   */
+  abstract readonly id?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID agent_id = 2;
+   */
+  abstract readonly agentId?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID operation_id = 3;
+   */
+  abstract readonly operationId?: Query_ID
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsResponse
+ */
+export abstract class ListReferralProfitsResponse {
+  /**
+   * @generated from field: repeated tech.monstrs.referralprograms.v1alpha1.ReferralProfit referral_profits = 1;
+   */
+  abstract readonly referralProfits: ReferralProfit[]
 
   /**
    * @generated from field: bool has_next_page = 2;
