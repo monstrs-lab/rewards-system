@@ -92,7 +92,7 @@ export class ReferralProgramsController implements ServiceImpl<typeof ReferralPr
 
     return new CreateReferralProgramSerializer(
       await this.queryBus.execute<GetReferralProgramByIdQuery, ReferralProgram>(
-        new GetReferralProgramByIdQuery(command.id)
+        new GetReferralProgramByIdQuery(command.referralProgramId)
       )
     )
   }

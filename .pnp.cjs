@@ -2828,6 +2828,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@monstrs/core-errors", [\
+      ["npm:0.0.2", {\
+        "packageLocation": "./.yarn/cache/@monstrs-core-errors-npm-0.0.2-28b08a04fc-a1fb9b8388.zip/node_modules/@monstrs/core-errors/",\
+        "packageDependencies": [\
+          ["@monstrs/core-errors", "npm:0.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@monstrs/guard-clause", [\
       ["npm:0.0.3", {\
         "packageLocation": "./.yarn/cache/@monstrs-guard-clause-npm-0.0.3-7c260993b6-8f1d327101.zip/node_modules/@monstrs/guard-clause/",\
@@ -4592,6 +4601,7 @@ const RAW_RUNTIME_STATE =
           ["@referral-programs/domain-module", "virtual:2f295ad5de12ec97689fee1607e835ede334b2c0f27c9589c75c27d2c94152c30408c7f8594271fbb13f2c8da513c60d9d0867cd462109056baa3551ab8c9935#workspace:service/domain-module"],\
           ["@faker-js/faker", "npm:8.0.2"],\
           ["@jest/globals", "npm:29.6.4"],\
+          ["@monstrs/core-errors", "npm:0.0.2"],\
           ["@monstrs/guard-clause", "npm:0.0.7"],\
           ["@monstrs/query-types", "npm:0.0.7"],\
           ["@nestjs/common", "virtual:2f295ad5de12ec97689fee1607e835ede334b2c0f27c9589c75c27d2c94152c30408c7f8594271fbb13f2c8da513c60d9d0867cd462109056baa3551ab8c9935#npm:10.2.2"],\
@@ -4632,6 +4642,7 @@ const RAW_RUNTIME_STATE =
           ["@referral-programs/domain-module", "virtual:30c09716b55a7ba48736a9711586af689b5de4f251542c53329c98ab2b0652bc4f112c9b2c6cba6ee88fd0cb59384959f8af88a3084bfbcb1d2d31680b1b53b3#workspace:service/domain-module"],\
           ["@faker-js/faker", "npm:8.0.2"],\
           ["@jest/globals", "npm:29.6.4"],\
+          ["@monstrs/core-errors", "npm:0.0.2"],\
           ["@monstrs/guard-clause", "npm:0.0.7"],\
           ["@monstrs/query-types", "npm:0.0.7"],\
           ["@nestjs/common", "virtual:30c09716b55a7ba48736a9711586af689b5de4f251542c53329c98ab2b0652bc4f112c9b2c6cba6ee88fd0cb59384959f8af88a3084bfbcb1d2d31680b1b53b3#npm:10.2.2"],\
@@ -4672,6 +4683,7 @@ const RAW_RUNTIME_STATE =
           ["@referral-programs/domain-module", "virtual:e316475617b542f5715a41c378a7484e7ac5edbc43cbda7ca3c636b0f9be1388e63b0506f0d78f135962469d97c230a2940ae4c03c4fdf460fb783b618354084#workspace:service/domain-module"],\
           ["@faker-js/faker", "npm:8.0.2"],\
           ["@jest/globals", "npm:29.6.4"],\
+          ["@monstrs/core-errors", "npm:0.0.2"],\
           ["@monstrs/guard-clause", "npm:0.0.7"],\
           ["@monstrs/query-types", "npm:0.0.7"],\
           ["@nestjs/common", "virtual:2f295ad5de12ec97689fee1607e835ede334b2c0f27c9589c75c27d2c94152c30408c7f8594271fbb13f2c8da513c60d9d0867cd462109056baa3551ab8c9935#npm:10.2.2"],\
@@ -4712,6 +4724,7 @@ const RAW_RUNTIME_STATE =
           ["@referral-programs/domain-module", "workspace:service/domain-module"],\
           ["@faker-js/faker", "npm:8.0.2"],\
           ["@jest/globals", "npm:29.6.4"],\
+          ["@monstrs/core-errors", "npm:0.0.2"],\
           ["@monstrs/guard-clause", "npm:0.0.7"],\
           ["@monstrs/query-types", "npm:0.0.7"],\
           ["@nestjs/common", "virtual:30c09716b55a7ba48736a9711586af689b5de4f251542c53329c98ab2b0652bc4f112c9b2c6cba6ee88fd0cb59384959f8af88a3084bfbcb1d2d31680b1b53b3#npm:10.2.2"],\

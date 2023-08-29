@@ -26,7 +26,7 @@ export class CreateReferralProgramCommandHandler
     await this.referralProgramRepository.save(
       this.referralProgramFactory
         .create()
-        .create(command.id, command.name, command.code, command.percentage)
+        .create(command.referralProgramId, command.name, command.code, command.percentage)
     )
   }
 }
