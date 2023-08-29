@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package tech.monstrs.referralprograms.v1alpha1;
+
+import "google/protobuf/timestamp.proto";
+import "tech/monstrs/queries/v1alpha1/queries.proto";
+
+service ReferralOperationsService {
+  rpc CreateReferralOperation(CreateReferralOperationRequest) returns (CreateReferralOperationResponse) {}
+  rpc ConfirmReferralOperation(ConfirmReferralOperationRequest) returns (ConfirmReferralOperationResponse) {}
+  rpc CreateAndConfirmReferralOperation(CreateAndConfirmReferralOperationRequest) returns (CreateAndConfirmReferralOperationResponse) {}
+  rpc ListReferralOperations(ListReferralOperationsRequest) returns (ListReferralOperationsResponse) {}
+}
+
+enum ReferralOperationStatus {
+  PENDING = 0;
+  CONFIRMED = 1;
+  REJECTED = 2;
+}
+
+message ReferralOperation {
+  message Source {
+    string id = 1;
+    string type = 2;
+  }
+
+  string id = 1;
+  string referral_program_id = 2;
+  string referrer_id = 3;
+  ReferralOperationStatus status = 4;
+  Source source = 5;
+  double amount = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+
+message CreateReferralOperationRequest {
+  string referral_program = 1;
+  string source_id = 2;
+  string source_type = 3;
+  string referrer_id = 4;
+  double amount = 5;
+}
+
+message CreateReferralOperationResponse {
+  ReferralOperation result = 1;
+}
+
+message ConfirmReferralOperationRequest {
+  string referral_operation_id = 1;
+}
+
+message ConfirmReferralOperationResponse {
+  ReferralOperation result = 1;
+}
+
+message CreateAndConfirmReferralOperationRequest {
+  string referral_program = 1;
+  string source_id = 2;
+  string source_type = 3;
+  string referrer_id = 4;
+  double amount = 5;
+}
+
+message CreateAndConfirmReferralOperationResponse {
+  ReferralOperation result = 1;
+}
+
+message ListReferralOperationsRequest {
+  message ReferralOperationsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  ReferralOperationsQuery query = 3;
+}
+
+message ListReferralOperationsResponse {
+  repeated ReferralOperation referral_operations = 1;
+  bool has_next_page = 2;
+}
