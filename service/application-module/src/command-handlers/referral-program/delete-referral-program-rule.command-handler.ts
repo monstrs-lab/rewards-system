@@ -6,7 +6,7 @@ import { CommandHandler }                   from '@nestjs/cqrs'
 
 import { ReferralProgramRepository }        from '@referral-programs/domain-module'
 
-import { DeleteReferralProgramRuleCommand } from '../commands/index.js'
+import { DeleteReferralProgramRuleCommand } from '../../commands/index.js'
 
 @CommandHandler(DeleteReferralProgramRuleCommand)
 export class DeleteReferralProgramRuleCommandHandler

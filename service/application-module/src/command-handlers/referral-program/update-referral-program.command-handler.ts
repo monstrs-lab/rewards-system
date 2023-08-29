@@ -6,7 +6,7 @@ import { CommandHandler }               from '@nestjs/cqrs'
 
 import { ReferralProgramRepository }    from '@referral-programs/domain-module'
 
-import { UpdateReferralProgramCommand } from '../commands/index.js'
+import { UpdateReferralProgramCommand } from '../../commands/index.js'
 
 @CommandHandler(UpdateReferralProgramCommand)
 export class UpdateReferralProgramCommandHandler
