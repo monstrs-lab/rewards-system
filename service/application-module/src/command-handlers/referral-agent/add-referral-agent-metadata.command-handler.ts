@@ -6,7 +6,7 @@ import { CommandHandler }                  from '@nestjs/cqrs'
 
 import { ReferralAgentRepository }         from '@referral-programs/domain-module'
 
-import { AddReferralAgentMetadataCommand } from '../commands/index.js'
+import { AddReferralAgentMetadataCommand } from '../../commands/index.js'
 
 @CommandHandler(AddReferralAgentMetadataCommand)
 export class AddReferralAgentMetadataCommandHandler

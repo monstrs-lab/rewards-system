@@ -5,7 +5,7 @@ import { QueryHandler }              from '@nestjs/cqrs'
 
 import { ReferralAgentRepository }   from '@referral-programs/domain-module'
 
-import { GetReferralAgentByIdQuery } from '../queries/index.js'
+import { GetReferralAgentByIdQuery } from '../../queries/index.js'
 
 @QueryHandler(GetReferralAgentByIdQuery)
 export class GetReferralAgentByIdQueryHandler implements IQueryHandler<GetReferralAgentByIdQuery> {

@@ -9,7 +9,7 @@ import { ReferralProgramConditions }        from '@referral-programs/domain-modu
 import { ReferralProgramField }             from '@referral-programs/domain-module'
 import { ReferralProgramRule }              from '@referral-programs/domain-module'
 
-import { UpdateReferralProgramRuleCommand } from '../commands/index.js'
+import { UpdateReferralProgramRuleCommand } from '../../commands/index.js'
 
 @CommandHandler(UpdateReferralProgramRuleCommand)
 export class UpdateReferralProgramRuleCommandHandler
