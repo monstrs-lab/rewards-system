@@ -180,6 +180,100 @@ export class ReferralOperation_Source extends Message<ReferralOperation_Source> 
 }
 
 /**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ReferralProfit
+ */
+export class ReferralProfit extends Message<ReferralProfit> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = ''
+
+  /**
+   * @generated from field: string operation_id = 2;
+   */
+  operationId = ''
+
+  /**
+   * @generated from field: string agent_id = 3;
+   */
+  agentId = ''
+
+  /**
+   * @generated from field: string referrer_id = 4;
+   */
+  referrerId = ''
+
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ReferralOperationStatus status = 5;
+   */
+  status = ReferralOperationStatus.PENDING
+
+  /**
+   * @generated from field: double amount = 6;
+   */
+  amount = 0
+
+  /**
+   * @generated from field: double profit = 7;
+   */
+  profit = 0
+
+  /**
+   * @generated from field: int32 percentage = 8;
+   */
+  percentage = 0
+
+  /**
+   * @generated from field: int32 level = 9;
+   */
+  level = 0
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 10;
+   */
+  createdAt?: Timestamp
+
+  constructor(data?: PartialMessage<ReferralProfit>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.referralprograms.v1alpha1.ReferralProfit'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'operation_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'agent_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: 'referrer_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: 'status', kind: 'enum', T: proto3.getEnumType(ReferralOperationStatus) },
+    { no: 6, name: 'amount', kind: 'scalar', T: 1 /* ScalarType.DOUBLE */ },
+    { no: 7, name: 'profit', kind: 'scalar', T: 1 /* ScalarType.DOUBLE */ },
+    { no: 8, name: 'percentage', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
+    { no: 9, name: 'level', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
+    { no: 10, name: 'created_at', kind: 'message', T: Timestamp },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReferralProfit {
+    return new ReferralProfit().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReferralProfit {
+    return new ReferralProfit().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReferralProfit {
+    return new ReferralProfit().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: ReferralProfit | PlainMessage<ReferralProfit> | undefined,
+    b: ReferralProfit | PlainMessage<ReferralProfit> | undefined
+  ): boolean {
+    return proto3.util.equals(ReferralProfit, a, b)
+  }
+}
+
+/**
  * @generated from message tech.monstrs.referralprograms.v1alpha1.CreateReferralOperationRequest
  */
 export class CreateReferralOperationRequest extends Message<CreateReferralOperationRequest> {
@@ -718,5 +812,189 @@ export class ListReferralOperationsResponse extends Message<ListReferralOperatio
     b: ListReferralOperationsResponse | PlainMessage<ListReferralOperationsResponse> | undefined
   ): boolean {
     return proto3.util.equals(ListReferralOperationsResponse, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest
+ */
+export class ListReferralProfitsRequest extends Message<ListReferralProfitsRequest> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+   */
+  pager?: Query_Pager
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+   */
+  order?: Query_Order
+
+  /**
+   * @generated from field: tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest.ReferralProfitsQuery query = 3;
+   */
+  query?: ListReferralProfitsRequest_ReferralProfitsQuery
+
+  constructor(data?: PartialMessage<ListReferralProfitsRequest>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'pager', kind: 'message', T: Query_Pager },
+    { no: 2, name: 'order', kind: 'message', T: Query_Order },
+    { no: 3, name: 'query', kind: 'message', T: ListReferralProfitsRequest_ReferralProfitsQuery },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): ListReferralProfitsRequest {
+    return new ListReferralProfitsRequest().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): ListReferralProfitsRequest {
+    return new ListReferralProfitsRequest().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): ListReferralProfitsRequest {
+    return new ListReferralProfitsRequest().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: ListReferralProfitsRequest | PlainMessage<ListReferralProfitsRequest> | undefined,
+    b: ListReferralProfitsRequest | PlainMessage<ListReferralProfitsRequest> | undefined
+  ): boolean {
+    return proto3.util.equals(ListReferralProfitsRequest, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest.ReferralProfitsQuery
+ */
+export class ListReferralProfitsRequest_ReferralProfitsQuery extends Message<ListReferralProfitsRequest_ReferralProfitsQuery> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+   */
+  id?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID agent_id = 2;
+   */
+  agentId?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID operation_id = 3;
+   */
+  operationId?: Query_ID
+
+  constructor(data?: PartialMessage<ListReferralProfitsRequest_ReferralProfitsQuery>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName =
+    'tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsRequest.ReferralProfitsQuery'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'id', kind: 'message', T: Query_ID },
+    { no: 2, name: 'agent_id', kind: 'message', T: Query_ID },
+    { no: 3, name: 'operation_id', kind: 'message', T: Query_ID },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): ListReferralProfitsRequest_ReferralProfitsQuery {
+    return new ListReferralProfitsRequest_ReferralProfitsQuery().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): ListReferralProfitsRequest_ReferralProfitsQuery {
+    return new ListReferralProfitsRequest_ReferralProfitsQuery().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): ListReferralProfitsRequest_ReferralProfitsQuery {
+    return new ListReferralProfitsRequest_ReferralProfitsQuery().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a:
+      | ListReferralProfitsRequest_ReferralProfitsQuery
+      | PlainMessage<ListReferralProfitsRequest_ReferralProfitsQuery>
+      | undefined,
+    b:
+      | ListReferralProfitsRequest_ReferralProfitsQuery
+      | PlainMessage<ListReferralProfitsRequest_ReferralProfitsQuery>
+      | undefined
+  ): boolean {
+    return proto3.util.equals(ListReferralProfitsRequest_ReferralProfitsQuery, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsResponse
+ */
+export class ListReferralProfitsResponse extends Message<ListReferralProfitsResponse> {
+  /**
+   * @generated from field: repeated tech.monstrs.referralprograms.v1alpha1.ReferralProfit referral_profits = 1;
+   */
+  referralProfits: ReferralProfit[] = []
+
+  /**
+   * @generated from field: bool has_next_page = 2;
+   */
+  hasNextPage = false
+
+  constructor(data?: PartialMessage<ListReferralProfitsResponse>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.referralprograms.v1alpha1.ListReferralProfitsResponse'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'referral_profits', kind: 'message', T: ReferralProfit, repeated: true },
+    { no: 2, name: 'has_next_page', kind: 'scalar', T: 8 /* ScalarType.BOOL */ },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): ListReferralProfitsResponse {
+    return new ListReferralProfitsResponse().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): ListReferralProfitsResponse {
+    return new ListReferralProfitsResponse().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): ListReferralProfitsResponse {
+    return new ListReferralProfitsResponse().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: ListReferralProfitsResponse | PlainMessage<ListReferralProfitsResponse> | undefined,
+    b: ListReferralProfitsResponse | PlainMessage<ListReferralProfitsResponse> | undefined
+  ): boolean {
+    return proto3.util.equals(ListReferralProfitsResponse, a, b)
   }
 }

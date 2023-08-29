@@ -1,1 +1,1 @@
-export * from './referral-operation-not-allowed-for-confirmation.error.js'
+export * from './not-allowed-for-confirmation.error.js'

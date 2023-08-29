@@ -16,6 +16,7 @@ import { CqrsModule }                      from '@nestjs/cqrs'
 
 import { ReferralOperationRepository }     from '@referral-programs/domain-module'
 import { ReferralProgramRepository }       from '@referral-programs/domain-module'
+import { ReferralProfitRepository }        from '@referral-programs/domain-module'
 import { ReferralAgentRepository }         from '@referral-programs/domain-module'
 
 import * as controllers                    from '../controllers/index.js'
@@ -24,6 +25,7 @@ import * as entities                       from '../entities/index.js'
 import * as migrations                     from '../migrations/index.js'
 import { ReferralOperationRepositoryImpl } from '../repositories/index.js'
 import { ReferralProgramRepositoryImpl }   from '../repositories/index.js'
+import { ReferralProfitRepositoryImpl }    from '../repositories/index.js'
 import { ReferralAgentRepositoryImpl }     from '../repositories/index.js'
 
 @Module({})
@@ -43,6 +45,10 @@ export class ReferralProgramsInfrastructureModule implements OnModuleInit {
       {
         provide: ReferralOperationRepository,
         useClass: ReferralOperationRepositoryImpl,
+      },
+      {
+        provide: ReferralProfitRepository,
+        useClass: ReferralProfitRepositoryImpl,
       },
     ]
 

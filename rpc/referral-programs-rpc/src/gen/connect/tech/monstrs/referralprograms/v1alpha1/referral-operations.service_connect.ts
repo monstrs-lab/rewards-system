@@ -13,6 +13,8 @@ import { CreateReferralOperationRequest }            from './referral-operations
 import { CreateReferralOperationResponse }           from './referral-operations.service_pb.js'
 import { ListReferralOperationsRequest }             from './referral-operations.service_pb.js'
 import { ListReferralOperationsResponse }            from './referral-operations.service_pb.js'
+import { ListReferralProfitsRequest }                from './referral-operations.service_pb.js'
+import { ListReferralProfitsResponse }               from './referral-operations.service_pb.js'
 
 /**
  * @generated from service tech.monstrs.referralprograms.v1alpha1.ReferralOperationsService
@@ -54,6 +56,15 @@ export const ReferralOperationsService = {
       name: 'ListReferralOperations',
       I: ListReferralOperationsRequest,
       O: ListReferralOperationsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc tech.monstrs.referralprograms.v1alpha1.ReferralOperationsService.ListReferralProfits
+     */
+    listReferralProfits: {
+      name: 'ListReferralProfits',
+      I: ListReferralProfitsRequest,
+      O: ListReferralProfitsResponse,
       kind: MethodKind.Unary,
     },
   },
