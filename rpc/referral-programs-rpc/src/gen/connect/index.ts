@@ -4,3 +4,5 @@ export * from './tech/monstrs/referralprograms/v1alpha1/referral-programs.servic
 export * from './tech/monstrs/referralprograms/v1alpha1/referral-programs.service_pb.js'
 export * from './tech/monstrs/referralprograms/v1alpha1/referral-agents.service_connect.js'
 export * from './tech/monstrs/referralprograms/v1alpha1/referral-agents.service_pb.js'
+export * from './tech/monstrs/referralprograms/v1alpha1/referral-points.service_connect.js'
+export * from './tech/monstrs/referralprograms/v1alpha1/referral-points.service_pb.js'
