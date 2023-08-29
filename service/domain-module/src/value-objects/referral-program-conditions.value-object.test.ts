@@ -81,6 +81,20 @@ describe('referral-programs', () => {
             }).match({ test: false })
           ).resolves.toBe(false)
         })
+
+        it('check match undefined facts conditions', async () => {
+          expect(
+            ReferralProgramConditions.create({
+              all: [
+                {
+                  fact: 'test',
+                  operator: 'equal',
+                  value: true,
+                },
+              ],
+            }).match({})
+          ).resolves.toBe(false)
+        })
       })
     })
   })
