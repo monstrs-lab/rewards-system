@@ -11,7 +11,6 @@ service ReferralOperationsService {
   rpc CreateAndConfirmReferralOperation(CreateAndConfirmReferralOperationRequest) returns (CreateAndConfirmReferralOperationResponse) {}
   rpc ListReferralOperations(ListReferralOperationsRequest) returns (ListReferralOperationsResponse) {}
   rpc ListReferralProfits(ListReferralProfitsRequest) returns (ListReferralProfitsResponse) {}
-  
 }
 
 enum ReferralOperationStatus {
@@ -48,12 +47,11 @@ message ReferralProfit {
   google.protobuf.Timestamp created_at = 10;
 }
 
-
 message CreateReferralOperationRequest {
   string referral_program = 1;
-  string source_id = 2;
-  string source_type = 3;
-  string referrer_id = 4;
+  string referrer_id = 2;
+  string source_id = 3;
+  string source_type = 4;
   double amount = 5;
 }
 
@@ -71,9 +69,9 @@ message ConfirmReferralOperationResponse {
 
 message CreateAndConfirmReferralOperationRequest {
   string referral_program = 1;
-  string source_id = 2;
-  string source_type = 3;
-  string referrer_id = 4;
+  string referrer_id = 2;
+  string source_id = 3;
+  string source_type = 4;
   double amount = 5;
 }
 

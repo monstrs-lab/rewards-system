@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import type { ExtractProperties }    from '@monstrs/base-types'
 import type { ReferralProfit }       from '@referral-programs/domain-module'
 
@@ -29,18 +31,16 @@ export class ReferralProfitMapper {
   }
 
   toPersistence(aggregate: ReferralProfit, entity: ReferralProfitEntity): ReferralProfitEntity {
-    entity.assign({
-      id: aggregate.id,
-      operationId: aggregate.operationId,
-      agentId: aggregate.agentId,
-      referrerId: aggregate.referrerId,
-      status: aggregate.status,
-      amount: aggregate.amount,
-      profit: aggregate.profit,
-      percentage: aggregate.percentage,
-      level: aggregate.level,
-      createdAt: aggregate.createdAt,
-    })
+    entity.id = aggregate.id
+    entity.operationId = aggregate.operationId
+    entity.agentId = aggregate.agentId
+    entity.referrerId = aggregate.referrerId
+    entity.status = aggregate.status
+    entity.amount = aggregate.amount
+    entity.profit = aggregate.profit
+    entity.percentage = aggregate.percentage
+    entity.level = aggregate.level
+    entity.createdAt = aggregate.createdAt
 
     return entity
   }

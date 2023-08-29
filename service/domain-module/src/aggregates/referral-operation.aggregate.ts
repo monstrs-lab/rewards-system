@@ -83,8 +83,8 @@ export class ReferralOperation extends AggregateRoot {
   create(
     @Against('id').NotUUID(4) id: string,
     @Against('referralProgramId').Empty() referralProgramId: string,
-    @Against('source').NotInstance(ReferralOperationSource) source: ReferralOperationSource,
     @Against('referrerId').NotUUID(4) referrerId: string,
+    @Against('source').NotInstance(ReferralOperationSource) source: ReferralOperationSource,
     @Against('amount').NotNumberBetween(0, Infinity) amount: number
   ): ReferralOperation {
     this.apply(

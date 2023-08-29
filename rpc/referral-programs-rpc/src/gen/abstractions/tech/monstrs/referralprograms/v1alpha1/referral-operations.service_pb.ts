@@ -149,19 +149,19 @@ export abstract class CreateReferralOperationRequest {
   abstract readonly referralProgram: string
 
   /**
-   * @generated from field: string source_id = 2;
+   * @generated from field: string referrer_id = 2;
+   */
+  abstract readonly referrerId: string
+
+  /**
+   * @generated from field: string source_id = 3;
    */
   abstract readonly sourceId: string
 
   /**
-   * @generated from field: string source_type = 3;
+   * @generated from field: string source_type = 4;
    */
   abstract readonly sourceType: string
-
-  /**
-   * @generated from field: string referrer_id = 4;
-   */
-  abstract readonly referrerId: string
 
   /**
    * @generated from field: double amount = 5;
@@ -209,19 +209,19 @@ export abstract class CreateAndConfirmReferralOperationRequest {
   abstract readonly referralProgram: string
 
   /**
-   * @generated from field: string source_id = 2;
+   * @generated from field: string referrer_id = 2;
+   */
+  abstract readonly referrerId: string
+
+  /**
+   * @generated from field: string source_id = 3;
    */
   abstract readonly sourceId: string
 
   /**
-   * @generated from field: string source_type = 3;
+   * @generated from field: string source_type = 4;
    */
   abstract readonly sourceType: string
-
-  /**
-   * @generated from field: string referrer_id = 4;
-   */
-  abstract readonly referrerId: string
 
   /**
    * @generated from field: double amount = 5;

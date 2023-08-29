@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+
 import type { ExtractProperties }       from '@monstrs/base-types'
 import type { ReferralOperation }       from '@referral-programs/domain-module'
 
@@ -35,18 +37,17 @@ export class ReferralOperationMapper {
     aggregate: ReferralOperation,
     entity: ReferralOperationEntity
   ): ReferralOperationEntity {
-    entity.assign({
-      id: aggregate.id,
-      referralProgramId: aggregate.referralProgramId,
-      referrerId: aggregate.referrerId,
-      status: aggregate.status,
-      source: {
-        id: aggregate.source.id,
-        type: aggregate.source.type,
-      },
-      amount: aggregate.amount,
-      createdAt: aggregate.createdAt,
-    })
+    entity.id = aggregate.id
+    entity.referralProgramId = aggregate.referralProgramId
+    entity.referrerId = aggregate.referrerId
+    entity.status = aggregate.status
+    entity.source = {
+      id: aggregate.source.id,
+      type: aggregate.source.type,
+    }
+
+    entity.amount = aggregate.amount
+    entity.createdAt = aggregate.createdAt
 
     return entity
   }

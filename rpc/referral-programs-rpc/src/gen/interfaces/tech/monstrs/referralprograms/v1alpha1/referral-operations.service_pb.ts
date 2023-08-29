@@ -149,19 +149,19 @@ export interface CreateReferralOperationRequest {
   referralProgram: string
 
   /**
-   * @generated from field: string source_id = 2;
+   * @generated from field: string referrer_id = 2;
+   */
+  referrerId: string
+
+  /**
+   * @generated from field: string source_id = 3;
    */
   sourceId: string
 
   /**
-   * @generated from field: string source_type = 3;
+   * @generated from field: string source_type = 4;
    */
   sourceType: string
-
-  /**
-   * @generated from field: string referrer_id = 4;
-   */
-  referrerId: string
 
   /**
    * @generated from field: double amount = 5;
@@ -209,19 +209,19 @@ export interface CreateAndConfirmReferralOperationRequest {
   referralProgram: string
 
   /**
-   * @generated from field: string source_id = 2;
+   * @generated from field: string referrer_id = 2;
+   */
+  referrerId: string
+
+  /**
+   * @generated from field: string source_id = 3;
    */
   sourceId: string
 
   /**
-   * @generated from field: string source_type = 3;
+   * @generated from field: string source_type = 4;
    */
   sourceType: string
-
-  /**
-   * @generated from field: string referrer_id = 4;
-   */
-  referrerId: string
 
   /**
    * @generated from field: double amount = 5;
