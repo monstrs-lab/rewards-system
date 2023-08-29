@@ -283,19 +283,19 @@ export class CreateReferralOperationRequest extends Message<CreateReferralOperat
   referralProgram = ''
 
   /**
-   * @generated from field: string source_id = 2;
+   * @generated from field: string referrer_id = 2;
+   */
+  referrerId = ''
+
+  /**
+   * @generated from field: string source_id = 3;
    */
   sourceId = ''
 
   /**
-   * @generated from field: string source_type = 3;
+   * @generated from field: string source_type = 4;
    */
   sourceType = ''
-
-  /**
-   * @generated from field: string referrer_id = 4;
-   */
-  referrerId = ''
 
   /**
    * @generated from field: double amount = 5;
@@ -311,9 +311,9 @@ export class CreateReferralOperationRequest extends Message<CreateReferralOperat
   static readonly typeName = 'tech.monstrs.referralprograms.v1alpha1.CreateReferralOperationRequest'
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: 'referral_program', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: 'source_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: 'source_type', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: 'referrer_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'referrer_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'source_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: 'source_type', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
     { no: 5, name: 'amount', kind: 'scalar', T: 1 /* ScalarType.DOUBLE */ },
   ])
 
@@ -509,19 +509,19 @@ export class CreateAndConfirmReferralOperationRequest extends Message<CreateAndC
   referralProgram = ''
 
   /**
-   * @generated from field: string source_id = 2;
+   * @generated from field: string referrer_id = 2;
+   */
+  referrerId = ''
+
+  /**
+   * @generated from field: string source_id = 3;
    */
   sourceId = ''
 
   /**
-   * @generated from field: string source_type = 3;
+   * @generated from field: string source_type = 4;
    */
   sourceType = ''
-
-  /**
-   * @generated from field: string referrer_id = 4;
-   */
-  referrerId = ''
 
   /**
    * @generated from field: double amount = 5;
@@ -538,9 +538,9 @@ export class CreateAndConfirmReferralOperationRequest extends Message<CreateAndC
     'tech.monstrs.referralprograms.v1alpha1.CreateAndConfirmReferralOperationRequest'
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: 'referral_program', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: 'source_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: 'source_type', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: 'referrer_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'referrer_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'source_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: 'source_type', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
     { no: 5, name: 'amount', kind: 'scalar', T: 1 /* ScalarType.DOUBLE */ },
   ])
 

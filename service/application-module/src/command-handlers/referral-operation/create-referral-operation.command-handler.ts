@@ -32,8 +32,8 @@ export class CreateReferralOperationCommandHandler
         .create(
           command.referralOperationId,
           referralProgram.id,
-          ReferralOperationSource.create(command.sourceId, command.sourceType),
           command.referrerId,
+          ReferralOperationSource.create(command.sourceId, command.sourceType),
           command.amount
         )
     )

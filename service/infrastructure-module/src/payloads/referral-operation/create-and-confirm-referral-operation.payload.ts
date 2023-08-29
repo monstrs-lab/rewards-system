@@ -27,7 +27,7 @@ export class CreateAndConfirmReferralOperationPayload {
     return this.request.sourceType
   }
 
-  @Min(0)
+  @Min(1)
   get amount(): number {
     return this.request.amount
   }

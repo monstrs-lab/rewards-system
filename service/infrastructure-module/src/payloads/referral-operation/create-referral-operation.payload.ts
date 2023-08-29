@@ -27,7 +27,7 @@ export class CreateReferralOperationPayload {
     return this.request.referrerId
   }
 
-  @Min(0)
+  @Min(1)
   get amount(): number {
     return this.request.amount
   }
