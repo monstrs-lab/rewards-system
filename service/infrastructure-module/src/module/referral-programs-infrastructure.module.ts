@@ -15,12 +15,14 @@ import { MikroORMConfig }                from '@monstrs/nestjs-mikro-orm-config'
 import { CqrsModule }                    from '@nestjs/cqrs'
 
 import { ReferralProgramRepository }     from '@referral-programs/domain-module'
+import { ReferralAgentRepository }       from '@referral-programs/domain-module'
 
 import * as controllers                  from '../controllers/index.js'
 import * as mappers                      from '../mappers/index.js'
 import * as entities                     from '../entities/index.js'
 import * as migrations                   from '../migrations/index.js'
 import { ReferralProgramRepositoryImpl } from '../repositories/index.js'
+import { ReferralAgentRepositoryImpl }   from '../repositories/index.js'
 
 @Module({})
 export class ReferralProgramsInfrastructureModule implements OnModuleInit {
@@ -31,6 +33,10 @@ export class ReferralProgramsInfrastructureModule implements OnModuleInit {
       {
         provide: ReferralProgramRepository,
         useClass: ReferralProgramRepositoryImpl,
+      },
+      {
+        provide: ReferralAgentRepository,
+        useClass: ReferralAgentRepositoryImpl,
       },
     ]
 

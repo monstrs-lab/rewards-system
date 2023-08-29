@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package tech.monstrs.referralprograms.v1alpha1;
+
+import "google/protobuf/struct.proto";
+import "tech/monstrs/queries/v1alpha1/queries.proto";
+
+service ReferralAgentsService {
+  rpc CreateReferralAgent(CreateReferralAgentRequest) returns (CreateReferralAgentResponse) {}
+  rpc AddReferralAgentMetadata(AddReferralAgentMetadataRequest) returns (AddReferralAgentMetadataResponse) {}
+  rpc ListReferralAgents(ListReferralAgentsRequest) returns (ListReferralAgentsResponse) {}
+  rpc GetReferralAgentNetwork(GetReferralAgentNetworkRequest) returns (GetReferralAgentNetworkResponse) {}
+}
+
+message ReferralAgent {
+  string id = 1;
+  string code = 2;
+  optional string parent_id = 3;
+  google.protobuf.Struct metadata = 4;
+}
+
+message CreateReferralAgentRequest {
+  string id = 1;
+  string referral_code = 2;
+}
+
+message CreateReferralAgentResponse {
+  ReferralAgent result = 1;
+}
+
+message AddReferralAgentMetadataRequest {
+  string referral_agent_id = 1;
+  google.protobuf.Struct metadata = 2;
+}
+
+message AddReferralAgentMetadataResponse {
+  ReferralAgent result = 1;
+}
+
+message ListReferralAgentsRequest {
+  message ReferralAgentsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  ReferralAgentsQuery query = 3;
+}
+
+message ListReferralAgentsResponse {
+  repeated ReferralAgent referral_agents = 1;
+  bool has_next_page = 2;
+}
+
+message GetReferralAgentNetworkRequest {
+  string referral_agent_id = 1;
+}
+
+message GetReferralAgentNetworkResponse {
+  repeated ReferralAgent referral_agents = 1;
+}

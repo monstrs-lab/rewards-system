@@ -13,6 +13,7 @@ import { it }                                      from '@jest/globals'
 import { faker }                                   from '@faker-js/faker'
 import { GenericContainer }                        from 'testcontainers'
 import { Wait }                                    from 'testcontainers'
+import { default as pg }                           from 'pg'
 import getPort                                     from 'get-port'
 
 import { ConnectError }                            from '@referral-programs/referral-programs-rpc'
@@ -39,6 +40,17 @@ describe('referral-programs-service', () => {
         })
         .withExposedPorts(5432)
         .start()
+
+      const pgclient = new pg.Client({
+        port: postgres.getMappedPort(5432),
+        database: 'db',
+        user: 'postgres',
+        password: 'password',
+      })
+
+      await pgclient.connect()
+      await pgclient.query('CREATE EXTENSION IF NOT EXISTS ltree;')
+      await pgclient.end()
 
       const port = await getPort()
 
