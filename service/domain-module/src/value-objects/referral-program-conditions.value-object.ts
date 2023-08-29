@@ -33,14 +33,19 @@ export class ReferralProgramConditions {
   }
 
   async match(facts: Record<string, any>): Promise<boolean> {
-    const engine = new Engine()
-
-    engine.addRule({
-      conditions: this.conditions,
-      event: {
-        type: 'matched',
-      },
-    })
+    const engine = new Engine(
+      [
+        {
+          conditions: this.conditions,
+          event: {
+            type: 'matched',
+          },
+        },
+      ],
+      {
+        allowUndefinedFacts: true,
+      }
+    )
 
     const { events } = await engine.run(facts)
 
