@@ -1,3 +1,3 @@
-export * from './referral-operation/index.js'
-export * from './referral-program/index.js'
-export * from './referral-agent/index.js'
+export * from './reward-operation/index.js'
+export * from './reward-program/index.js'
+export * from './reward-agent/index.js'

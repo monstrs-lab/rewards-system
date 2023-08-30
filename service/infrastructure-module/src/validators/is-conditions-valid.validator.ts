@@ -5,7 +5,7 @@ import { ValidatorConstraint }               from 'class-validator'
 import { registerDecorator }                 from 'class-validator'
 import AjvPkg                                from 'ajv'
 
-import { jsonRulesEngineSchema }             from '@referral-programs/domain-module'
+import { jsonRulesEngineSchema }             from '@rewards-system/domain-module'
 
 const Ajv = AjvPkg.default || AjvPkg
 

@@ -1,5 +1,5 @@
 {
-  "name": "referral-program-modules",
+  "name": "rewards-system",
   "private": true,
   "workspaces": [
     "entrypoints/*",

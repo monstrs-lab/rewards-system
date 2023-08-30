@@ -1,3 +1,3 @@
-export * from './referral-points-transaction.entity.js'
-export * from './referral-operation-source.entity.js'
-export * from './referral-program-rule.entity.js'
+export * from './reward-points-transaction.entity.js'
+export * from './reward-operation-source.entity.js'
+export * from './reward-program-rule.entity.js'

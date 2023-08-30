@@ -1,5 +1,5 @@
 {
-  "name": "@referral-programs/application-module",
+  "name": "@rewards-system/application-module",
   "version": "0.0.1",
   "private": true,
   "license": "MIT",
@@ -18,7 +18,7 @@
     "@nestjs/core": "^10.2.2",
     "@nestjs/cqrs": "^10.2.5",
     "@nestjs/testing": "^10.2.2",
-    "@referral-programs/domain-module": "workspace:0.0.1",
+    "@rewards-system/domain-module": "workspace:0.0.1",
     "@types/node": "^20.5.7",
     "@types/uuid": "^9.0.2",
     "reflect-metadata": "^0.1.13",
@@ -28,7 +28,7 @@
     "@nestjs/common": "^10",
     "@nestjs/core": "^10",
     "@nestjs/cqrs": "^10",
-    "@referral-programs/domain-module": "workspace:0.0.1",
+    "@rewards-system/domain-module": "workspace:0.0.1",
     "reflect-metadata": "^0.1",
     "rxjs": "^7"
   }

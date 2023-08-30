@@ -1,10 +1,10 @@
 export const schema = {
-  $id: 'https://monstrs.tech/referral-programs/schema.json',
+  $id: 'https://monstrs.tech/rewards-system/schema.json',
   $ref: 'defs.json#/definitions/top',
 }
 
 export const defs = {
-  $id: 'https://monstrs.tech/referral-programs/defs.json',
+  $id: 'https://monstrs.tech/rewards-system/defs.json',
   definitions: {
     props: {
       type: 'object',

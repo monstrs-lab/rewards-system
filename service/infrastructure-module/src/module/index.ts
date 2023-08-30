@@ -1,1 +1,1 @@
-export * from './referral-programs-infrastructure.module.js'
+export * from './rewards-system-infrastructure.module.js'
