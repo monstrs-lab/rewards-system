@@ -1,1 +1,1 @@
-# referral-program-modules
+# rewards-system

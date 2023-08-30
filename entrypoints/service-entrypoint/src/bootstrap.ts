@@ -1,11 +1,11 @@
-import { NestLogger }                              from '@monstrs/nestjs-logger'
-import { NestFactory }                             from '@nestjs/core'
-import { MicroservisesRegistry }                   from '@monstrs/nestjs-microservices-registry'
+import { NestLogger }                           from '@monstrs/nestjs-logger'
+import { NestFactory }                          from '@nestjs/core'
+import { MicroservisesRegistry }                from '@monstrs/nestjs-microservices-registry'
 
-import { ReferralProgramsServiceEntrypointModule } from './referral-programs-service-entrypoint.module.js'
+import { RewardsSystemServiceEntrypointModule } from './rewards-system-service-entrypoint.module.js'
 
 const bootstrap = async (): Promise<void> => {
-  const app = await NestFactory.create(ReferralProgramsServiceEntrypointModule, {
+  const app = await NestFactory.create(RewardsSystemServiceEntrypointModule, {
     logger: new NestLogger(),
   })
 

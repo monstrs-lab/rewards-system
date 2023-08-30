@@ -2206,16 +2206,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@referral-programs/application-module@workspace:0.0.1, @referral-programs/application-module@workspace:service/application-module":
+"@rewards-system/application-module@workspace:0.0.1, @rewards-system/application-module@workspace:service/application-module":
   version: 0.0.0-use.local
-  resolution: "@referral-programs/application-module@workspace:service/application-module"
+  resolution: "@rewards-system/application-module@workspace:service/application-module"
   dependencies:
     "@monstrs/logger": "npm:^0.0.17"
     "@nestjs/common": "npm:^10.2.2"
     "@nestjs/core": "npm:^10.2.2"
     "@nestjs/cqrs": "npm:^10.2.5"
     "@nestjs/testing": "npm:^10.2.2"
-    "@referral-programs/domain-module": "workspace:0.0.1"
+    "@rewards-system/domain-module": "workspace:0.0.1"
     "@types/node": "npm:^20.5.7"
     "@types/uuid": "npm:^9.0.2"
     reflect-metadata: "npm:^0.1.13"
@@ -2225,15 +2225,15 @@ __metadata:
     "@nestjs/common": ^10
     "@nestjs/core": ^10
     "@nestjs/cqrs": ^10
-    "@referral-programs/domain-module": "workspace:0.0.1"
+    "@rewards-system/domain-module": "workspace:0.0.1"
     reflect-metadata: ^0.1
     rxjs: ^7
   languageName: unknown
   linkType: soft
 
-"@referral-programs/domain-module@workspace:0.0.1, @referral-programs/domain-module@workspace:service/domain-module":
+"@rewards-system/domain-module@workspace:0.0.1, @rewards-system/domain-module@workspace:service/domain-module":
   version: 0.0.0-use.local
-  resolution: "@referral-programs/domain-module@workspace:service/domain-module"
+  resolution: "@rewards-system/domain-module@workspace:service/domain-module"
   dependencies:
     "@faker-js/faker": "npm:^8.0.2"
     "@jest/globals": "npm:^29.6.4"
@@ -2261,9 +2261,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@referral-programs/infrastructure-module@workspace:0.0.1, @referral-programs/infrastructure-module@workspace:service/infrastructure-module":
+"@rewards-system/infrastructure-module@workspace:0.0.1, @rewards-system/infrastructure-module@workspace:service/infrastructure-module":
   version: 0.0.0-use.local
-  resolution: "@referral-programs/infrastructure-module@workspace:service/infrastructure-module"
+  resolution: "@rewards-system/infrastructure-module@workspace:service/infrastructure-module"
   dependencies:
     "@bufbuild/connect": "npm:^0.13.0"
     "@bufbuild/connect-node": "npm:^0.13.0"
@@ -2292,9 +2292,9 @@ __metadata:
     "@nestjs/microservices": "npm:^10.2.2"
     "@nestjs/platform-express": "npm:^10.2.2"
     "@nestjs/testing": "npm:^10.2.2"
-    "@referral-programs/application-module": "workspace:0.0.1"
-    "@referral-programs/domain-module": "workspace:0.0.1"
-    "@referral-programs/referral-programs-rpc": "workspace:0.0.1"
+    "@rewards-system/application-module": "workspace:0.0.1"
+    "@rewards-system/domain-module": "workspace:0.0.1"
+    "@rewards-system/rewards-system-rpc": "workspace:0.0.1"
     "@types/express": "npm:^4.17.17"
     "@types/node": "npm:^20.5.7"
     "@types/uuid": "npm:^9.0.2"
@@ -2315,9 +2315,9 @@ __metadata:
     "@nestjs/core": ^10
     "@nestjs/cqrs": ^10
     "@nestjs/microservices": ^10
-    "@referral-programs/application-module": "workspace:0.0.1"
-    "@referral-programs/domain-module": "workspace:0.0.1"
-    "@referral-programs/referral-programs-rpc": "workspace:0.0.1"
+    "@rewards-system/application-module": "workspace:0.0.1"
+    "@rewards-system/domain-module": "workspace:0.0.1"
+    "@rewards-system/rewards-system-rpc": "workspace:0.0.1"
     class-transformer: ^0.5
     class-validator: ^0.14
     reflect-metadata: ^0.1
@@ -2325,9 +2325,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@referral-programs/referral-programs-rpc@workspace:0.0.1, @referral-programs/referral-programs-rpc@workspace:rpc/referral-programs-rpc":
+"@rewards-system/rewards-system-rpc@workspace:0.0.1, @rewards-system/rewards-system-rpc@workspace:rpc/referral-programs-rpc":
   version: 0.0.0-use.local
-  resolution: "@referral-programs/referral-programs-rpc@workspace:rpc/referral-programs-rpc"
+  resolution: "@rewards-system/rewards-system-rpc@workspace:rpc/referral-programs-rpc"
   dependencies:
     "@bufbuild/buf": "npm:^1.26.1"
     "@bufbuild/connect": "npm:^0.13.0"
@@ -2340,9 +2340,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@referral-programs/service-entrypoint@workspace:entrypoints/service-entrypoint":
+"@rewards-system/service-entrypoint@workspace:entrypoints/service-entrypoint":
   version: 0.0.0-use.local
-  resolution: "@referral-programs/service-entrypoint@workspace:entrypoints/service-entrypoint"
+  resolution: "@rewards-system/service-entrypoint@workspace:entrypoints/service-entrypoint"
   dependencies:
     "@bufbuild/connect": "npm:^0.13.0"
     "@bufbuild/connect-node": "npm:^0.13.0"
@@ -2360,10 +2360,10 @@ __metadata:
     "@nestjs/platform-socket.io": "npm:^10.2.2"
     "@nestjs/testing": "npm:^10.2.2"
     "@nestjs/websockets": "npm:^10.2.2"
-    "@referral-programs/application-module": "workspace:0.0.1"
-    "@referral-programs/domain-module": "workspace:0.0.1"
-    "@referral-programs/infrastructure-module": "workspace:0.0.1"
-    "@referral-programs/referral-programs-rpc": "workspace:0.0.1"
+    "@rewards-system/application-module": "workspace:0.0.1"
+    "@rewards-system/domain-module": "workspace:0.0.1"
+    "@rewards-system/infrastructure-module": "workspace:0.0.1"
+    "@rewards-system/rewards-system-rpc": "workspace:0.0.1"
     "@types/node": "npm:^20.5.7"
     "@types/pg": "npm:^8.10.2"
     cache-manager: "npm:^5.2.3"
@@ -8928,16 +8928,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"referral-program-modules@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "referral-program-modules@workspace:."
-  dependencies:
-    "@monstrs/tools-runtime": "npm:^0.2.15"
-    "@types/node": "npm:^20.5.7"
-    typescript: "npm:^5.2.2"
-  languageName: unknown
-  linkType: soft
-
 "reflect-metadata@npm:0.1.13, reflect-metadata@npm:^0.1.13":
   version: 0.1.13
   resolution: "reflect-metadata@npm:0.1.13"
@@ -9100,6 +9090,16 @@ __metadata:
   checksum: c19ef26e4e188f408922c46f7ff480d38e8dfc55d448310dfb518736b23ed2c4f547fb64a6ed5bdba92cd7e7ddc889d36ff78f794816d5e71498d645ef476107
   languageName: node
   linkType: hard
+
+"rewards-system@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "rewards-system@workspace:."
+  dependencies:
+    "@monstrs/tools-runtime": "npm:^0.2.15"
+    "@types/node": "npm:^20.5.7"
+    typescript: "npm:^5.2.2"
+  languageName: unknown
+  linkType: soft
 
 "rimraf@npm:^2.6.3":
   version: 2.7.1

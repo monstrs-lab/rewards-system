@@ -1,1 +1,1 @@
-export * from './referral-operation-status.enum.js'
+export * from './reward-operation-status.enum.js'

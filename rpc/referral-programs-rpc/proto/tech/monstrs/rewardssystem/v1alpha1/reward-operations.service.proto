@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package tech.monstrs.rewardssystem.v1alpha1;
+
+import "google/protobuf/timestamp.proto";
+import "tech/monstrs/queries/v1alpha1/queries.proto";
+
+service RewardOperationsService {
+  rpc CreateRewardOperation(CreateRewardOperationRequest) returns (CreateRewardOperationResponse) {}
+  rpc ConfirmRewardOperation(ConfirmRewardOperationRequest) returns (ConfirmRewardOperationResponse) {}
+  rpc CreateAndConfirmRewardOperation(CreateAndConfirmRewardOperationRequest) returns (CreateAndConfirmRewardOperationResponse) {}
+  rpc ListRewardOperations(ListRewardOperationsRequest) returns (ListRewardOperationsResponse) {}
+  rpc ListRewards(ListRewardsRequest) returns (ListRewardsResponse) {}
+}
+
+enum RewardOperationStatus {
+  PENDING = 0;
+  CONFIRMED = 1;
+  REJECTED = 2;
+}
+
+message RewardOperation {
+  message Source {
+    string id = 1;
+    string type = 2;
+  }
+
+  string id = 1;
+  string reward_program_id = 2;
+  string referrer_id = 3;
+  RewardOperationStatus status = 4;
+  Source source = 5;
+  double amount = 6;
+  google.protobuf.Timestamp created_at = 7;
+}
+
+message Reward {
+  string id = 1;
+  string operation_id = 2;
+  string agent_id = 3;
+  string referrer_id = 4;
+  RewardOperationStatus status = 5;
+  double amount = 6;
+  double profit = 7;
+  int32 percentage = 8;
+  int32 level = 9;
+  google.protobuf.Timestamp created_at = 10;
+}
+
+message CreateRewardOperationRequest {
+  string reward_program = 1;
+  string referrer_id = 2;
+  string source_id = 3;
+  string source_type = 4;
+  double amount = 5;
+}
+
+message CreateRewardOperationResponse {
+  RewardOperation result = 1;
+}
+
+message ConfirmRewardOperationRequest {
+  string reward_operation_id = 1;
+}
+
+message ConfirmRewardOperationResponse {
+  RewardOperation result = 1;
+}
+
+message CreateAndConfirmRewardOperationRequest {
+  string reward_program = 1;
+  string referrer_id = 2;
+  string source_id = 3;
+  string source_type = 4;
+  double amount = 5;
+}
+
+message CreateAndConfirmRewardOperationResponse {
+  RewardOperation result = 1;
+}
+
+message ListRewardOperationsRequest {
+  message RewardOperationsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  RewardOperationsQuery query = 3;
+}
+
+message ListRewardOperationsResponse {
+  repeated RewardOperation reward_operations = 1;
+  bool has_next_page = 2;
+}
+
+message ListRewardsRequest {
+  message RewardsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+    tech.monstrs.queries.v1alpha1.Query.ID agent_id = 2;
+    tech.monstrs.queries.v1alpha1.Query.ID operation_id = 3;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  RewardsQuery query = 3;
+}
+
+message ListRewardsResponse {
+  repeated Reward rewards = 1;
+  bool has_next_page = 2;
+}
