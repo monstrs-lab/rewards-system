@@ -24,5 +24,7 @@ export abstract class ReferralProfitRepository {
 
   abstract findById(id: string): Promise<ReferralProfit | undefined>
 
+  abstract findByOperationId(operationId: string): Promise<Array<ReferralProfit>>
+
   abstract findByQuery(query: FindReferralProfitsByQuery): Promise<FindReferralProfitsByQueryResult>
 }

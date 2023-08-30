@@ -49,6 +49,14 @@ export class ReferralProfitRepositoryImpl extends ReferralProfitRepository {
     return entity ? this.mapper.toDomain(entity) : undefined
   }
 
+  override async findByOperationId(operationId: string): Promise<Array<ReferralProfit>> {
+    const entities = await this.repository.find({
+      operationId,
+    })
+
+    return entities.map((entity) => this.mapper.toDomain(entity))
+  }
+
   async findByQuery({
     pager,
     order,
