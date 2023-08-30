@@ -1,5 +1,6 @@
 import type { INestMicroservice }                  from '@nestjs/common'
 import type { StartedTestContainer }               from 'testcontainers'
+import type { ReferralAgentsService }              from '@referral-programs/referral-programs-rpc/connect'
 import type { ReferralOperationsService }          from '@referral-programs/referral-programs-rpc/connect'
 import type { ReferralProgramsService }            from '@referral-programs/referral-programs-rpc/connect'
 import type { PromiseClient }                      from '@referral-programs/referral-programs-rpc'
@@ -18,12 +19,14 @@ import { default as pg }                           from 'pg'
 import getPort                                     from 'get-port'
 
 import { ConnectError }                            from '@referral-programs/referral-programs-rpc'
+import { Struct }                                  from '@referral-programs/referral-programs-rpc'
 import { ServerBufConnect }                        from '@referral-programs/infrastructure-module'
 import { ServerProtocol }                          from '@referral-programs/infrastructure-module'
 import { MIKRO_ORM_CONFIG_MODULE_OPTIONS_PORT }    from '@referral-programs/infrastructure-module'
 import { ReferralOperationStatus }                 from '@referral-programs/referral-programs-rpc/interfaces'
 import { createReferralOperationsClient }          from '@referral-programs/referral-programs-rpc'
 import { createReferralProgramsClient }            from '@referral-programs/referral-programs-rpc'
+import { createReferralAgentsClient }              from '@referral-programs/referral-programs-rpc'
 
 import { ReferralProgramsServiceEntrypointModule } from '../src/referral-programs-service-entrypoint.module.js'
 
@@ -32,6 +35,7 @@ describe('referral-operations-service', () => {
     let postgres: StartedTestContainer
     let service: INestMicroservice
     let referraProgramsClient: PromiseClient<typeof ReferralProgramsService>
+    let referralAgentsClient: PromiseClient<typeof ReferralAgentsService>
     let client: PromiseClient<typeof ReferralOperationsService>
 
     beforeAll(async () => {
@@ -74,6 +78,7 @@ describe('referral-operations-service', () => {
       await service.listen()
 
       referraProgramsClient = createReferralProgramsClient({ baseUrl: `http://localhost:${port}` })
+      referralAgentsClient = createReferralAgentsClient({ baseUrl: `http://localhost:${port}` })
       client = createReferralOperationsClient({ baseUrl: `http://localhost:${port}` })
     })
 
@@ -397,6 +402,66 @@ describe('referral-operations-service', () => {
               }),
             ])
           )
+        })
+      })
+
+      describe('create referral profits', () => {
+        it('check referral profits', async () => {
+          const { result: referralProgram } = await referraProgramsClient.createReferralProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: 100,
+          })
+
+          await referraProgramsClient.addReferralProgramRule({
+            referralProgramId: referralProgram!.id,
+            name: faker.word.sample(),
+            order: faker.number.int(100),
+            conditions: Struct.fromJson({ all: [] }),
+            fields: [
+              {
+                percentage: 10,
+                conditions: Struct.fromJson({ all: [] }),
+              },
+            ],
+          })
+
+          const { result: referralAgent1 } = await referralAgentsClient.createReferralAgent({
+            id: faker.string.uuid(),
+          })
+
+          const { result: referralAgent2 } = await referralAgentsClient.createReferralAgent({
+            id: faker.string.uuid(),
+            referralCode: referralAgent1?.code,
+          })
+
+          const { result: referralOperation } = await client.createAndConfirmReferralOperation({
+            referralProgram: referralProgram?.code,
+            referrerId: referralAgent2?.id,
+            sourceId: faker.string.uuid(),
+            sourceType: faker.word.sample(),
+            amount: 100,
+          })
+
+          const { referralProfits } = await client.listReferralProfits({
+            query: {
+              operationId: {
+                conditions: {
+                  eq: {
+                    value: referralOperation?.id,
+                  },
+                },
+              },
+            },
+          })
+
+          expect(referralProfits.at(0)?.operationId).toBe(referralOperation?.id)
+          expect(referralProfits.at(0)?.agentId).toBe(referralAgent1?.id)
+          expect(referralProfits.at(0)?.referrerId).toBe(referralAgent2?.id)
+          expect(referralProfits.at(0)?.amount).toBe(100)
+          expect(referralProfits.at(0)?.percentage).toBe(10)
+          expect(referralProfits.at(0)?.profit).toBe(10)
+          expect(referralProfits.at(0)?.level).toBe(1)
         })
       })
     })

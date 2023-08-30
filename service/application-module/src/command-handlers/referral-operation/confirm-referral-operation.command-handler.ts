@@ -5,6 +5,7 @@ import assert                              from 'node:assert'
 import { CommandHandler }                  from '@nestjs/cqrs'
 
 import { ReferralOperationRepository }     from '@referral-programs/domain-module'
+import { ReferralProfitRepository }        from '@referral-programs/domain-module'
 
 import { ConfirmReferralOperationCommand } from '../../commands/index.js'
 
@@ -12,7 +13,10 @@ import { ConfirmReferralOperationCommand } from '../../commands/index.js'
 export class ConfirmReferralOperationCommandHandler
   implements ICommandHandler<ConfirmReferralOperationCommand, void>
 {
-  constructor(private readonly referralOperationRepository: ReferralOperationRepository) {}
+  constructor(
+    private readonly referralOperationRepository: ReferralOperationRepository,
+    private readonly referralProfitRepository: ReferralProfitRepository
+  ) {}
 
   async execute(command: ConfirmReferralOperationCommand): Promise<void> {
     const referralOperation = await this.referralOperationRepository.findById(
@@ -24,6 +28,14 @@ export class ConfirmReferralOperationCommandHandler
       `Referral operation with id '${command.referralOperationId}' not found`
     )
 
+    const referralProfits = await this.referralProfitRepository.findByOperationId(
+      referralOperation.id
+    )
+
     await this.referralOperationRepository.save(referralOperation.confirm())
+
+    for await (const referralProfit of referralProfits) {
+      await this.referralProfitRepository.save(referralProfit.confirm())
+    }
   }
 }

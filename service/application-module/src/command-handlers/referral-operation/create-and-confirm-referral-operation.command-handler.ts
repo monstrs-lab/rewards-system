@@ -8,6 +8,8 @@ import { ReferralOperationFactory }                 from '@referral-programs/dom
 import { ReferralOperationRepository }              from '@referral-programs/domain-module'
 import { ReferralProgramRepository }                from '@referral-programs/domain-module'
 import { ReferralOperationSource }                  from '@referral-programs/domain-module'
+import { ReferralProfitRepository }                 from '@referral-programs/domain-module'
+import { ReferralAgentRepository }                  from '@referral-programs/domain-module'
 
 import { CreateAndConfirmReferralOperationCommand } from '../../commands/index.js'
 
@@ -18,7 +20,9 @@ export class CreateAndConfirmReferralOperationCommandHandler
   constructor(
     private readonly referralOperationRepository: ReferralOperationRepository,
     private readonly referralProgramRepository: ReferralProgramRepository,
-    private readonly referralOperationFactory: ReferralOperationFactory
+    private readonly referralOperationFactory: ReferralOperationFactory,
+    private readonly referralProfitRepository: ReferralProfitRepository,
+    private readonly referralAgentRepository: ReferralAgentRepository
   ) {}
 
   async execute(command: CreateAndConfirmReferralOperationCommand): Promise<void> {
@@ -26,17 +30,33 @@ export class CreateAndConfirmReferralOperationCommandHandler
 
     assert.ok(referralProgram, `Referral program with code '${command.referralProgram}' not found`)
 
-    await this.referralOperationRepository.save(
-      this.referralOperationFactory
-        .create()
-        .create(
-          command.referralOperationId,
-          referralProgram.id,
-          command.referrerId,
-          ReferralOperationSource.create(command.sourceId, command.sourceType),
-          command.amount
-        )
-        .confirm()
-    )
+    const referralOperation = this.referralOperationFactory
+      .create()
+      .create(
+        command.referralOperationId,
+        referralProgram.id,
+        command.referrerId,
+        ReferralOperationSource.create(command.sourceId, command.sourceType),
+        command.amount
+      )
+      .confirm()
+
+    await this.referralOperationRepository.save(referralOperation)
+
+    const referrer = await this.referralAgentRepository.findById(referralOperation.referrerId)
+
+    if (referrer) {
+      const recipients = await this.referralAgentRepository.findRecipients(referrer)
+
+      const referralProfits = await referralProgram.calculate(
+        referralOperation,
+        referrer,
+        recipients
+      )
+
+      for await (const referralProfit of referralProfits) {
+        await this.referralProfitRepository.save(referralProfit.confirm())
+      }
+    }
   }
 }
