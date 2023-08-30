@@ -2325,9 +2325,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@rewards-system/rewards-system-rpc@workspace:0.0.1, @rewards-system/rewards-system-rpc@workspace:rpc/referral-programs-rpc":
+"@rewards-system/rewards-system-rpc@workspace:0.0.1, @rewards-system/rewards-system-rpc@workspace:rpc/rewards-system-rpc":
   version: 0.0.0-use.local
-  resolution: "@rewards-system/rewards-system-rpc@workspace:rpc/referral-programs-rpc"
+  resolution: "@rewards-system/rewards-system-rpc@workspace:rpc/rewards-system-rpc"
   dependencies:
     "@bufbuild/buf": "npm:^1.26.1"
     "@bufbuild/connect": "npm:^0.13.0"
