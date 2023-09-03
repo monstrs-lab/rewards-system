@@ -1,6 +1,6 @@
 import type { RewardAgent }              from '@rewards-system/domain-module'
 
-import { GetRewardAgentNetworkResponse } from '@rewards-system/rewards-system-rpc/abstractions'
+import { GetRewardAgentNetworkResponse } from '@rewards-system/rewards-rpc/abstractions'
 
 import { RewardAgentSerializer }         from './reward-agent.serializer.js'
 

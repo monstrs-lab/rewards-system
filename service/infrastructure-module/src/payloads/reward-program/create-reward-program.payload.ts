@@ -1,4 +1,4 @@
-import type { CreateRewardProgramRequest } from '@rewards-system/rewards-system-rpc/interfaces'
+import type { CreateRewardProgramRequest } from '@rewards-system/rewards-rpc/interfaces'
 
 import { IsNotEmpty }                      from 'class-validator'
 import { Max }                             from 'class-validator'

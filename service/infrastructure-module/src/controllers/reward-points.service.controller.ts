@@ -1,34 +1,34 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 
+import type { ServiceImpl }                           from '@connectrpc/connect'
 import type { FindRewardPointsBalancesByQueryResult } from '@rewards-system/domain-module'
-import type { ServiceImpl }                           from '@rewards-system/rewards-system-rpc'
-import type { ListRewardPointsBalancesRequest }       from '@rewards-system/rewards-system-rpc/interfaces'
-import type { ListRewardPointsBalancesResponse }      from '@rewards-system/rewards-system-rpc/interfaces'
+import type { ListRewardPointsBalancesRequest }       from '@rewards-system/rewards-rpc/interfaces'
+import type { ListRewardPointsBalancesResponse }      from '@rewards-system/rewards-rpc/interfaces'
 
 import { UseFilters }                                 from '@nestjs/common'
 import { Controller }                                 from '@nestjs/common'
 import { QueryBus }                                   from '@nestjs/cqrs'
 import { Validator }                                  from '@monstrs/nestjs-validation'
-import { BufExceptionsFilter }                        from '@monstrs/nestjs-buf-errors'
-import { BufMethod }                                  from '@wolfcoded/nestjs-bufconnect'
-import { BufService }                                 from '@wolfcoded/nestjs-bufconnect'
+import { ConnectRpcExceptionsFilter }                 from '@monstrs/nestjs-connectrpc-errors'
+import { ConnectRpcMethod }                           from '@monstrs/nestjs-connectrpc'
+import { ConnectRpcService }                          from '@monstrs/nestjs-connectrpc'
 
-import { RewardPointsService }                        from '@rewards-system/rewards-system-rpc/connect'
+import { RewardPointsService }                        from '@rewards-system/rewards-rpc/connect'
 import { GetRewardPointsBalancesQuery }               from '@rewards-system/application-module'
 
 import { ListRewardPointsBalancesPayload }            from '../payloads/index.js'
 import { ListRewardPointsBalancesSerializer }         from '../serializers/index.js'
 
 @Controller()
-@BufService(RewardPointsService)
-@UseFilters(BufExceptionsFilter)
+@ConnectRpcService(RewardPointsService)
+@UseFilters(ConnectRpcExceptionsFilter)
 export class RewardPointsController implements ServiceImpl<typeof RewardPointsService> {
   constructor(
     private readonly queryBus: QueryBus,
     private readonly validator: Validator
   ) {}
 
-  @BufMethod()
+  @ConnectRpcMethod()
   async listRewardPointsBalances(
     request: ListRewardPointsBalancesRequest
   ): Promise<ListRewardPointsBalancesResponse> {

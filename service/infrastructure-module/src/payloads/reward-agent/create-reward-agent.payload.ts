@@ -1,4 +1,4 @@
-import type { CreateRewardAgentRequest } from '@rewards-system/rewards-system-rpc/interfaces'
+import type { CreateRewardAgentRequest } from '@rewards-system/rewards-rpc/interfaces'
 
 import { IsUUID }                        from 'class-validator'
 

@@ -1,6 +1,6 @@
 import type { Reward }         from '@rewards-system/domain-module'
 
-import { ListRewardsResponse } from '@rewards-system/rewards-system-rpc/abstractions'
+import { ListRewardsResponse } from '@rewards-system/rewards-rpc/abstractions'
 
 import { RewardSerializer }    from './reward.serializer.js'
 

@@ -1,6 +1,6 @@
 import type { RewardProgram }              from '@rewards-system/domain-module'
 
-import { UpdateRewardProgramRuleResponse } from '@rewards-system/rewards-system-rpc/abstractions'
+import { UpdateRewardProgramRuleResponse } from '@rewards-system/rewards-rpc/abstractions'
 
 import { RewardProgramSerializer }         from './reward-program.serializer.js'
 

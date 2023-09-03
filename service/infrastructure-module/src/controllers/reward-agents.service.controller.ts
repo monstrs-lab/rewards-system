@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
 
+import type { ServiceImpl }                    from '@connectrpc/connect'
 import type { RewardAgent }                    from '@rewards-system/domain-module'
 import type { FindRewardAgentsByQueryResult }  from '@rewards-system/domain-module'
-import type { ServiceImpl }                    from '@rewards-system/rewards-system-rpc'
-import type { AddRewardAgentMetadataRequest }  from '@rewards-system/rewards-system-rpc/interfaces'
-import type { AddRewardAgentMetadataResponse } from '@rewards-system/rewards-system-rpc/interfaces'
-import type { ListRewardAgentsRequest }        from '@rewards-system/rewards-system-rpc/interfaces'
-import type { ListRewardAgentsResponse }       from '@rewards-system/rewards-system-rpc/interfaces'
-import type { GetRewardAgentNetworkRequest }   from '@rewards-system/rewards-system-rpc/interfaces'
-import type { GetRewardAgentNetworkResponse }  from '@rewards-system/rewards-system-rpc/interfaces'
-import type { CreateRewardAgentRequest }       from '@rewards-system/rewards-system-rpc/interfaces'
-import type { CreateRewardAgentResponse }      from '@rewards-system/rewards-system-rpc/interfaces'
+import type { AddRewardAgentMetadataRequest }  from '@rewards-system/rewards-rpc/interfaces'
+import type { AddRewardAgentMetadataResponse } from '@rewards-system/rewards-rpc/interfaces'
+import type { ListRewardAgentsRequest }        from '@rewards-system/rewards-rpc/interfaces'
+import type { ListRewardAgentsResponse }       from '@rewards-system/rewards-rpc/interfaces'
+import type { GetRewardAgentNetworkRequest }   from '@rewards-system/rewards-rpc/interfaces'
+import type { GetRewardAgentNetworkResponse }  from '@rewards-system/rewards-rpc/interfaces'
+import type { CreateRewardAgentRequest }       from '@rewards-system/rewards-rpc/interfaces'
+import type { CreateRewardAgentResponse }      from '@rewards-system/rewards-rpc/interfaces'
 
 import { UseFilters }                          from '@nestjs/common'
 import { Controller }                          from '@nestjs/common'
 import { QueryBus }                            from '@nestjs/cqrs'
 import { CommandBus }                          from '@nestjs/cqrs'
 import { Validator }                           from '@monstrs/nestjs-validation'
-import { BufExceptionsFilter }                 from '@monstrs/nestjs-buf-errors'
-import { BufMethod }                           from '@wolfcoded/nestjs-bufconnect'
-import { BufService }                          from '@wolfcoded/nestjs-bufconnect'
+import { ConnectRpcExceptionsFilter }          from '@monstrs/nestjs-connectrpc-errors'
+import { ConnectRpcMethod }                    from '@monstrs/nestjs-connectrpc'
+import { ConnectRpcService }                   from '@monstrs/nestjs-connectrpc'
 
-import { RewardAgentsService }                 from '@rewards-system/rewards-system-rpc/connect'
+import { RewardAgentsService }                 from '@rewards-system/rewards-rpc/connect'
 import { GetRewardAgentsQuery }                from '@rewards-system/application-module'
 import { GetRewardAgentByIdQuery }             from '@rewards-system/application-module'
 import { GetRewardAgentNetworkByIdQuery }      from '@rewards-system/application-module'
@@ -38,8 +38,8 @@ import { AddRewardAgentMetadataSerializer }    from '../serializers/index.js'
 import { GetRewardAgentNetworkSerializer }     from '../serializers/index.js'
 
 @Controller()
-@BufService(RewardAgentsService)
-@UseFilters(BufExceptionsFilter)
+@ConnectRpcService(RewardAgentsService)
+@UseFilters(ConnectRpcExceptionsFilter)
 export class RewardAgentsController implements ServiceImpl<typeof RewardAgentsService> {
   constructor(
     private readonly commandBus: CommandBus,
@@ -47,7 +47,7 @@ export class RewardAgentsController implements ServiceImpl<typeof RewardAgentsSe
     private readonly validator: Validator
   ) {}
 
-  @BufMethod()
+  @ConnectRpcMethod()
   async createRewardAgent(request: CreateRewardAgentRequest): Promise<CreateRewardAgentResponse> {
     const payload = new CreateRewardAgentPayload(request)
 
@@ -64,7 +64,7 @@ export class RewardAgentsController implements ServiceImpl<typeof RewardAgentsSe
     )
   }
 
-  @BufMethod()
+  @ConnectRpcMethod()
   async addRewardAgentMetadata(
     request: AddRewardAgentMetadataRequest
   ): Promise<AddRewardAgentMetadataResponse> {
@@ -83,7 +83,7 @@ export class RewardAgentsController implements ServiceImpl<typeof RewardAgentsSe
     )
   }
 
-  @BufMethod()
+  @ConnectRpcMethod()
   async listRewardAgents(request: ListRewardAgentsRequest): Promise<ListRewardAgentsResponse> {
     const payload = new ListRewardAgentsPayload(request)
 
@@ -96,7 +96,7 @@ export class RewardAgentsController implements ServiceImpl<typeof RewardAgentsSe
     )
   }
 
-  @BufMethod()
+  @ConnectRpcMethod()
   async getRewardAgentNetwork(
     request: GetRewardAgentNetworkRequest
   ): Promise<GetRewardAgentNetworkResponse> {

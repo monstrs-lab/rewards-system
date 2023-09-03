@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
 
-import type { ListRewardAgentsRequest_RewardAgentsQuery } from '@rewards-system/rewards-system-rpc/interfaces'
-import type { ListRewardAgentsRequest }                   from '@rewards-system/rewards-system-rpc/interfaces'
+import type { ListRewardAgentsRequest_RewardAgentsQuery } from '@rewards-system/rewards-rpc/interfaces'
+import type { ListRewardAgentsRequest }                   from '@rewards-system/rewards-rpc/interfaces'
 
 import { IdQueryPayload }                                 from '@monstrs/rpc-query-payloads'
 import { OrderPayload }                                   from '@monstrs/rpc-query-payloads'

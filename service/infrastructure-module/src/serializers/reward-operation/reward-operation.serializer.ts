@@ -2,7 +2,7 @@ import type { RewardOperation } from '@rewards-system/domain-module'
 
 import { Timestamp }            from '@bufbuild/protobuf'
 
-import * as rpc                 from '@rewards-system/rewards-system-rpc/abstractions'
+import * as rpc                 from '@rewards-system/rewards-rpc/abstractions'
 
 export class RewardOperationSerializer extends rpc.RewardOperation {
   constructor(private readonly rewardOperation: RewardOperation) {

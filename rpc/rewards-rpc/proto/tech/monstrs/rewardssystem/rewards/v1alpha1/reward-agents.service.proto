@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package tech.monstrs.rewardssystem.rewards.v1alpha1;
+
+import "google/protobuf/struct.proto";
+import "tech/monstrs/queries/v1alpha1/queries.proto";
+
+service RewardAgentsService {
+  rpc CreateRewardAgent(CreateRewardAgentRequest) returns (CreateRewardAgentResponse) {}
+  rpc AddRewardAgentMetadata(AddRewardAgentMetadataRequest) returns (AddRewardAgentMetadataResponse) {}
+  rpc ListRewardAgents(ListRewardAgentsRequest) returns (ListRewardAgentsResponse) {}
+  rpc GetRewardAgentNetwork(GetRewardAgentNetworkRequest) returns (GetRewardAgentNetworkResponse) {}
+}
+
+message RewardAgent {
+  string id = 1;
+  string code = 2;
+  optional string parent_id = 3;
+  google.protobuf.Struct metadata = 4;
+}
+
+message CreateRewardAgentRequest {
+  string id = 1;
+  string referral_code = 2;
+}
+
+message CreateRewardAgentResponse {
+  RewardAgent result = 1;
+}
+
+message AddRewardAgentMetadataRequest {
+  string reward_agent_id = 1;
+  google.protobuf.Struct metadata = 2;
+}
+
+message AddRewardAgentMetadataResponse {
+  RewardAgent result = 1;
+}
+
+message ListRewardAgentsRequest {
+  message RewardAgentsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  RewardAgentsQuery query = 3;
+}
+
+message ListRewardAgentsResponse {
+  repeated RewardAgent reward_agents = 1;
+  bool has_next_page = 2;
+}
+
+message GetRewardAgentNetworkRequest {
+  string reward_agent_id = 1;
+}
+
+message GetRewardAgentNetworkResponse {
+  repeated RewardAgent reward_agents = 1;
+}

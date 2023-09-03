@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { TopLevelCondition }           from '@rewards-system/domain-module'
-import type { AddRewardProgramRuleRequest } from '@rewards-system/rewards-system-rpc/interfaces'
+import type { AddRewardProgramRuleRequest } from '@rewards-system/rewards-rpc/interfaces'
 
 import { IsNotEmpty }                       from 'class-validator'
 import { IsUUID }                           from 'class-validator'

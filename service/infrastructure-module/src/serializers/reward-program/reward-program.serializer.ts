@@ -3,10 +3,11 @@
 import type { RewardProgram }      from '@rewards-system/domain-module'
 import type { RewardProgramField } from '@rewards-system/domain-module'
 import type { RewardProgramRule }  from '@rewards-system/domain-module'
-import type { JsonValue }          from '@rewards-system/rewards-system-rpc'
+import type { JsonValue }          from '@bufbuild/protobuf'
 
-import * as rpc                    from '@rewards-system/rewards-system-rpc/abstractions'
-import { Struct }                  from '@rewards-system/rewards-system-rpc'
+import { Struct }                  from '@bufbuild/protobuf'
+
+import * as rpc                    from '@rewards-system/rewards-rpc/abstractions'
 
 export class RewardProgramFieldSerializer extends rpc.RewardProgramField {
   constructor(private readonly rewardProgramField: RewardProgramField) {

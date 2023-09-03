@@ -1,37 +1,43 @@
-import type { INestMicroservice }               from '@nestjs/common'
-import type { StartedTestContainer }            from 'testcontainers'
-import type { RewardAgentsService }             from '@rewards-system/rewards-system-rpc/connect'
-import type { PromiseClient }                   from '@rewards-system/rewards-system-rpc'
+import type { INestMicroservice }                       from '@nestjs/common'
+import type { StartedTestContainer }                    from 'testcontainers'
+import type { PromiseClient }                           from '@connectrpc/connect'
+import type { StartedKafkaContainer }                   from '@testcontainers/kafka'
 
-import { Test }                                 from '@nestjs/testing'
-import { findValidationErrorDetails }           from '@monstrs/protobuf-rpc'
-import { describe }                             from '@jest/globals'
-import { afterAll }                             from '@jest/globals'
-import { beforeAll }                            from '@jest/globals'
-import { expect }                               from '@jest/globals'
-import { it }                                   from '@jest/globals'
-import { faker }                                from '@faker-js/faker'
-import { GenericContainer }                     from 'testcontainers'
-import { Wait }                                 from 'testcontainers'
-import { default as pg }                        from 'pg'
-import getPort                                  from 'get-port'
+import { KafkaContainer }                               from '@testcontainers/kafka'
+import { Test }                                         from '@nestjs/testing'
+import { ConnectError }                                 from '@connectrpc/connect'
+import { Struct }                                       from '@bufbuild/protobuf'
+import { ConnectRpcServer }                             from '@monstrs/nestjs-connectrpc'
+import { ServerProtocol }                               from '@monstrs/nestjs-connectrpc'
+import { findValidationErrorDetails }                   from '@monstrs/protobuf-rpc'
+import { describe }                                     from '@jest/globals'
+import { afterAll }                                     from '@jest/globals'
+import { beforeAll }                                    from '@jest/globals'
+import { expect }                                       from '@jest/globals'
+import { it }                                           from '@jest/globals'
+import { faker }                                        from '@faker-js/faker'
+import { createPromiseClient }                          from '@connectrpc/connect'
+import { createGrpcTransport }                          from '@connectrpc/connect-node'
+import { GenericContainer }                             from 'testcontainers'
+import { Wait }                                         from 'testcontainers'
+import { default as pg }                                from 'pg'
+import getPort                                          from 'get-port'
 
-import { ConnectError }                         from '@rewards-system/rewards-system-rpc'
-import { Struct }                               from '@rewards-system/rewards-system-rpc'
-import { ServerBufConnect }                     from '@rewards-system/infrastructure-module'
-import { ServerProtocol }                       from '@rewards-system/infrastructure-module'
-import { MIKRO_ORM_CONFIG_MODULE_OPTIONS_PORT } from '@rewards-system/infrastructure-module'
-import { createRewardAgentsClient }             from '@rewards-system/rewards-system-rpc'
+import { RewardAgentsService }                          from '@rewards-system/rewards-rpc/connect'
+import { REWARDS_SYSTEM_INFRASTRUCTURE_MODULE_OPTIONS } from '@rewards-system/infrastructure-module'
 
-import { RewardsSystemServiceEntrypointModule } from '../src/rewards-system-service-entrypoint.module.js'
+import { RewardsSystemServiceEntrypointModule }         from '../src/rewards-system-service-entrypoint.module.js'
 
 describe('reward-agents-service', () => {
   describe('rpc', () => {
     let postgres: StartedTestContainer
+    let kafka: StartedKafkaContainer
     let service: INestMicroservice
     let client: PromiseClient<typeof RewardAgentsService>
 
     beforeAll(async () => {
+      kafka = await new KafkaContainer().withExposedPorts(9093).start()
+
       postgres = await new GenericContainer('bitnami/postgresql')
         .withWaitStrategy(Wait.forLogMessage('database system is ready to accept connections'))
         .withEnvironment({
@@ -57,12 +63,19 @@ describe('reward-agents-service', () => {
       const testingModule = await Test.createTestingModule({
         imports: [RewardsSystemServiceEntrypointModule],
       })
-        .overrideProvider(MIKRO_ORM_CONFIG_MODULE_OPTIONS_PORT)
-        .useValue(postgres.getMappedPort(5432))
+        .overrideProvider(REWARDS_SYSTEM_INFRASTRUCTURE_MODULE_OPTIONS)
+        .useValue({
+          db: {
+            port: postgres.getMappedPort(5432),
+          },
+          events: {
+            brokers: [`${kafka.getHost()}:${kafka.getMappedPort(9093)}`],
+          },
+        })
         .compile()
 
       service = testingModule.createNestMicroservice({
-        strategy: new ServerBufConnect({
+        strategy: new ConnectRpcServer({
           protocol: ServerProtocol.HTTP2_INSECURE,
           port,
         }),
@@ -70,12 +83,20 @@ describe('reward-agents-service', () => {
 
       await service.listen()
 
-      client = createRewardAgentsClient({ baseUrl: `http://localhost:${port}` })
+      client = createPromiseClient(
+        RewardAgentsService,
+        createGrpcTransport({
+          httpVersion: '2',
+          baseUrl: `http://localhost:${port}`,
+          idleConnectionTimeoutMs: 1000,
+        })
+      )
     })
 
     afterAll(async () => {
       await service.close()
       await postgres.stop()
+      await kafka.stop()
     })
 
     describe('reward agents', () => {

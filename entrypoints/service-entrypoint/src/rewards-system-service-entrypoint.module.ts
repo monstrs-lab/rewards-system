@@ -1,6 +1,6 @@
 import { Module }                            from '@nestjs/common'
+import { MicroservisesRegistryModule }       from '@monstrs/nestjs-microservices-registry'
 
-import { MicroservisesRegistryModule }       from '@rewards-system/infrastructure-module'
 import { RewardsSystemInfrastructureModule } from '@rewards-system/infrastructure-module'
 import { RewardsSystemDomainModule }         from '@rewards-system/domain-module'
 import { RewardsSystemApplicationModule }    from '@rewards-system/application-module'
