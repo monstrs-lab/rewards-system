@@ -5,9 +5,9 @@ import assert                           from 'node:assert'
 import { CommandHandler }               from '@nestjs/cqrs'
 
 import { RewardOperationFactory }       from '@rewards-system/domain-module'
+import { TransactionalRepository }      from '@rewards-system/domain-module'
 import { RewardOperationRepository }    from '@rewards-system/domain-module'
 import { RewardProgramRepository }      from '@rewards-system/domain-module'
-import { RewardRepository }             from '@rewards-system/domain-module'
 import { RewardAgentRepository }        from '@rewards-system/domain-module'
 import { RewardOperationSource }        from '@rewards-system/domain-module'
 
@@ -18,10 +18,10 @@ export class CreateRewardOperationCommandHandler
   implements ICommandHandler<CreateRewardOperationCommand, void>
 {
   constructor(
+    private readonly transactionalRepository: TransactionalRepository,
     private readonly rewardOperationRepository: RewardOperationRepository,
     private readonly rewardProgramRepository: RewardProgramRepository,
     private readonly rewardOperationFactory: RewardOperationFactory,
-    private readonly rewardRepository: RewardRepository,
     private readonly rewardAgentRepository: RewardAgentRepository
   ) {}
 
@@ -49,9 +49,9 @@ export class CreateRewardOperationCommandHandler
 
       const rewards = await rewardProgram.calculate(rewardOperation, referrer, recipients)
 
-      for await (const reward of rewards) {
-        await this.rewardRepository.save(reward)
-      }
+      await this.transactionalRepository.saveOperationAndRewards(rewardOperation, rewards)
+    } else {
+      await this.rewardOperationRepository.save(rewardOperation)
     }
   }
 }

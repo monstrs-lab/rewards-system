@@ -18,17 +18,19 @@ import { MikroORMConfig }                                from '@monstrs/nestjs-m
 import { CqrsModule }                                    from '@monstrs/nestjs-cqrs'
 import { CqrsKafkaEventsModule }                         from '@monstrs/nestjs-cqrs-kafka-events'
 
+import { TransactionalRepository }                       from '@rewards-system/domain-module'
 import { RewardPointsJournalEntryRepository }            from '@rewards-system/domain-module'
 import { RewardPointsBalanceRepository }                 from '@rewards-system/domain-module'
 import { RewardOperationRepository }                     from '@rewards-system/domain-module'
 import { RewardProgramRepository }                       from '@rewards-system/domain-module'
-import { RewardRepository }                              from '@rewards-system/domain-module'
 import { RewardAgentRepository }                         from '@rewards-system/domain-module'
+import { RewardRepository }                              from '@rewards-system/domain-module'
 
 import * as controllers                                  from '../controllers/index.js'
 import * as mappers                                      from '../mappers/index.js'
 import * as entities                                     from '../entities/index.js'
 import * as migrations                                   from '../migrations/index.js'
+import { TransactionalRepositoryImpl }                   from '../repositories/index.js'
 import { RewardPointsJournalEntryRepositoryImpl }        from '../repositories/index.js'
 import { RewardPointsBalanceRepositoryImpl }             from '../repositories/index.js'
 import { RewardOperationRepositoryImpl }                 from '../repositories/index.js'
@@ -75,6 +77,10 @@ export class RewardsSystemInfrastructureModule implements OnModuleInit {
       {
         provide: RewardPointsJournalEntryRepository,
         useClass: RewardPointsJournalEntryRepositoryImpl,
+      },
+      {
+        provide: TransactionalRepository,
+        useClass: TransactionalRepositoryImpl,
       },
     ]
 

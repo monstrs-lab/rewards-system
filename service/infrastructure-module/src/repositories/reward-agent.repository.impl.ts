@@ -1,6 +1,8 @@
 import type { RewardAgent }                         from '@rewards-system/domain-module'
 import type { FindRewardAgentsByQueryResult }       from '@rewards-system/domain-module'
 import type { FindRewardAgentsByQuery }             from '@rewards-system/domain-module'
+import type { RecordMetadata }                      from '@monstrs/nestjs-cqrs-kafka-events'
+import type { IEvent }                              from '@nestjs/cqrs'
 
 import { Injectable }                               from '@nestjs/common'
 import { Inject }                                   from '@nestjs/common'
@@ -39,13 +41,27 @@ export class RewardAgentRepositoryImpl extends RewardAgentRepository {
       entity.path = parent ? [parent.path, aggregate.code].join('.') : aggregate.code
     }
 
-    await this.em.persist(entity).flush()
+    const em = this.em.fork()
 
-    if (aggregate.getUncommittedEvents().length > 0) {
-      this.eventBus.publishAll(aggregate.getUncommittedEvents())
+    await em.begin()
+
+    try {
+      await em.persist(entity)
+
+      if (aggregate.getUncommittedEvents().length > 0) {
+        await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
+          aggregate.getUncommittedEvents()
+        )
+      }
+
+      aggregate.commit()
+
+      await em.commit()
+    } catch (error) {
+      await em.rollback()
+
+      throw error
     }
-
-    aggregate.commit()
   }
 
   async findById(id: string): Promise<RewardAgent | undefined> {
