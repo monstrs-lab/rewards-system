@@ -1,6 +1,8 @@
 import type { RewardProgram }                       from '@rewards-system/domain-module'
 import type { FindRewardProgramsByQueryResult }     from '@rewards-system/domain-module'
 import type { FindRewardProgramsByQuery }           from '@rewards-system/domain-module'
+import type { RecordMetadata }                      from '@monstrs/nestjs-cqrs-kafka-events'
+import type { IEvent }                              from '@nestjs/cqrs'
 
 import { MikroORMQueryBuilder }                     from '@monstrs/mikro-orm-query-builder'
 import { Injectable }                               from '@nestjs/common'
@@ -32,13 +34,27 @@ export class RewardProgramRepositoryImpl extends RewardProgramRepository {
   async save(aggregate: RewardProgram): Promise<void> {
     const exists = (await this.repository.findOne(aggregate.id)) || new RewardProgramEntity()
 
-    await this.em.persist(this.mapper.toPersistence(aggregate, exists)).flush()
+    const em = this.em.fork()
 
-    if (aggregate.getUncommittedEvents().length > 0) {
-      this.eventBus.publishAll(aggregate.getUncommittedEvents())
+    await em.begin()
+
+    try {
+      em.persist(this.mapper.toPersistence(aggregate, exists))
+
+      if (aggregate.getUncommittedEvents().length > 0) {
+        await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
+          aggregate.getUncommittedEvents()
+        )
+      }
+
+      aggregate.commit()
+
+      await em.commit()
+    } catch (error) {
+      await em.rollback()
+
+      throw error
     }
-
-    aggregate.commit()
   }
 
   async findById(id: string): Promise<RewardProgram | undefined> {
