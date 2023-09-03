@@ -1,4 +1,4 @@
-import type { ConfirmRewardOperationRequest } from '@rewards-system/rewards-system-rpc/interfaces'
+import type { ConfirmRewardOperationRequest } from '@rewards-system/rewards-rpc/interfaces'
 
 import { IsUUID }                             from 'class-validator'
 

@@ -1,6 +1,6 @@
 import type { RewardOperation }          from '@rewards-system/domain-module'
 
-import { CreateRewardOperationResponse } from '@rewards-system/rewards-system-rpc/abstractions'
+import { CreateRewardOperationResponse } from '@rewards-system/rewards-rpc/abstractions'
 
 import { RewardOperationSerializer }     from './reward-operation.serializer.js'
 

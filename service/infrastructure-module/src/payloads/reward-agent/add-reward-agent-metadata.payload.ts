@@ -1,4 +1,4 @@
-import type { AddRewardAgentMetadataRequest } from '@rewards-system/rewards-system-rpc/interfaces'
+import type { AddRewardAgentMetadataRequest } from '@rewards-system/rewards-rpc/interfaces'
 
 import { IsNotEmptyObject }                   from 'class-validator'
 import { IsUUID }                             from 'class-validator'

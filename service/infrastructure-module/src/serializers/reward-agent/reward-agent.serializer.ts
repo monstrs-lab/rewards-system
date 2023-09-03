@@ -1,8 +1,9 @@
 import type { RewardAgent } from '@rewards-system/domain-module'
-import type { JsonValue }   from '@rewards-system/rewards-system-rpc'
+import type { JsonValue }   from '@bufbuild/protobuf'
 
-import * as rpc             from '@rewards-system/rewards-system-rpc/abstractions'
-import { Struct }           from '@rewards-system/rewards-system-rpc'
+import { Struct }           from '@bufbuild/protobuf'
+
+import * as rpc             from '@rewards-system/rewards-rpc/abstractions'
 
 export class RewardAgentSerializer extends rpc.RewardAgent {
   constructor(private readonly rewardAgent: RewardAgent) {

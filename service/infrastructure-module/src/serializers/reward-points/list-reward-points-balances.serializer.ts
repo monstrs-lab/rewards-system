@@ -1,6 +1,6 @@
 import type { RewardPointsBalance }         from '@rewards-system/domain-module'
 
-import { ListRewardPointsBalancesResponse } from '@rewards-system/rewards-system-rpc/abstractions'
+import { ListRewardPointsBalancesResponse } from '@rewards-system/rewards-rpc/abstractions'
 
 import { RewardPointsBalanceSerializer }    from './reward-points-balance.serializer.js'
 
