@@ -30,11 +30,11 @@ export class RewardSerializer extends rpc.Reward {
   }
 
   get amount(): number {
-    return this.reward.amount
+    return this.reward.amount?.toNumber()
   }
 
   get profit(): number {
-    return this.reward.profit
+    return this.reward.profit?.toNumber()
   }
 
   get percentage(): number {

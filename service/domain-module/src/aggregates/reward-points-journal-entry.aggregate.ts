@@ -1,6 +1,7 @@
 import { AggregateRoot }                                    from '@nestjs/cqrs'
 import { Guard }                                            from '@monstrs/guard-clause'
 import { Against }                                          from '@monstrs/guard-clause'
+import { BigNumber }                                        from 'bignumber.js'
 import { customAlphabet }                                   from 'nanoid'
 import { v4 as uuid }                                       from 'uuid'
 
@@ -92,10 +93,16 @@ export class RewardPointsJournalEntry extends AggregateRoot {
   @Guard()
   credit(
     @Against('account').Empty() account: string,
-    @Against('amount').NotNumberBetween(0, Infinity) amount: number
+    @Against('amount').NotInstance(BigNumber) amount: BigNumber
   ): RewardPointsJournalEntry {
     this.apply(
-      new RewardPointsJournalEntryTransactionAddedEvent(uuid(), this.bookId, account, amount, 0)
+      new RewardPointsJournalEntryTransactionAddedEvent(
+        uuid(),
+        this.bookId,
+        account,
+        amount,
+        new BigNumber(0)
+      )
     )
 
     return this
@@ -104,19 +111,28 @@ export class RewardPointsJournalEntry extends AggregateRoot {
   @Guard()
   debit(
     @Against('account').Empty() account: string,
-    @Against('amount').NotNumberBetween(0, Infinity) amount: number
+    @Against('amount').NotInstance(BigNumber) amount: BigNumber
   ): RewardPointsJournalEntry {
     this.apply(
-      new RewardPointsJournalEntryTransactionAddedEvent(uuid(), this.bookId, account, 0, amount)
+      new RewardPointsJournalEntryTransactionAddedEvent(
+        uuid(),
+        this.bookId,
+        account,
+        new BigNumber(0),
+        amount
+      )
     )
 
     return this
   }
 
   commitTransactions(): RewardPointsJournalEntry {
-    const total = this.pendingTransactions.reduce((result, tx) => result + tx.credit - tx.debit, 0)
+    const total = this.pendingTransactions.reduce(
+      (result, tx) => result.plus(tx.credit).minus(tx.debit),
+      new BigNumber(0)
+    )
 
-    if (total !== 0) {
+    if (!total.isEqualTo(new BigNumber(0))) {
       throw new TransactionsNotZeroAmountError()
     }
 

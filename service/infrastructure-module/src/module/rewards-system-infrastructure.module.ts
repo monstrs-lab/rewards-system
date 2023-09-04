@@ -1,3 +1,4 @@
+import type { OnApplicationBootstrap }                   from '@nestjs/common'
 import type { OnModuleInit }                             from '@nestjs/common'
 import type { DynamicModule }                            from '@nestjs/common'
 import type { MikroOrmModuleOptions }                    from '@mikro-orm/nestjs'
@@ -10,6 +11,7 @@ import { ConnectRpcServer }                              from '@monstrs/nestjs-c
 import { ServerProtocol }                                from '@monstrs/nestjs-connectrpc'
 import { MicroservisesRegistryModule }                   from '@monstrs/nestjs-microservices-registry'
 import { MikroOrmModule }                                from '@mikro-orm/nestjs'
+import { RequestContext }                                from '@mikro-orm/core'
 import { MikroORM }                                      from '@mikro-orm/core'
 import { MikroORMRequestContextModule }                  from '@monstrs/nestjs-mikro-orm-request-context'
 import { PostgreSqlDriver }                              from '@mikro-orm/postgresql'
@@ -17,6 +19,7 @@ import { MikroORMConfigModule }                          from '@monstrs/nestjs-m
 import { MikroORMConfig }                                from '@monstrs/nestjs-mikro-orm-config'
 import { CqrsModule }                                    from '@monstrs/nestjs-cqrs'
 import { CqrsKafkaEventsModule }                         from '@monstrs/nestjs-cqrs-kafka-events'
+import { ExplorerService }                               from '@nestjs/cqrs/dist/services/explorer.service.js'
 
 import { TransactionalRepository }                       from '@rewards-system/domain-module'
 import { RewardPointsJournalEntryRepository }            from '@rewards-system/domain-module'
@@ -41,8 +44,11 @@ import { REWARDS_SYSTEM_INFRASTRUCTURE_MODULE_OPTIONS }  from './rewards-system-
 import { RewardsSystemInfrastructureModuleConfig }       from './rewards-system-infrastructure.module.config.js'
 
 @Module({})
-export class RewardsSystemInfrastructureModule implements OnModuleInit {
-  constructor(private readonly orm: MikroORM) {}
+export class RewardsSystemInfrastructureModule implements OnApplicationBootstrap, OnModuleInit {
+  constructor(
+    private readonly explorerService: ExplorerService,
+    private readonly orm: MikroORM
+  ) {}
 
   static register(options: RewardsSystemInfrastructureModuleOptions = {}): DynamicModule {
     const repositories = [
@@ -123,6 +129,23 @@ export class RewardsSystemInfrastructureModule implements OnModuleInit {
       providers: [...Object.values(mappers), ...repositories],
       exports: [...repositories],
     }
+  }
+
+  onApplicationBootstrap(): void {
+    const { events } = this.explorerService.explore()
+    const { em } = this.orm
+
+    events?.forEach((event): void => {
+      const original: (...args: Array<any>) => any = event.prototype.handle
+
+      // eslint-disable-next-line no-param-reassign
+      event.prototype.handle = async function wrap(
+        ...args: Array<any>
+      ): ReturnType<typeof RequestContext.createAsync> {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return RequestContext.createAsync(em, () => original.apply(this, args))
+      }
+    })
   }
 
   async onModuleInit(): Promise<void> {

@@ -1,3 +1,5 @@
+import type { BigNumber }             from 'bignumber.js'
+
 import type { RewardOperationStatus } from '../enums/index.js'
 import type { RewardOperationSource } from '../entities/index.js'
 
@@ -8,7 +10,7 @@ export class RewardOperationCreatedEvent {
     public readonly referrerId: string,
     public readonly status: RewardOperationStatus,
     public readonly source: RewardOperationSource,
-    public readonly amount: number,
+    public readonly amount: BigNumber,
     public readonly createdAt: Date
   ) {}
 }

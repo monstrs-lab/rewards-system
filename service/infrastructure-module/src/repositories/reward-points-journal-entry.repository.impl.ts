@@ -12,6 +12,7 @@ import { InjectRepository }                                 from '@mikro-orm/nes
 import { EntityRepository }                                 from '@mikro-orm/core'
 import { EntityManager as PostgreSqlEntityManager }         from '@mikro-orm/postgresql'
 import { EntityManager }                                    from '@mikro-orm/core'
+import { BigNumber }                                        from 'bignumber.js'
 
 import { RewardPointsJournalEntryRepository }               from '@rewards-system/domain-module'
 
@@ -97,6 +98,6 @@ export class RewardPointsJournalEntryRepositoryImpl extends RewardPointsJournalE
       .groupBy(['transaction.book_id', 'transaction.account'])
       .execute('get', false)
 
-    return result.credit - result.debit
+    return new BigNumber(result.credit).minus(new BigNumber(result.debit)).toNumber()
   }
 }

@@ -1,6 +1,7 @@
 import { describe }                from '@jest/globals'
 import { expect }                  from '@jest/globals'
 import { it }                      from '@jest/globals'
+import { BigNumber }               from 'bignumber.js'
 
 import { RewardProgram }           from './reward-program.aggregate.js'
 import { RewardOperation }         from './reward-operation.aggregate.js'
@@ -13,7 +14,7 @@ import { RewardProgramRule }       from '../entities/index.js'
 describe('rewards-system', () => {
   describe('domain', () => {
     describe('aggregates', () => {
-      describe('Reward-program', () => {
+      describe('reward-program', () => {
         it('check create', async () => {
           const rewardProgram = new RewardProgram().create(
             '9cb7d053-8921-49a3-aaa3-7d9b122fa235',
@@ -169,9 +170,9 @@ describe('rewards-system', () => {
         })
       })
 
-      describe('Reward program simple calculation', () => {
+      describe('reward program simple calculation', () => {
         it('check calculate for all recipients', async () => {
-          const [profit1, profit2, profit3] = await new RewardProgram()
+          const [reward1, reward2, reward3] = await new RewardProgram()
             .create('9cb7d053-8921-49a3-aaa3-7d9b122fa235', 'test', 'test', 100)
             .addRule(
               RewardProgramRule.create(
@@ -225,7 +226,7 @@ describe('rewards-system', () => {
                 '9cb7d053-8921-49a3-aaa3-7d9b122fa235',
                 '9cb7d053-8921-49a3-aaa3-7d9b122fa235',
                 RewardOperationSource.create('9cb7d053-8921-49a3-aaa3-7d9b122fa235', 'test'),
-                100
+                new BigNumber(100)
               ),
               new RewardAgent().create('9cb7d053-8921-49a3-aaa3-7d9b122fa235'),
               [
@@ -241,24 +242,24 @@ describe('rewards-system', () => {
               ]
             )
 
-          expect(profit1.amount).toBe(100)
-          expect(profit1.profit).toBe(15)
-          expect(profit1.percentage).toBe(15)
-          expect(profit1.level).toBe(1)
+          expect(reward1.amount.toNumber()).toBe(100)
+          expect(reward1.profit.toNumber()).toBe(15)
+          expect(reward1.percentage).toBe(15)
+          expect(reward1.level).toBe(1)
 
-          expect(profit2.amount).toBe(100)
-          expect(profit2.profit).toBe(10)
-          expect(profit2.percentage).toBe(10)
-          expect(profit2.level).toBe(2)
+          expect(reward2.amount.toNumber()).toBe(100)
+          expect(reward2.profit.toNumber()).toBe(10)
+          expect(reward2.percentage).toBe(10)
+          expect(reward2.level).toBe(2)
 
-          expect(profit3.amount).toBe(100)
-          expect(profit3.profit).toBe(5)
-          expect(profit3.percentage).toBe(5)
-          expect(profit3.level).toBe(3)
+          expect(reward3.amount.toNumber()).toBe(100)
+          expect(reward3.profit.toNumber()).toBe(5)
+          expect(reward3.percentage).toBe(5)
+          expect(reward3.level).toBe(3)
         })
 
         it('check calculate skip recipients', async () => {
-          const [profit1, profit2] = await new RewardProgram()
+          const [reward1, reward2] = await new RewardProgram()
             .create('9cb7d053-8921-49a3-aaa3-7d9b122fa235', 'test', 'test', 100)
             .addRule(
               RewardProgramRule.create(
@@ -312,7 +313,7 @@ describe('rewards-system', () => {
                 '9cb7d053-8921-49a3-aaa3-7d9b122fa235',
                 '9cb7d053-8921-49a3-aaa3-7d9b122fa235',
                 RewardOperationSource.create('9cb7d053-8921-49a3-aaa3-7d9b122fa235', 'test'),
-                100
+                new BigNumber(100)
               ),
               new RewardAgent().create('9cb7d053-8921-49a3-aaa3-7d9b122fa235'),
               [
@@ -326,15 +327,15 @@ describe('rewards-system', () => {
               ]
             )
 
-          expect(profit1.amount).toBe(100)
-          expect(profit1.profit).toBe(15)
-          expect(profit1.percentage).toBe(15)
-          expect(profit1.level).toBe(1)
+          expect(reward1.amount.toNumber()).toBe(100)
+          expect(reward1.profit.toNumber()).toBe(15)
+          expect(reward1.percentage).toBe(15)
+          expect(reward1.level).toBe(1)
 
-          expect(profit2.amount).toBe(100)
-          expect(profit2.profit).toBe(5)
-          expect(profit2.percentage).toBe(5)
-          expect(profit2.level).toBe(3)
+          expect(reward2.amount.toNumber()).toBe(100)
+          expect(reward2.profit.toNumber()).toBe(5)
+          expect(reward2.percentage).toBe(5)
+          expect(reward2.level).toBe(3)
         })
       })
     })

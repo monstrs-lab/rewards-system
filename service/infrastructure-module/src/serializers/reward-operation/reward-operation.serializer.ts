@@ -30,7 +30,7 @@ export class RewardOperationSerializer extends rpc.RewardOperation {
   }
 
   get amount(): number {
-    return this.rewardOperation.amount
+    return this.rewardOperation.amount?.toNumber()
   }
 
   get createdAt(): Timestamp {

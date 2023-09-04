@@ -1,6 +1,7 @@
 import { AggregateRoot }                  from '@nestjs/cqrs'
 import { Guard }                          from '@monstrs/guard-clause'
 import { Against }                        from '@monstrs/guard-clause'
+import { BigNumber }                      from 'bignumber.js'
 
 import { RewardOperationSource }          from '../entities/index.js'
 import { RewardOperationConfirmedEvent }  from '../events/index.js'
@@ -19,7 +20,7 @@ export class RewardOperation extends AggregateRoot {
 
   #source!: RewardOperationSource
 
-  #amount!: number
+  #amount!: BigNumber
 
   #createdAt!: Date
 
@@ -63,11 +64,11 @@ export class RewardOperation extends AggregateRoot {
     this.#source = source
   }
 
-  get amount(): number {
+  get amount(): BigNumber {
     return this.#amount
   }
 
-  private set amount(amount: number) {
+  private set amount(amount: BigNumber) {
     this.#amount = amount
   }
 
@@ -85,7 +86,7 @@ export class RewardOperation extends AggregateRoot {
     @Against('RewardProgramId').Empty() RewardProgramId: string,
     @Against('referrerId').NotUUID(4) referrerId: string,
     @Against('source').NotInstance(RewardOperationSource) source: RewardOperationSource,
-    @Against('amount').NotNumberBetween(0, Infinity) amount: number
+    @Against('amount').NotInstance(BigNumber) amount: BigNumber
   ): RewardOperation {
     this.apply(
       new RewardOperationCreatedEvent(

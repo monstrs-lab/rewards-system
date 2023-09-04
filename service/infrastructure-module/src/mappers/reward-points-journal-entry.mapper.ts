@@ -5,6 +5,7 @@ import type { ExtractProperties }              from '@monstrs/base-types'
 import type { RewardPointsJournalEntryEntity } from '../entities/index.js'
 
 import { Injectable }                          from '@nestjs/common'
+import { BigNumber }                           from 'bignumber.js'
 
 import { RewardPointsJournalEntry }            from '@rewards-system/domain-module'
 import { RewardPointsTransaction }             from '@rewards-system/domain-module'
@@ -25,8 +26,8 @@ export class RewardPointsJournalEntryMapper {
           id: transaction.id,
           bookId: transaction.bookId,
           account: transaction.account,
-          credit: transaction.credit,
-          debit: transaction.debit,
+          credit: new BigNumber(transaction.credit),
+          debit: new BigNumber(transaction.debit),
         }
 
         return Object.assign(new RewardPointsTransaction(), transactionProperties)
@@ -52,8 +53,8 @@ export class RewardPointsJournalEntryMapper {
             transactionEntity.id = transaction.id
             transactionEntity.bookId = transaction.bookId
             transactionEntity.account = transaction.account
-            transactionEntity.credit = transaction.credit
-            transactionEntity.debit = transaction.debit
+            transactionEntity.credit = transaction.credit.toString()
+            transactionEntity.debit = transaction.debit.toString()
           }
         })
       } else {
@@ -62,8 +63,8 @@ export class RewardPointsJournalEntryMapper {
         transactionEntity.id = transaction.id
         transactionEntity.bookId = transaction.bookId
         transactionEntity.account = transaction.account
-        transactionEntity.credit = transaction.credit
-        transactionEntity.debit = transaction.debit
+        transactionEntity.credit = transaction.credit.toString()
+        transactionEntity.debit = transaction.debit.toString()
 
         entity.transactions.add(transactionEntity)
       }
