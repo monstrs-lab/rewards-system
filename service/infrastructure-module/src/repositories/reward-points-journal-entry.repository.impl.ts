@@ -33,15 +33,16 @@ export class RewardPointsJournalEntryRepositoryImpl extends RewardPointsJournalE
   }
 
   async save(aggregate: RewardPointsJournalEntry): Promise<void> {
-    const exists =
-      (await this.repository.findOne(aggregate.id)) || new RewardPointsJournalEntryEntity()
+    const entity = await this.repository.findOne(aggregate.id)
 
     const em = this.em.fork()
 
     await em.begin()
 
     try {
-      em.persist(this.mapper.toPersistence(aggregate, exists))
+      em.persist(
+        this.mapper.toPersistence(aggregate, entity || new RewardPointsJournalEntryEntity())
+      )
 
       if (aggregate.getUncommittedEvents().length > 0) {
         await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(

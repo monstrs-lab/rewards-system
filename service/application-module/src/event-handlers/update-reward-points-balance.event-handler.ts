@@ -2,8 +2,8 @@ import type { IEventHandler }                               from '@nestjs/cqrs'
 
 import { EventsHandler }                                    from '@nestjs/cqrs'
 
+import { RewardPointsBalance }                              from '@rewards-system/domain-module'
 import { RewardPointsJournalEntryRepository }               from '@rewards-system/domain-module'
-import { RewardPointsBalanceFactory }                       from '@rewards-system/domain-module'
 import { RewardPointsJournalEntryTransactionCommitedEvent } from '@rewards-system/domain-module'
 import { RewardPointsBalanceRepository }                    from '@rewards-system/domain-module'
 
@@ -13,8 +13,7 @@ export class UpdateRewardPointsBalanceEventHandler
 {
   constructor(
     private readonly rewardPointsJournalEntryRepository: RewardPointsJournalEntryRepository,
-    private readonly rewardPointsBalanceRepository: RewardPointsBalanceRepository,
-    private readonly rewardPointsBalanceFactory: RewardPointsBalanceFactory
+    private readonly rewardPointsBalanceRepository: RewardPointsBalanceRepository
   ) {}
 
   async handle(event: RewardPointsJournalEntryTransactionCommitedEvent): Promise<void> {
@@ -25,7 +24,7 @@ export class UpdateRewardPointsBalanceEventHandler
     let balance = await this.rewardPointsBalanceRepository.findById(event.bookId)
 
     if (!balance) {
-      balance = this.rewardPointsBalanceFactory.create().create(event.bookId)
+      balance = new RewardPointsBalance().create(event.bookId)
     }
 
     await this.rewardPointsBalanceRepository.save(balance.update(amount))

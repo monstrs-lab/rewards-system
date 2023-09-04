@@ -1,6 +1,0 @@
-export * from './reward-program.factory.js'
-export * from './reward-agent.factory.js'
-export * from './reward-operation.factory.js'
-export * from './reward.factory.js'
-export * from './reward-points-balance.factory.js'
-export * from './reward-points-journal-entry.factory.js'

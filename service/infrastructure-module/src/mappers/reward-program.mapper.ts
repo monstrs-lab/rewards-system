@@ -1,13 +1,12 @@
 /* eslint-disable no-param-reassign */
 
 import type { ExtractProperties }   from '@monstrs/base-types'
-import type { RewardProgram }       from '@rewards-system/domain-module'
 
 import type { RewardProgramEntity } from '../entities/index.js'
 
 import { Injectable }               from '@nestjs/common'
 
-import { RewardProgramFactory }     from '@rewards-system/domain-module'
+import { RewardProgram }            from '@rewards-system/domain-module'
 import { RewardProgramConditions }  from '@rewards-system/domain-module'
 import { RewardProgramField }       from '@rewards-system/domain-module'
 import { RewardProgramRule }        from '@rewards-system/domain-module'
@@ -16,8 +15,6 @@ import { RewardProgramRuleEntity }  from '../entities/index.js'
 
 @Injectable()
 export class RewardProgramMapper {
-  constructor(private readonly factory: RewardProgramFactory) {}
-
   toDomain(entity: RewardProgramEntity): RewardProgram {
     const properties: Omit<ExtractProperties<RewardProgram>, 'autoCommit'> = {
       id: entity.id,
@@ -52,7 +49,7 @@ export class RewardProgramMapper {
       }),
     }
 
-    return Object.assign(this.factory.create(), properties)
+    return Object.assign(new RewardProgram(), properties)
   }
 
   toPersistence(aggregate: RewardProgram, entity: RewardProgramEntity): RewardProgramEntity {
