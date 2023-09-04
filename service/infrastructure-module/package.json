@@ -25,6 +25,7 @@
     "@monstrs/nestjs-validation": "^0.1.1",
     "@monstrs/rpc-query-payloads": "^0.0.11",
     "ajv": "^8.12.0",
+    "bignumber.js": "9.1.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

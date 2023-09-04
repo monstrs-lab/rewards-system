@@ -22,10 +22,10 @@ export class RewardPointsTransactionEntity extends BaseEntity<RewardPointsTransa
   account!: string
 
   @Property({ type: 'decimal', precision: 12, scale: 2 })
-  credit!: number
+  credit!: string
 
   @Property({ type: 'decimal', precision: 12, scale: 2 })
-  debit!: number
+  debit!: string
 
   @ManyToOne(() => RewardPointsJournalEntryEntity)
   journalEntry!: Rel<RewardPointsJournalEntryEntity>

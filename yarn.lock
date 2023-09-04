@@ -2296,6 +2296,7 @@ __metadata:
     "@rewards-system/domain-module": "workspace:0.0.1"
     "@types/node": "npm:^20.5.9"
     "@types/uuid": "npm:^9.0.3"
+    bignumber.js: "npm:9.1.2"
     reflect-metadata: "npm:^0.1.13"
     rxjs: "npm:^7.8.1"
     uuid: "npm:^9.0.0"
@@ -2380,6 +2381,7 @@ __metadata:
     "@types/node": "npm:^20.5.9"
     "@types/uuid": "npm:^9.0.3"
     ajv: "npm:^8.12.0"
+    bignumber.js: "npm:9.1.2"
     class-transformer: "npm:^0.5.1"
     class-validator: "npm:^0.14.0"
     reflect-metadata: "npm:^0.1.13"
@@ -3922,7 +3924,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bignumber.js@npm:^9.1.2":
+"bignumber.js@npm:9.1.2, bignumber.js@npm:^9.1.2":
   version: 9.1.2
   resolution: "bignumber.js@npm:9.1.2"
   checksum: e17786545433f3110b868725c449fa9625366a6e675cd70eb39b60938d6adbd0158cb4b3ad4f306ce817165d37e63f4aa3098ba4110db1d9a3b9f66abfbaf10d

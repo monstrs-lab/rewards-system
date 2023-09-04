@@ -4840,6 +4840,7 @@ const RAW_RUNTIME_STATE =
           ["@types/rewards-system__domain-module", null],\
           ["@types/rxjs", null],\
           ["@types/uuid", "npm:9.0.3"],\
+          ["bignumber.js", "npm:9.1.2"],\
           ["reflect-metadata", "npm:0.1.13"],\
           ["rxjs", "npm:7.8.1"],\
           ["uuid", "npm:9.0.0"]\
@@ -4878,6 +4879,7 @@ const RAW_RUNTIME_STATE =
           ["@types/rewards-system__domain-module", null],\
           ["@types/rxjs", null],\
           ["@types/uuid", "npm:9.0.3"],\
+          ["bignumber.js", "npm:9.1.2"],\
           ["reflect-metadata", "npm:0.1.13"],\
           ["rxjs", "npm:7.8.1"],\
           ["uuid", "npm:9.0.0"]\
@@ -4910,6 +4912,7 @@ const RAW_RUNTIME_STATE =
           ["@rewards-system/domain-module", "virtual:fe243c8f22918b1b6741c55c6ef46523706b0570c59262ecbdab98cf0c9c4f7cc4980de107295ec9f9d7c9107120a369e878ede7548d711717fb805e9993c7a7#workspace:service/domain-module"],\
           ["@types/node", "npm:20.5.9"],\
           ["@types/uuid", "npm:9.0.3"],\
+          ["bignumber.js", "npm:9.1.2"],\
           ["reflect-metadata", "npm:0.1.13"],\
           ["rxjs", "npm:7.8.1"],\
           ["uuid", "npm:9.0.0"]\
@@ -5124,6 +5127,7 @@ const RAW_RUNTIME_STATE =
           ["@types/rxjs", null],\
           ["@types/uuid", "npm:9.0.3"],\
           ["ajv", "npm:8.12.0"],\
+          ["bignumber.js", "npm:9.1.2"],\
           ["class-transformer", "npm:0.5.1"],\
           ["class-validator", "npm:0.14.0"],\
           ["reflect-metadata", "npm:0.1.13"],\
@@ -5209,6 +5213,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.5.9"],\
           ["@types/uuid", "npm:9.0.3"],\
           ["ajv", "npm:8.12.0"],\
+          ["bignumber.js", "npm:9.1.2"],\
           ["class-transformer", "npm:0.5.1"],\
           ["class-validator", "npm:0.14.0"],\
           ["reflect-metadata", "npm:0.1.13"],\

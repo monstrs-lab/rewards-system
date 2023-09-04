@@ -1,6 +1,7 @@
 import { AggregateRoot }                  from '@nestjs/cqrs'
 import { Guard }                          from '@monstrs/guard-clause'
 import { Against }                        from '@monstrs/guard-clause'
+import { BigNumber }                      from 'bignumber.js'
 
 import { NotAllowedForConfirmationError } from '../errors/index.js'
 import { RewardConfirmedEvent }           from '../events/index.js'
@@ -18,9 +19,9 @@ export class Reward extends AggregateRoot {
 
   #status!: RewardOperationStatus
 
-  #amount!: number
+  #amount!: BigNumber
 
-  #profit!: number
+  #profit!: BigNumber
 
   #percentage!: number
 
@@ -68,19 +69,19 @@ export class Reward extends AggregateRoot {
     this.#status = status
   }
 
-  get amount(): number {
+  get amount(): BigNumber {
     return this.#amount
   }
 
-  private set amount(amount: number) {
+  private set amount(amount: BigNumber) {
     this.#amount = amount
   }
 
-  get profit(): number {
+  get profit(): BigNumber {
     return this.#profit
   }
 
-  private set profit(profit: number) {
+  private set profit(profit: BigNumber) {
     this.#profit = profit
   }
 
@@ -114,8 +115,8 @@ export class Reward extends AggregateRoot {
     @Against('operationId').NotUUID(4) operationId: string,
     @Against('agentId').NotUUID(4) agentId: string,
     @Against('referrerId').NotUUID(4) referrerId: string,
-    @Against('amount').NotNumberBetween(0, Infinity) amount: number,
-    @Against('profit').NotNumberBetween(0, Infinity) profit: number,
+    @Against('amount').NotInstance(BigNumber) amount: BigNumber,
+    @Against('profit').NotInstance(BigNumber) profit: BigNumber,
     @Against('percentage').NotNumberBetween(0, 100) percentage: number,
     @Against('level').NotNumberBetween(0, Infinity)
     level: number

@@ -31,7 +31,7 @@ export class RewardOperationEntity extends BaseEntity<RewardOperationEntity, 'id
   source!: RewardOperationSourceEmbeddedEntity
 
   @Property({ type: 'decimal', precision: 12, scale: 2 })
-  amount!: number
+  amount!: string
 
   @Property({ type: 'timestamptz' })
   createdAt!: Date

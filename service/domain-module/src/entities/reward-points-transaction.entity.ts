@@ -1,5 +1,6 @@
-import { Guard }   from '@monstrs/guard-clause'
-import { Against } from '@monstrs/guard-clause'
+import { Guard }     from '@monstrs/guard-clause'
+import { Against }   from '@monstrs/guard-clause'
+import { BigNumber } from 'bignumber.js'
 
 export class RewardPointsTransaction {
   #id!: string
@@ -8,9 +9,9 @@ export class RewardPointsTransaction {
 
   #account!: string
 
-  #credit!: number
+  #credit!: BigNumber
 
-  #debit!: number
+  #debit!: BigNumber
 
   get id(): string {
     return this.#id
@@ -36,19 +37,19 @@ export class RewardPointsTransaction {
     this.#account = account
   }
 
-  get credit(): number {
+  get credit(): BigNumber {
     return this.#credit
   }
 
-  private set credit(credit: number) {
+  private set credit(credit: BigNumber) {
     this.#credit = credit
   }
 
-  get debit(): number {
+  get debit(): BigNumber {
     return this.#debit
   }
 
-  private set debit(debit: number) {
+  private set debit(debit: BigNumber) {
     this.#debit = debit
   }
 
@@ -57,8 +58,8 @@ export class RewardPointsTransaction {
     @Against('id').NotUUID(4) id: string,
     @Against('bookId').NotUUID(4) bookId: string,
     @Against('account').Empty() account: string,
-    @Against('credit').NotNumberBetween(0, Infinity) credit: number,
-    @Against('debit').NotNumberBetween(0, Infinity) debit: number
+    @Against('credit').NotInstance(BigNumber) credit: BigNumber,
+    @Against('debit').NotInstance(BigNumber) debit: BigNumber
   ): RewardPointsTransaction {
     const rewardPointsTransaction = new RewardPointsTransaction()
 

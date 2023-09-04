@@ -3,6 +3,7 @@ import type { ICommandHandler }         from '@nestjs/cqrs'
 import assert                           from 'node:assert'
 
 import { CommandHandler }               from '@nestjs/cqrs'
+import { BigNumber }                    from 'bignumber.js'
 
 import { RewardOperation }              from '@rewards-system/domain-module'
 import { TransactionalRepository }      from '@rewards-system/domain-module'
@@ -34,7 +35,7 @@ export class CreateRewardOperationCommandHandler
       rewardProgram.id,
       command.referrerId,
       RewardOperationSource.create(command.sourceId, command.sourceType),
-      command.amount
+      new BigNumber(command.amount)
     )
 
     await this.rewardOperationRepository.save(rewardOperation)

@@ -5,6 +5,7 @@ import type { ExtractProperties } from '@monstrs/base-types'
 import type { RewardEntity }      from '../entities/index.js'
 
 import { Injectable }             from '@nestjs/common'
+import { BigNumber }              from 'bignumber.js'
 
 import { Reward }                 from '@rewards-system/domain-module'
 
@@ -17,8 +18,8 @@ export class RewardMapper {
       agentId: entity.agentId,
       referrerId: entity.referrerId,
       status: entity.status,
-      amount: entity.amount,
-      profit: entity.profit,
+      amount: new BigNumber(entity.amount),
+      profit: new BigNumber(entity.profit),
       percentage: entity.percentage,
       level: entity.level,
       createdAt: entity.createdAt,
@@ -33,8 +34,8 @@ export class RewardMapper {
     entity.agentId = aggregate.agentId
     entity.referrerId = aggregate.referrerId
     entity.status = aggregate.status
-    entity.amount = aggregate.amount
-    entity.profit = aggregate.profit
+    entity.amount = aggregate.amount.toString()
+    entity.profit = aggregate.profit.toString()
     entity.percentage = aggregate.percentage
     entity.level = aggregate.level
     entity.createdAt = aggregate.createdAt

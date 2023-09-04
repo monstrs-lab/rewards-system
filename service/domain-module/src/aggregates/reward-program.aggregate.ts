@@ -122,7 +122,7 @@ export class RewardProgram extends AggregateRoot {
 
     for await (const rule of this.rules.sort((a, b) => a.order - b.order)) {
       if (await rule.conditions.match(referrer.metadata)) {
-        const amount = operation.amount * (this.percentage / 100)
+        const amount = operation.amount.multipliedBy(this.percentage / 100)
 
         for await (const field of rule.fields) {
           const index = rule.fields.indexOf(field)
@@ -137,7 +137,7 @@ export class RewardProgram extends AggregateRoot {
                   recipient.id,
                   referrer.id,
                   amount,
-                  amount * (field.percentage / 100),
+                  amount.multipliedBy(field.percentage / 100),
                   field.percentage,
                   index + 1
                 )

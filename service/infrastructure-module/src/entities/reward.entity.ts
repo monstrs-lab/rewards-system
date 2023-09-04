@@ -31,10 +31,10 @@ export class RewardEntity extends BaseEntity<RewardEntity, 'id'> {
   level!: number
 
   @Property({ type: 'decimal', precision: 12, scale: 2 })
-  amount!: number
+  amount!: string
 
   @Property({ type: 'decimal', precision: 12, scale: 2 })
-  profit!: number
+  profit!: string
 
   @Property()
   percentage!: number
