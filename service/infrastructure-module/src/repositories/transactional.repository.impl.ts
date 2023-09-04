@@ -38,9 +38,7 @@ export class TransactionalRepositoryImpl extends TransactionalRepository {
     rewardOperation: RewardOperation,
     rewards: Array<Reward>
   ): Promise<void> {
-    const rewardOperationEntity =
-      (await this.rewardOperationRepository.findOne(rewardOperation.id)) ||
-      new RewardOperationEntity()
+    const rewardOperationEntity = await this.rewardOperationRepository.findOne(rewardOperation.id)
     const rewardEntities = await this.rewardRepository.find({
       id: { $in: rewards.map((reward) => reward.id) },
     })
@@ -50,7 +48,12 @@ export class TransactionalRepositoryImpl extends TransactionalRepository {
     await em.begin()
 
     try {
-      em.persist(this.rewardOperationMapper.toPersistence(rewardOperation, rewardOperationEntity))
+      em.persist(
+        this.rewardOperationMapper.toPersistence(
+          rewardOperation,
+          rewardOperationEntity || new RewardOperationEntity()
+        )
+      )
 
       rewards.forEach((reward) => {
         em.persist(

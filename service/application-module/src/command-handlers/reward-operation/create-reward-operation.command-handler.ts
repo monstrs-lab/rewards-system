@@ -4,7 +4,7 @@ import assert                           from 'node:assert'
 
 import { CommandHandler }               from '@nestjs/cqrs'
 
-import { RewardOperationFactory }       from '@rewards-system/domain-module'
+import { RewardOperation }              from '@rewards-system/domain-module'
 import { TransactionalRepository }      from '@rewards-system/domain-module'
 import { RewardOperationRepository }    from '@rewards-system/domain-module'
 import { RewardProgramRepository }      from '@rewards-system/domain-module'
@@ -21,7 +21,6 @@ export class CreateRewardOperationCommandHandler
     private readonly transactionalRepository: TransactionalRepository,
     private readonly rewardOperationRepository: RewardOperationRepository,
     private readonly rewardProgramRepository: RewardProgramRepository,
-    private readonly rewardOperationFactory: RewardOperationFactory,
     private readonly rewardAgentRepository: RewardAgentRepository
   ) {}
 
@@ -30,15 +29,13 @@ export class CreateRewardOperationCommandHandler
 
     assert.ok(rewardProgram, `Reward program with code '${command.rewardProgram}' not found`)
 
-    const rewardOperation = this.rewardOperationFactory
-      .create()
-      .create(
-        command.rewardOperationId,
-        rewardProgram.id,
-        command.referrerId,
-        RewardOperationSource.create(command.sourceId, command.sourceType),
-        command.amount
-      )
+    const rewardOperation = new RewardOperation().create(
+      command.rewardOperationId,
+      rewardProgram.id,
+      command.referrerId,
+      RewardOperationSource.create(command.sourceId, command.sourceType),
+      command.amount
+    )
 
     await this.rewardOperationRepository.save(rewardOperation)
 

@@ -1,19 +1,16 @@
 /* eslint-disable no-param-reassign */
 
 import type { ExtractProperties }     from '@monstrs/base-types'
-import type { RewardOperation }       from '@rewards-system/domain-module'
 
 import type { RewardOperationEntity } from '../entities/index.js'
 
 import { Injectable }                 from '@nestjs/common'
 
-import { RewardOperationFactory }     from '@rewards-system/domain-module'
+import { RewardOperation }            from '@rewards-system/domain-module'
 import { RewardOperationSource }      from '@rewards-system/domain-module'
 
 @Injectable()
 export class RewardOperationMapper {
-  constructor(private readonly factory: RewardOperationFactory) {}
-
   toDomain(entity: RewardOperationEntity): RewardOperation {
     const sourceProperties: ExtractProperties<RewardOperationSource> = {
       id: entity.source.id,
@@ -30,7 +27,7 @@ export class RewardOperationMapper {
       source: Object.assign(new RewardOperationSource(), sourceProperties),
     }
 
-    return Object.assign(this.factory.create(), properties)
+    return Object.assign(new RewardOperation(), properties)
   }
 
   toPersistence(aggregate: RewardOperation, entity: RewardOperationEntity): RewardOperationEntity {

@@ -1,21 +1,18 @@
 /* eslint-disable no-param-reassign */
 
 import type { ExtractProperties }              from '@monstrs/base-types'
-import type { RewardPointsJournalEntry }       from '@rewards-system/domain-module'
 
 import type { RewardPointsJournalEntryEntity } from '../entities/index.js'
 
 import { Injectable }                          from '@nestjs/common'
 
-import { RewardPointsJournalEntryFactory }     from '@rewards-system/domain-module'
+import { RewardPointsJournalEntry }            from '@rewards-system/domain-module'
 import { RewardPointsTransaction }             from '@rewards-system/domain-module'
 
 import { RewardPointsTransactionEntity }       from '../entities/index.js'
 
 @Injectable()
 export class RewardPointsJournalEntryMapper {
-  constructor(private readonly factory: RewardPointsJournalEntryFactory) {}
-
   toDomain(entity: RewardPointsJournalEntryEntity): RewardPointsJournalEntry {
     const properties: Omit<ExtractProperties<RewardPointsJournalEntry>, 'autoCommit'> = {
       id: entity.id,
@@ -36,7 +33,7 @@ export class RewardPointsJournalEntryMapper {
       }),
     }
 
-    return Object.assign(this.factory.create(), properties)
+    return Object.assign(new RewardPointsJournalEntry(), properties)
   }
 
   toPersistence(

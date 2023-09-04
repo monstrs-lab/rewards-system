@@ -32,14 +32,14 @@ export class RewardPointsBalanceRepositoryImpl extends RewardPointsBalanceReposi
   }
 
   async save(aggregate: RewardPointsBalance): Promise<void> {
-    const exists = (await this.repository.findOne(aggregate.id)) || new RewardPointsBalanceEntity()
+    const entity = await this.repository.findOne(aggregate.id)
 
     const em = this.em.fork()
 
     await em.begin()
 
     try {
-      em.persist(this.mapper.toPersistence(aggregate, exists))
+      em.persist(this.mapper.toPersistence(aggregate, entity || new RewardPointsBalanceEntity()))
 
       if (aggregate.getUncommittedEvents().length > 0) {
         await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(

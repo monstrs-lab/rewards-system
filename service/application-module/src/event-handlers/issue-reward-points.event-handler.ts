@@ -5,7 +5,7 @@ import { Logger }                             from '@monstrs/logger'
 import { v4 as uuid }                         from 'uuid'
 
 import { RewardPointsJournalEntryRepository } from '@rewards-system/domain-module'
-import { RewardPointsJournalEntryFactory }    from '@rewards-system/domain-module'
+import { RewardPointsJournalEntry }           from '@rewards-system/domain-module'
 import { RewardConfirmedEvent }               from '@rewards-system/domain-module'
 import { RewardRepository }                   from '@rewards-system/domain-module'
 
@@ -15,7 +15,6 @@ export class IssueRewardPointsEventHandler implements IEventHandler<RewardConfir
 
   constructor(
     private readonly rewardPointsJournalEntryRepository: RewardPointsJournalEntryRepository,
-    private readonly rewardPointsJournalEntryFactory: RewardPointsJournalEntryFactory,
     private readonly rewardRepository: RewardRepository
   ) {}
 
@@ -29,8 +28,7 @@ export class IssueRewardPointsEventHandler implements IEventHandler<RewardConfir
     }
 
     await this.rewardPointsJournalEntryRepository.save(
-      this.rewardPointsJournalEntryFactory
-        .create()
+      new RewardPointsJournalEntry()
         .create(uuid(), reward.agentId, reward.id)
         .debit('Income:', reward.profit)
         .credit('Assets:Investments', reward.profit)
