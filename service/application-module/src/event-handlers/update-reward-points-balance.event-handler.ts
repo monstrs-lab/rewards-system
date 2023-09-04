@@ -17,15 +17,16 @@ export class UpdateRewardPointsBalanceEventHandler
   ) {}
 
   async handle(event: RewardPointsJournalEntryTransactionCommitedEvent): Promise<void> {
-    const amount = await this.rewardPointsJournalEntryRepository.calculateBookAccountBalance(
-      event.bookId,
-      'Assets:Investments'
-    )
     let balance = await this.rewardPointsBalanceRepository.findById(event.bookId)
 
     if (!balance) {
       balance = new RewardPointsBalance().create(event.bookId)
     }
+
+    const amount = await this.rewardPointsJournalEntryRepository.calculateBookAccountBalance(
+      event.bookId,
+      'Assets:Investments'
+    )
 
     await this.rewardPointsBalanceRepository.save(balance.update(amount))
   }

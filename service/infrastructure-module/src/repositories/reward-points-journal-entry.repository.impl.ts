@@ -98,6 +98,10 @@ export class RewardPointsJournalEntryRepositoryImpl extends RewardPointsJournalE
       .groupBy(['transaction.book_id', 'transaction.account'])
       .execute('get', false)
 
+    if (!result) {
+      return 0
+    }
+
     return new BigNumber(result.credit).minus(new BigNumber(result.debit)).toNumber()
   }
 }
