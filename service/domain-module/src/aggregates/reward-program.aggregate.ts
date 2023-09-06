@@ -119,30 +119,37 @@ export class RewardProgram extends AggregateRoot {
     @Against('recipients').Each.NotInstance(RewardAgent) recipients: Array<RewardAgent>
   ): Promise<Array<Reward>> {
     const profits: Array<Reward> = []
+    let rule: RewardProgramRule | undefined
 
-    for await (const rule of this.rules.sort((a, b) => a.order - b.order)) {
-      if (await rule.conditions.match(referrer.metadata)) {
-        const amount = operation.amount.multipliedBy(this.percentage / 100)
+    for await (const r of this.rules.sort((a, b) => a.order - b.order)) {
+      if (await r.conditions.match(referrer.metadata)) {
+        if (!rule) {
+          rule = r
+        }
+      }
+    }
 
-        for await (const field of rule.fields) {
-          const index = rule.fields.indexOf(field)
-          const recipient = recipients.at(index)
+    if (rule) {
+      const amount = operation.amount.multipliedBy(this.percentage / 100)
 
-          if (recipient) {
-            if (await field.conditions.match(recipient.metadata)) {
-              profits.push(
-                new Reward().create(
-                  uuid(),
-                  operation.id,
-                  recipient.id,
-                  referrer.id,
-                  amount,
-                  amount.multipliedBy(field.percentage / 100),
-                  field.percentage,
-                  index + 1
-                )
+      for await (const field of rule.fields) {
+        const index = rule.fields.indexOf(field)
+        const recipient = recipients.at(index)
+
+        if (recipient) {
+          if (await field.conditions.match(recipient.metadata)) {
+            profits.push(
+              new Reward().create(
+                uuid(),
+                operation.id,
+                recipient.id,
+                referrer.id,
+                amount,
+                amount.multipliedBy(field.percentage / 100),
+                field.percentage,
+                index + 1
               )
-            }
+            )
           }
         }
       }
