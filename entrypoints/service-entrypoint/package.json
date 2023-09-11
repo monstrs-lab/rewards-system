@@ -32,7 +32,7 @@
     "@rewards-system/application-module": "workspace:0.0.1",
     "@rewards-system/domain-module": "workspace:0.0.1",
     "@rewards-system/infrastructure-module": "workspace:0.0.1",
-    "@rewards-system/rewards-rpc": "workspace:0.0.1",
+    "@rewards-system/rewards-rpc": "workspace:0.0.2",
     "@testcontainers/kafka": "^10.2.1",
     "@types/node": "^20.5.9",
     "@types/pg": "^8.10.2",
