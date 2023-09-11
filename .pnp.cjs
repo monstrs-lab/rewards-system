@@ -22,6 +22,10 @@ const RAW_RUNTIME_STATE =
       "reference": "workspace:rpc/rewards-rpc"\
     },\
     {\
+      "name": "@rewards-system/rewards-rpc-client",\
+      "reference": "workspace:rpc/rewards-rpc-client"\
+    },\
+    {\
       "name": "@rewards-system/application-module",\
       "reference": "workspace:service/application-module"\
     },\
@@ -41,6 +45,7 @@ const RAW_RUNTIME_STATE =
     ["@rewards-system/domain-module", ["virtual:677ec2ccd44c3a67aa3e6f35d8ba2cea5b7f1d360e3c1f5c22114a55c0731b1a57aee4f664f147f501a498afd58d1f1d7a5c0c911914d5948dbe38908372d4ab#workspace:service/domain-module", "virtual:d45085cf7bb2c2c0b599163def5cfd778cfc8781cc31b26dfaccced24e75459c2ea818aa085c7eb92ac1999154df4452fe9205c5502d11b1796da22f03f651eb#workspace:service/domain-module", "virtual:fe243c8f22918b1b6741c55c6ef46523706b0570c59262ecbdab98cf0c9c4f7cc4980de107295ec9f9d7c9107120a369e878ede7548d711717fb805e9993c7a7#workspace:service/domain-module", "workspace:service/domain-module"]],\
     ["@rewards-system/infrastructure-module", ["virtual:677ec2ccd44c3a67aa3e6f35d8ba2cea5b7f1d360e3c1f5c22114a55c0731b1a57aee4f664f147f501a498afd58d1f1d7a5c0c911914d5948dbe38908372d4ab#workspace:service/infrastructure-module", "workspace:service/infrastructure-module"]],\
     ["@rewards-system/rewards-rpc", ["virtual:677ec2ccd44c3a67aa3e6f35d8ba2cea5b7f1d360e3c1f5c22114a55c0731b1a57aee4f664f147f501a498afd58d1f1d7a5c0c911914d5948dbe38908372d4ab#workspace:rpc/rewards-rpc", "workspace:rpc/rewards-rpc"]],\
+    ["@rewards-system/rewards-rpc-client", ["workspace:rpc/rewards-rpc-client"]],\
     ["@rewards-system/service-entrypoint", ["workspace:entrypoints/service-entrypoint"]],\
     ["rewards-system", ["workspace:."]]\
   ],\
@@ -5254,6 +5259,19 @@ const RAW_RUNTIME_STATE =
           ["@connectrpc/protoc-gen-connect-es", "virtual:fded43ec459146d4ce90929af32d1a8a12a046f05d51b7a5c6e7b3d30ba034bc2455e9bf0babf9b1001f69e23052df91c176f218266115ba2fe5870a45226e40#npm:0.13.2"],\
           ["@monstrs/protoc-gen-abstractions", "virtual:fded43ec459146d4ce90929af32d1a8a12a046f05d51b7a5c6e7b3d30ba034bc2455e9bf0babf9b1001f69e23052df91c176f218266115ba2fe5870a45226e40#npm:0.0.5"],\
           ["@monstrs/protoc-gen-interfaces", "virtual:fded43ec459146d4ce90929af32d1a8a12a046f05d51b7a5c6e7b3d30ba034bc2455e9bf0babf9b1001f69e23052df91c176f218266115ba2fe5870a45226e40#npm:0.0.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["@rewards-system/rewards-rpc-client", [\
+      ["workspace:rpc/rewards-rpc-client", {\
+        "packageLocation": "./rpc/rewards-rpc-client/",\
+        "packageDependencies": [\
+          ["@rewards-system/rewards-rpc-client", "workspace:rpc/rewards-rpc-client"],\
+          ["@bufbuild/protobuf", "npm:1.3.1"],\
+          ["@connectrpc/connect", "virtual:677ec2ccd44c3a67aa3e6f35d8ba2cea5b7f1d360e3c1f5c22114a55c0731b1a57aee4f664f147f501a498afd58d1f1d7a5c0c911914d5948dbe38908372d4ab#npm:0.13.2"],\
+          ["@connectrpc/connect-node", "virtual:677ec2ccd44c3a67aa3e6f35d8ba2cea5b7f1d360e3c1f5c22114a55c0731b1a57aee4f664f147f501a498afd58d1f1d7a5c0c911914d5948dbe38908372d4ab#npm:0.13.2"],\
+          ["@rewards-system/rewards-rpc", "virtual:677ec2ccd44c3a67aa3e6f35d8ba2cea5b7f1d360e3c1f5c22114a55c0731b1a57aee4f664f147f501a498afd58d1f1d7a5c0c911914d5948dbe38908372d4ab#workspace:rpc/rewards-rpc"]\
         ],\
         "linkType": "SOFT"\
       }]\
