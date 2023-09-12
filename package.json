@@ -2,7 +2,6 @@
   "name": "rewards-system",
   "private": true,
   "workspaces": [
-    "entrypoints/*",
     "service/*",
     "rpc/*"
   ],
