@@ -5,9 +5,7 @@ import { createGrpcTransport }   from '@connectrpc/connect-node'
 
 import { RewardProgramsService } from '@rewards-system/rewards-rpc/connect'
 
-export const createRewardProgramsClient = (
-  options = {}
-): PromiseClient<typeof RewardProgramsService> =>
+export const createClient = (options = {}): PromiseClient<typeof RewardProgramsService> =>
   createPromiseClient(
     RewardProgramsService,
     createGrpcTransport({
@@ -17,4 +15,4 @@ export const createRewardProgramsClient = (
     })
   )
 
-export const rewardPrograms = createRewardProgramsClient()
+export const rewardPrograms = createClient()

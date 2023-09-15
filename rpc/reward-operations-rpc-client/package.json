@@ -1,5 +1,5 @@
 {
-  "name": "@rewards-system/rewards-rpc-client",
+  "name": "@rewards-system/reward-operations-rpc-client",
   "version": "0.0.2",
   "license": "MIT",
   "type": "module",
