@@ -1,3 +1,2 @@
 releases:
   "@rewards-system/rewards-rpc": patch
-  "@rewards-system/rewards-rpc-client": patch
