@@ -1,13 +1,13 @@
-import { AggregateRoot }             from '@nestjs/cqrs'
 import { Guard }                     from '@monstrs/guard-clause'
 import { Against }                   from '@monstrs/guard-clause'
+import { AggregateRoot }             from '@nestjs/cqrs'
 import { v4 as uuid }                from 'uuid'
 
 import { RewardProgramRule }         from '../entities/index.js'
 import { RewardProgramCreatedEvent } from '../events/index.js'
 import { RewardProgramUpdatedEvent } from '../events/index.js'
-import { RewardOperation }           from './reward-operation.aggregate.js'
 import { RewardAgent }               from './reward-agent.aggregate.js'
+import { RewardOperation }           from './reward-operation.aggregate.js'
 import { Reward }                    from './reward.aggregate.js'
 
 export class RewardProgram extends AggregateRoot {

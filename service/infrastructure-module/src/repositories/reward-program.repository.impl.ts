@@ -1,17 +1,17 @@
+import type { RecordMetadata }                      from '@monstrs/nestjs-cqrs-kafka-events'
+import type { IEvent }                              from '@nestjs/cqrs'
 import type { RewardProgram }                       from '@rewards-system/domain-module'
 import type { FindRewardProgramsByQueryResult }     from '@rewards-system/domain-module'
 import type { FindRewardProgramsByQuery }           from '@rewards-system/domain-module'
-import type { RecordMetadata }                      from '@monstrs/nestjs-cqrs-kafka-events'
-import type { IEvent }                              from '@nestjs/cqrs'
 
+import { EntityRepository }                         from '@mikro-orm/core'
+import { EntityManager }                            from '@mikro-orm/core'
+import { InjectRepository }                         from '@mikro-orm/nestjs'
+import { EntityManager as PostgreSqlEntityManager } from '@mikro-orm/postgresql'
 import { MikroORMQueryBuilder }                     from '@monstrs/mikro-orm-query-builder'
 import { Injectable }                               from '@nestjs/common'
 import { Inject }                                   from '@nestjs/common'
 import { EventBus }                                 from '@nestjs/cqrs'
-import { InjectRepository }                         from '@mikro-orm/nestjs'
-import { EntityRepository }                         from '@mikro-orm/core'
-import { EntityManager as PostgreSqlEntityManager } from '@mikro-orm/postgresql'
-import { EntityManager }                            from '@mikro-orm/core'
 
 import { RewardProgramRepository }                  from '@rewards-system/domain-module'
 

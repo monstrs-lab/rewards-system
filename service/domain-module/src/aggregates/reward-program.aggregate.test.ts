@@ -3,13 +3,13 @@ import { expect }                  from '@jest/globals'
 import { it }                      from '@jest/globals'
 import { BigNumber }               from 'bignumber.js'
 
-import { RewardProgram }           from './reward-program.aggregate.js'
-import { RewardOperation }         from './reward-operation.aggregate.js'
-import { RewardAgent }             from './reward-agent.aggregate.js'
-import { RewardProgramConditions } from '../value-objects/index.js'
-import { RewardProgramField }      from '../value-objects/index.js'
 import { RewardOperationSource }   from '../entities/index.js'
 import { RewardProgramRule }       from '../entities/index.js'
+import { RewardProgramConditions } from '../value-objects/index.js'
+import { RewardProgramField }      from '../value-objects/index.js'
+import { RewardAgent }             from './reward-agent.aggregate.js'
+import { RewardOperation }         from './reward-operation.aggregate.js'
+import { RewardProgram }           from './reward-program.aggregate.js'
 
 describe('rewards-system', () => {
   describe('domain', () => {

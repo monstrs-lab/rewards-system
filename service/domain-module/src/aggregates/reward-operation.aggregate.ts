@@ -1,13 +1,13 @@
-import { AggregateRoot }                  from '@nestjs/cqrs'
 import { Guard }                          from '@monstrs/guard-clause'
 import { Against }                        from '@monstrs/guard-clause'
+import { AggregateRoot }                  from '@nestjs/cqrs'
 import { BigNumber }                      from 'bignumber.js'
 
 import { RewardOperationSource }          from '../entities/index.js'
-import { RewardOperationConfirmedEvent }  from '../events/index.js'
-import { RewardOperationCreatedEvent }    from '../events/index.js'
 import { RewardOperationStatus }          from '../enums/index.js'
 import { NotAllowedForConfirmationError } from '../errors/index.js'
+import { RewardOperationConfirmedEvent }  from '../events/index.js'
+import { RewardOperationCreatedEvent }    from '../events/index.js'
 
 export class RewardOperation extends AggregateRoot {
   #id!: string

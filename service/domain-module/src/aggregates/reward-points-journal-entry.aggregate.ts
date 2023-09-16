@@ -1,15 +1,15 @@
-import { AggregateRoot }                                    from '@nestjs/cqrs'
 import { Guard }                                            from '@monstrs/guard-clause'
 import { Against }                                          from '@monstrs/guard-clause'
+import { AggregateRoot }                                    from '@nestjs/cqrs'
 import { BigNumber }                                        from 'bignumber.js'
 import { customAlphabet }                                   from 'nanoid'
 import { v4 as uuid }                                       from 'uuid'
 
+import { RewardPointsTransaction }                          from '../entities/index.js'
+import { TransactionsNotZeroAmountError }                   from '../errors/index.js'
 import { RewardPointsJournalEntryTransactionCommitedEvent } from '../events/index.js'
 import { RewardPointsJournalEntryTransactionAddedEvent }    from '../events/index.js'
 import { RewardPointsJournalEntryCreatedEvent }             from '../events/index.js'
-import { RewardPointsTransaction }                          from '../entities/index.js'
-import { TransactionsNotZeroAmountError }                   from '../errors/index.js'
 
 export class RewardPointsJournalEntry extends AggregateRoot {
   #id!: string

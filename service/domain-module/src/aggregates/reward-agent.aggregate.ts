@@ -1,6 +1,6 @@
-import { AggregateRoot }                 from '@nestjs/cqrs'
 import { Guard }                         from '@monstrs/guard-clause'
 import { Against }                       from '@monstrs/guard-clause'
+import { AggregateRoot }                 from '@nestjs/cqrs'
 import { customAlphabet }                from 'nanoid'
 
 import { RewardAgentCreatedEvent }       from '../events/index.js'

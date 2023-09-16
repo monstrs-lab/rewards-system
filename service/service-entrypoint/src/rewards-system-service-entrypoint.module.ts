@@ -1,8 +1,8 @@
-import { Module }                            from '@nestjs/common'
 import { MicroservisesRegistryModule }       from '@monstrs/nestjs-microservices-registry'
+import { Module }                            from '@nestjs/common'
 
-import { RewardsSystemInfrastructureModule } from '@rewards-system/infrastructure-module'
 import { RewardsSystemApplicationModule }    from '@rewards-system/application-module'
+import { RewardsSystemInfrastructureModule } from '@rewards-system/infrastructure-module'
 
 @Module({
   imports: [

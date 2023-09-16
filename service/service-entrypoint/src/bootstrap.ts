@@ -1,6 +1,6 @@
 import { NestLogger }                           from '@monstrs/nestjs-logger'
-import { NestFactory }                          from '@nestjs/core'
 import { MicroservisesRegistry }                from '@monstrs/nestjs-microservices-registry'
+import { NestFactory }                          from '@nestjs/core'
 
 import { RewardsSystemServiceEntrypointModule } from './rewards-system-service-entrypoint.module.js'
 

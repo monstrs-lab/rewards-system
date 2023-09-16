@@ -1,7 +1,7 @@
 import type { IEventHandler }                 from '@nestjs/cqrs'
 
-import { EventsHandler }                      from '@nestjs/cqrs'
 import { Logger }                             from '@monstrs/logger'
+import { EventsHandler }                      from '@nestjs/cqrs'
 import { v4 as uuid }                         from 'uuid'
 
 import { RewardPointsJournalEntryRepository } from '@rewards-system/domain-module'

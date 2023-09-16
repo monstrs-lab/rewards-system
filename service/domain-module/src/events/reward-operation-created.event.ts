@@ -1,7 +1,7 @@
 import type { BigNumber }             from 'bignumber.js'
 
-import type { RewardOperationStatus } from '../enums/index.js'
 import type { RewardOperationSource } from '../entities/index.js'
+import type { RewardOperationStatus } from '../enums/index.js'
 
 export class RewardOperationCreatedEvent {
   constructor(
