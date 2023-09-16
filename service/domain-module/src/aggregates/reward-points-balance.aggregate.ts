@@ -1,6 +1,6 @@
-import { AggregateRoot }                   from '@nestjs/cqrs'
 import { Guard }                           from '@monstrs/guard-clause'
 import { Against }                         from '@monstrs/guard-clause'
+import { AggregateRoot }                   from '@nestjs/cqrs'
 
 import { RewardPointsBalanceCreatedEvent } from '../events/index.js'
 import { RewardPointsBalanceUpdatedEvent } from '../events/index.js'

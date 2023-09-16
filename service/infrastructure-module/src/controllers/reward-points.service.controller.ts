@@ -5,16 +5,16 @@ import type { FindRewardPointsBalancesByQueryResult } from '@rewards-system/doma
 import type { ListRewardPointsBalancesRequest }       from '@rewards-system/rewards-rpc/interfaces'
 import type { ListRewardPointsBalancesResponse }      from '@rewards-system/rewards-rpc/interfaces'
 
+import { ConnectRpcMethod }                           from '@monstrs/nestjs-connectrpc'
+import { ConnectRpcService }                          from '@monstrs/nestjs-connectrpc'
+import { ConnectRpcExceptionsFilter }                 from '@monstrs/nestjs-connectrpc-errors'
+import { Validator }                                  from '@monstrs/nestjs-validation'
 import { UseFilters }                                 from '@nestjs/common'
 import { Controller }                                 from '@nestjs/common'
 import { QueryBus }                                   from '@nestjs/cqrs'
-import { Validator }                                  from '@monstrs/nestjs-validation'
-import { ConnectRpcExceptionsFilter }                 from '@monstrs/nestjs-connectrpc-errors'
-import { ConnectRpcMethod }                           from '@monstrs/nestjs-connectrpc'
-import { ConnectRpcService }                          from '@monstrs/nestjs-connectrpc'
 
-import { RewardPointsService }                        from '@rewards-system/rewards-rpc/connect'
 import { GetRewardPointsBalancesQuery }               from '@rewards-system/application-module'
+import { RewardPointsService }                        from '@rewards-system/rewards-rpc/connect'
 
 import { ListRewardPointsBalancesPayload }            from '../payloads/index.js'
 import { ListRewardPointsBalancesSerializer }         from '../serializers/index.js'

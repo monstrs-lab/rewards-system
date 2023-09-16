@@ -1,9 +1,9 @@
 /* eslint-disable max-classes-per-file */
 
+import type { JsonValue }          from '@bufbuild/protobuf'
 import type { RewardProgram }      from '@rewards-system/domain-module'
 import type { RewardProgramField } from '@rewards-system/domain-module'
 import type { RewardProgramRule }  from '@rewards-system/domain-module'
-import type { JsonValue }          from '@bufbuild/protobuf'
 
 import { Struct }                  from '@bufbuild/protobuf'
 

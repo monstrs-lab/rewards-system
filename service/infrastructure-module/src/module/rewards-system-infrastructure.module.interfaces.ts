@@ -1,5 +1,5 @@
-import type { CqrsKafkaEventsModuleOptions } from '@monstrs/nestjs-cqrs-kafka-events'
 import type { MikroOrmModuleOptions }        from '@mikro-orm/nestjs'
+import type { CqrsKafkaEventsModuleOptions } from '@monstrs/nestjs-cqrs-kafka-events'
 
 export interface RewardsSystemInfrastructureModuleOptions {
   events?: CqrsKafkaEventsModuleOptions

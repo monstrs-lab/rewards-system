@@ -1,5 +1,5 @@
-import type { RewardAgent } from '@rewards-system/domain-module'
 import type { JsonValue }   from '@bufbuild/protobuf'
+import type { RewardAgent } from '@rewards-system/domain-module'
 
 import { Struct }           from '@bufbuild/protobuf'
 
