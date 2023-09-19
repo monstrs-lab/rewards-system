@@ -14,10 +14,14 @@ export class CreateRewardAgentCommandHandler
   constructor(private readonly rewardAgentRepository: RewardAgentRepository) {}
 
   async execute(command: CreateRewardAgentCommand): Promise<void> {
-    const parent = command.rewardCode
-      ? await this.rewardAgentRepository.findByCode(command.rewardCode)
-      : undefined
+    const exists = await this.rewardAgentRepository.findById(command.id)
 
-    await this.rewardAgentRepository.save(new RewardAgent().create(command.id, parent?.id))
+    if (!exists) {
+      const parent = command.referralCode
+        ? await this.rewardAgentRepository.findByCode(command.referralCode)
+        : undefined
+
+      await this.rewardAgentRepository.save(new RewardAgent().create(command.id, parent?.id))
+    }
   }
 }
