@@ -15,13 +15,13 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@nestjs/common": "^10.2.5",
-    "@nestjs/core": "^10.2.5",
+    "@nestjs/common": "^10.2.6",
+    "@nestjs/core": "^10.2.6",
     "@nestjs/cqrs": "^10.2.5",
-    "@nestjs/testing": "^10.2.5",
+    "@nestjs/testing": "^10.2.6",
     "@rewards-system/domain-module": "workspace:0.0.1",
-    "@types/node": "^20.6.0",
-    "@types/uuid": "^9.0.3",
+    "@types/node": "^20.6.5",
+    "@types/uuid": "^9.0.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },
