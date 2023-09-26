@@ -1,0 +1,6 @@
+export * from './reward-program.aggregate.js'
+export * from './reward-agent.aggregate.js'
+export * from './reward-operation.aggregate.js'
+export * from './reward.aggregate.js'
+export * from './reward-points-balance.aggregate.js'
+export * from './reward-points-journal-entry.aggregate.js'

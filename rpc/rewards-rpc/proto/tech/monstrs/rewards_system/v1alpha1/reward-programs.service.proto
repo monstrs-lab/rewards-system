@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+package tech.monstrs.rewards_system.v1alpha1;
+
+import "google/protobuf/struct.proto";
+import "tech/monstrs/queries/v1alpha1/queries.proto";
+
+service RewardProgramsService {
+  rpc CreateRewardProgram(CreateRewardProgramRequest) returns (CreateRewardProgramResponse) {}
+  rpc UpdateRewardProgram(UpdateRewardProgramRequest) returns (UpdateRewardProgramResponse) {}
+  rpc AddRewardProgramRule(AddRewardProgramRuleRequest) returns (AddRewardProgramRuleResponse) {}
+  rpc UpdateRewardProgramRule(UpdateRewardProgramRuleRequest) returns (UpdateRewardProgramRuleResponse) {}
+  rpc DeleteRewardProgramRule(DeleteRewardProgramRuleRequest) returns (DeleteRewardProgramRuleResponse) {}
+  rpc ListRewardPrograms(ListRewardProgramsRequest) returns (ListRewardProgramsResponse) {}
+}
+
+message RewardProgramField {
+  int32 percentage = 1;
+  google.protobuf.Struct conditions = 2;
+}
+
+message RewardProgramRule {
+  string id = 1;
+  string name = 2;
+  int32 order = 3;
+  google.protobuf.Struct conditions = 4;
+  repeated RewardProgramField fields = 5;
+}
+
+message RewardProgram {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  int32 percentage = 4;
+  repeated RewardProgramRule rules = 5;
+}
+
+message CreateRewardProgramRequest {
+  string name = 1;
+  string code = 2;
+  int32 percentage = 3;
+}
+
+message CreateRewardProgramResponse {
+  RewardProgram result = 1;
+}
+
+message UpdateRewardProgramRequest {
+  string reward_program_id = 1;
+  string name = 2;
+  int32 percentage = 3;
+}
+
+message UpdateRewardProgramResponse {
+  RewardProgram result = 1;
+}
+
+message AddRewardProgramRuleRequest {
+  string reward_program_id = 1;
+  string name = 2;
+  int32 order = 3;
+  google.protobuf.Struct conditions = 4;
+  repeated RewardProgramField fields = 5;
+}
+
+message AddRewardProgramRuleResponse {
+  RewardProgram result = 1;
+}
+
+message UpdateRewardProgramRuleRequest {
+  string reward_program_rule_id = 1;
+  string reward_program_id = 2;
+  string name = 3;
+  int32 order = 4;
+  google.protobuf.Struct conditions = 5;
+  repeated RewardProgramField fields = 6;
+}
+
+message UpdateRewardProgramRuleResponse {
+  RewardProgram result = 1;
+}
+
+message DeleteRewardProgramRuleRequest {
+  string reward_program_rule_id = 1;
+  string reward_program_id = 2;
+}
+
+message DeleteRewardProgramRuleResponse {
+  RewardProgram result = 1;
+}
+
+message ListRewardProgramsRequest {
+  message RewardProgramsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  RewardProgramsQuery query = 3;
+}
+
+message ListRewardProgramsResponse {
+  repeated RewardProgram reward_programs = 1;
+  bool has_next_page = 2;
+}

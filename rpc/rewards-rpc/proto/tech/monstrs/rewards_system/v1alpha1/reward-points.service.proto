@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package tech.monstrs.rewards_system.v1alpha1;
+
+import "tech/monstrs/queries/v1alpha1/queries.proto";
+
+service RewardPointsService {
+  rpc ListRewardPointsBalances(ListRewardPointsBalancesRequest) returns (ListRewardPointsBalancesResponse) {}
+}
+
+message RewardPointsBalance {
+  string id = 1;
+  double amount = 2;
+}
+
+message ListRewardPointsBalancesRequest {
+  message RewardPointsBalancesQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  RewardPointsBalancesQuery query = 3;
+}
+
+message ListRewardPointsBalancesResponse {
+  repeated RewardPointsBalance reward_points_balances = 1;
+  bool has_next_page = 2;
+}
