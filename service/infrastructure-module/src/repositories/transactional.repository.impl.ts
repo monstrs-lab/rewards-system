@@ -65,7 +65,7 @@ export class TransactionalRepositoryImpl extends TransactionalRepository {
         )
       })
 
-      await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>([
+      this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>([
         ...rewardOperation.getUncommittedEvents(),
         ...rewards.map((reward) => reward.getUncommittedEvents()).flat(),
       ])
