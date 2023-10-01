@@ -2562,6 +2562,7 @@ __metadata:
     "@mikro-orm/postgresql": "npm:^5.8.3"
     "@mikro-orm/seeder": "npm:^5.8.3"
     "@monstrs/base-types": "npm:^0.0.2"
+    "@monstrs/logger": "npm:^0.0.19"
     "@monstrs/mikro-orm-query-builder": "npm:^0.0.9"
     "@monstrs/nestjs-connectrpc": "npm:^0.0.3"
     "@monstrs/nestjs-connectrpc-errors": "npm:^0.0.3"

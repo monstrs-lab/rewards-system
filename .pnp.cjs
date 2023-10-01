@@ -5490,6 +5490,7 @@ const RAW_RUNTIME_STATE =
           ["@mikro-orm/postgresql", "virtual:5ae3d332cc947b9b106e68e6fe6cea05224d9a15ad14832c9def6e006d941f0a61c5fdfa48567fd0fce07cb1c59587623936dac491c25d977f5f69685596579c#npm:5.8.3"],\
           ["@mikro-orm/seeder", "virtual:5ae3d332cc947b9b106e68e6fe6cea05224d9a15ad14832c9def6e006d941f0a61c5fdfa48567fd0fce07cb1c59587623936dac491c25d977f5f69685596579c#npm:5.8.3"],\
           ["@monstrs/base-types", "npm:0.0.2"],\
+          ["@monstrs/logger", "npm:0.0.19"],\
           ["@monstrs/mikro-orm-query-builder", "virtual:5ae3d332cc947b9b106e68e6fe6cea05224d9a15ad14832c9def6e006d941f0a61c5fdfa48567fd0fce07cb1c59587623936dac491c25d977f5f69685596579c#npm:0.0.9"],\
           ["@monstrs/nestjs-connectrpc", "virtual:0e5ba469b4015dbcf6a93b2ec1d355f0a62ac11db45b63c789f3d0c8b27f7b1e565c80e132f310add765d5522aa67efc9450c0aca8edcab27c5f4be5df2a4920#npm:0.0.3"],\
           ["@monstrs/nestjs-connectrpc-errors", "virtual:5ae3d332cc947b9b106e68e6fe6cea05224d9a15ad14832c9def6e006d941f0a61c5fdfa48567fd0fce07cb1c59587623936dac491c25d977f5f69685596579c#npm:0.0.3"],\
@@ -5592,6 +5593,7 @@ const RAW_RUNTIME_STATE =
           ["@mikro-orm/postgresql", "virtual:d45085cf7bb2c2c0b599163def5cfd778cfc8781cc31b26dfaccced24e75459c2ea818aa085c7eb92ac1999154df4452fe9205c5502d11b1796da22f03f651eb#npm:5.8.3"],\
           ["@mikro-orm/seeder", "virtual:d45085cf7bb2c2c0b599163def5cfd778cfc8781cc31b26dfaccced24e75459c2ea818aa085c7eb92ac1999154df4452fe9205c5502d11b1796da22f03f651eb#npm:5.8.3"],\
           ["@monstrs/base-types", "npm:0.0.2"],\
+          ["@monstrs/logger", "npm:0.0.19"],\
           ["@monstrs/mikro-orm-query-builder", "virtual:d45085cf7bb2c2c0b599163def5cfd778cfc8781cc31b26dfaccced24e75459c2ea818aa085c7eb92ac1999154df4452fe9205c5502d11b1796da22f03f651eb#npm:0.0.9"],\
           ["@monstrs/nestjs-connectrpc", "virtual:d45085cf7bb2c2c0b599163def5cfd778cfc8781cc31b26dfaccced24e75459c2ea818aa085c7eb92ac1999154df4452fe9205c5502d11b1796da22f03f651eb#npm:0.0.3"],\
           ["@monstrs/nestjs-connectrpc-errors", "virtual:d45085cf7bb2c2c0b599163def5cfd778cfc8781cc31b26dfaccced24e75459c2ea818aa085c7eb92ac1999154df4452fe9205c5502d11b1796da22f03f651eb#npm:0.0.3"],\

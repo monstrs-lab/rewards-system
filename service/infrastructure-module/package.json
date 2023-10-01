@@ -16,6 +16,7 @@
     "@mikro-orm/core": "^5.8.3",
     "@mikro-orm/nestjs": "^5.2.2",
     "@mikro-orm/postgresql": "^5.8.3",
+    "@monstrs/logger": "^0.0.19",
     "@monstrs/mikro-orm-query-builder": "^0.0.9",
     "@monstrs/nestjs-connectrpc-errors": "^0.0.3",
     "@monstrs/nestjs-cqrs": "^0.0.4",
