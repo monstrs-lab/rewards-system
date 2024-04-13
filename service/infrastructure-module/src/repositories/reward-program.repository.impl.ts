@@ -79,7 +79,7 @@ export class RewardProgramRepositoryImpl extends RewardProgramRepository {
     query,
   }: FindRewardProgramsByQuery): Promise<FindRewardProgramsByQueryResult> {
     const [rewardPrograms, hasNextPage] = await new MikroORMQueryBuilder<RewardProgramEntity>(
-      this.em.createQueryBuilder(RewardProgramEntity)
+      this.em.createQueryBuilder(RewardProgramEntity).leftJoinAndSelect('rules', 'rules')
     )
       .id('id', query?.id)
       .order(order)
