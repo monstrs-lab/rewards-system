@@ -822,6 +822,55 @@ describe('rewards-system-service', () => {
           expect(result?.rules).toEqual([])
         })
       })
+
+      describe('list reward programs', () => {
+        it('check get reward programs', async () => {
+          const { result: rewardProgram } = await client.createRewardProgram({
+            name: faker.word.sample(),
+            code: faker.word.sample(),
+            percentage: faker.number.int(100),
+          })
+
+          await client.addRewardProgramRule({
+            rewardProgramId: rewardProgram!.id,
+            name: faker.word.sample(),
+            order: faker.number.int(100),
+            conditions: Struct.fromJson({
+              any: [],
+            }),
+            fields: [
+              {
+                percentage: faker.number.int(100),
+                conditions: Struct.fromJson({
+                  any: [],
+                }),
+              },
+            ],
+          })
+
+          expect(
+            client.listRewardPrograms({
+              query: {
+                id: {
+                  conditions: {
+                    eq: {
+                      value: rewardProgram!.id,
+                    },
+                  },
+                },
+              },
+            })
+          ).resolves.toEqual(
+            expect.objectContaining({
+              rewardPrograms: expect.arrayContaining([
+                expect.objectContaining({
+                  id: rewardProgram!.id,
+                }),
+              ]),
+            })
+          )
+        })
+      })
     })
   })
 })
