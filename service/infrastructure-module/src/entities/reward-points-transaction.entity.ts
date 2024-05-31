@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-imports */
-
 import type { Rel }                       from '@mikro-orm/core'
 
 import { Entity }                         from '@mikro-orm/core'

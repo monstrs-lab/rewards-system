@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { TopLevelCondition }  from '@rewards-system/domain-module'
 import type { RewardProgramField } from '@rewards-system/rewards-rpc/interfaces'
 
