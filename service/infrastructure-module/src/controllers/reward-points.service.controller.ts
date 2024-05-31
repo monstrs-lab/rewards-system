@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-imports */
-
 import type { ServiceImpl }                           from '@connectrpc/connect'
 import type { FindRewardPointsBalancesByQueryResult } from '@rewards-system/domain-module'
 import type { ListRewardPointsBalancesRequest }       from '@rewards-system/rewards-rpc/interfaces'

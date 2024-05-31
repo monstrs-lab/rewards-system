@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { TopLevelCondition } from 'json-rules-engine'
 
 import { Guard }                  from '@monstrs/guard-clause'

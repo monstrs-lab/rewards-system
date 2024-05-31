@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { Response }             from 'express'
 
 import { Logger }                    from '@monstrs/logger'

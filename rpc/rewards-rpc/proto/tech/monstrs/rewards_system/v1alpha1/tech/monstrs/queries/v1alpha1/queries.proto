@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package tech.monstrs.queries.v1alpha1;
+
+import "google/protobuf/timestamp.proto";
+
+message Query {
+  message Pager {
+    int32 offset = 1;
+    int32 take = 2;
+  }
+
+  enum OrderDirection {
+    ORDER_DIRECTION_ASC = 0;
+    ORDER_DIRECTION_DESC = 1;
+  }
+
+  message Order {
+    string field = 1;
+    OrderDirection direction = 2;
+  }
+
+  message Search {
+    message Field {
+      repeated string path = 1;
+    }
+
+    repeated Field fields = 1;
+    string value = 2;
+  }
+
+  enum Operator {
+    OPERATOR_AND = 0;
+    OPERATOR_OR = 1;
+  }
+
+  message StringValue {
+    string value = 1;
+  }
+
+  message StringValues {
+    repeated string values = 1;
+  }
+
+  message IntValue {
+    int32 value = 1;
+  }
+
+  message IntValues {
+    repeated int32 values = 1;
+  }
+
+  message BooleanValue {
+    bool value = 1;
+  }
+
+  message DateValue {
+    google.protobuf.Timestamp value = 1;
+  }
+
+  message IDConditions {
+    StringValues in = 1;
+    StringValue eq = 2;
+    BooleanValue exists = 3;
+  }
+
+  message ID {
+    Operator operator = 1;
+    IDConditions conditions = 2;
+  }
+
+  message DateRangeConditions {
+    DateValue from = 1;
+    DateValue to = 2;
+  }
+
+  message DateRange {
+    Operator operator = 1;
+    DateRangeConditions conditions = 2;
+  }
+
+  message DateConditions {
+    DateValue eq = 1;
+    BooleanValue exists = 2;
+  }
+
+  message Date {
+    Operator operator = 1;
+    DateConditions conditions = 2;
+  }
+
+  message StringConditions {
+    StringValues in = 1;
+    StringValue eq = 2;
+    StringValue contains = 3;
+  }
+
+  message String {
+    Operator operator = 1;
+    StringConditions conditions = 2;
+  }
+
+  message IntConditions {
+    IntValues in = 1;
+    IntValue eq = 2;
+  }
+
+  message Int {
+    Operator operator = 1;
+    IntConditions conditions = 2;
+  }
+}

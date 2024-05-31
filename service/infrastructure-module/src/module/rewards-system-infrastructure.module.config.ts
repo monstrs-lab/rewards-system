@@ -1,7 +1,6 @@
 import type { MikroOrmModuleOptions }                    from '@mikro-orm/nestjs'
 import type { CqrsKafkaEventsModuleOptions }             from '@monstrs/nestjs-cqrs-kafka-events'
 
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { RewardsSystemInfrastructureModuleOptions } from './rewards-system-infrastructure.module.interfaces.js'
 
 import { Inject }                                        from '@nestjs/common'
