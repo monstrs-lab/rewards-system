@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-imports */
-
 import type { ServiceImpl }                    from '@connectrpc/connect'
 import type { RewardAgent }                    from '@rewards-system/domain-module'
 import type { FindRewardAgentsByQueryResult }  from '@rewards-system/domain-module'

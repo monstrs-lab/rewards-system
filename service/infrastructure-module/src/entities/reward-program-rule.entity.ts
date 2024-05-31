@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import type { TopLevelCondition } from '@rewards-system/domain-module'
 
 import { Entity }                 from '@mikro-orm/core'

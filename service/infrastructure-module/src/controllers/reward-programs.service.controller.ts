@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/consistent-type-imports */
-
 import type { ServiceImpl }                     from '@connectrpc/connect'
 import type { RewardProgram }                   from '@rewards-system/domain-module'
 import type { FindRewardProgramsByQueryResult } from '@rewards-system/domain-module'
