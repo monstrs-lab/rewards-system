@@ -1,5 +1,7 @@
 import type { ServiceImpl }                             from '@connectrpc/connect'
 import type { FindQuestRewardsByQueryResult }           from '@rewards-system/domain-module'
+import type { FindWithdrawalsByQueryResult }            from '@rewards-system/domain-module'
+import type { Withdrawal }                              from '@rewards-system/domain-module'
 import type { QuestReward }                             from '@rewards-system/domain-module'
 import type { RewardOperation }                         from '@rewards-system/domain-module'
 import type { FindRewardsByQueryResult }                from '@rewards-system/domain-module'
@@ -18,6 +20,10 @@ import type { CreateAndConfirmQuestRewardRequest }      from '@rewards-system/re
 import type { CreateAndConfirmQuestRewardResponse }     from '@rewards-system/rewards-rpc/interfaces'
 import type { ListQuestRewardsRequest }                 from '@rewards-system/rewards-rpc/interfaces'
 import type { ListQuestRewardsResponse }                from '@rewards-system/rewards-rpc/interfaces'
+import type { CreateWithdrawalRequest }                 from '@rewards-system/rewards-rpc/interfaces'
+import type { CreateWithdrawalResponse }                from '@rewards-system/rewards-rpc/interfaces'
+import type { ListWithdrawalsRequest }                  from '@rewards-system/rewards-rpc/interfaces'
+import type { ListWithdrawalsResponse }                 from '@rewards-system/rewards-rpc/interfaces'
 
 import { ConnectRpcMethod }                             from '@monstrs/nestjs-connectrpc'
 import { ConnectRpcService }                            from '@monstrs/nestjs-connectrpc'
@@ -30,6 +36,9 @@ import { CommandBus }                                   from '@nestjs/cqrs'
 import { v4 as uuid }                                   from 'uuid'
 
 import { GetRewardsQuery }                              from '@rewards-system/application-module'
+import { GetWithdrawalByIdQuery }                       from '@rewards-system/application-module'
+import { GetWithdrawalsQuery }                          from '@rewards-system/application-module'
+import { CreateWithdrawalCommand }                      from '@rewards-system/application-module'
 import { CreateAndConfirmQuestRewardCommand }           from '@rewards-system/application-module'
 import { GetQuestRewardByIdQuery }                      from '@rewards-system/application-module'
 import { GetQuestRewardsQuery }                         from '@rewards-system/application-module'
@@ -41,6 +50,8 @@ import { CreateAndConfirmRewardOperationCommand }       from '@rewards-system/ap
 import { RewardOperationsService }                      from '@rewards-system/rewards-rpc/connect'
 
 import { ListRewardsPayload }                           from '../payloads/index.js'
+import { CreateWithdrawalPayload }                      from '../payloads/index.js'
+import { ListWithdrawalsPayload }                       from '../payloads/index.js'
 import { CreateAndConfirmQuestRewardPayload }           from '../payloads/index.js'
 import { ListQuestRewardsPayload }                      from '../payloads/index.js'
 import { ListRewardOperationsPayload }                  from '../payloads/index.js'
@@ -54,6 +65,8 @@ import { ConfirmRewardOperationSerializer }             from '../serializers/ind
 import { CreateAndConfirmRewardOperationSerializer }    from '../serializers/index.js'
 import { CreateAndConfirmQuestRewardSerializer }        from '../serializers/index.js'
 import { ListQuestRewardsSerializer }                   from '../serializers/index.js'
+import { CreateWithdrawalSerializer }                   from '../serializers/index.js'
+import { ListWithdrawalsSerializer }                    from '../serializers/index.js'
 
 @Controller()
 @ConnectRpcService(RewardOperationsService)
@@ -162,6 +175,23 @@ export class RewardOperationsController implements ServiceImpl<typeof RewardOper
   }
 
   @ConnectRpcMethod()
+  async createWithdrawal(request: CreateWithdrawalRequest): Promise<CreateWithdrawalResponse> {
+    const payload = new CreateWithdrawalPayload(request)
+
+    await this.validator.validate(payload)
+
+    const command = new CreateWithdrawalCommand(uuid(), payload.ownerId, payload.amount)
+
+    await this.commandBus.execute(command)
+
+    return new CreateWithdrawalSerializer(
+      await this.queryBus.execute<GetWithdrawalByIdQuery, Withdrawal>(
+        new GetWithdrawalByIdQuery(command.withdrawalId)
+      )
+    )
+  }
+
+  @ConnectRpcMethod()
   async listRewardOperations(
     request: ListRewardOperationsRequest
   ): Promise<ListRewardOperationsResponse> {
@@ -198,6 +228,19 @@ export class RewardOperationsController implements ServiceImpl<typeof RewardOper
     return new ListQuestRewardsSerializer(
       await this.queryBus.execute<GetQuestRewardsQuery, FindQuestRewardsByQueryResult>(
         new GetQuestRewardsQuery(payload.pager, payload.order, payload.query)
+      )
+    )
+  }
+
+  @ConnectRpcMethod()
+  async listWithdrawals(request: ListWithdrawalsRequest): Promise<ListWithdrawalsResponse> {
+    const payload = new ListWithdrawalsPayload(request)
+
+    await this.validator.validate(payload)
+
+    return new ListWithdrawalsSerializer(
+      await this.queryBus.execute<GetWithdrawalsQuery, FindWithdrawalsByQueryResult>(
+        new GetWithdrawalsQuery(payload.pager, payload.order, payload.query)
       )
     )
   }

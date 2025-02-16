@@ -13,12 +13,16 @@ import { CreateAndConfirmRewardOperationRequest }  from './reward-operations.ser
 import { CreateAndConfirmRewardOperationResponse } from './reward-operations.service_pb.js'
 import { CreateRewardOperationRequest }            from './reward-operations.service_pb.js'
 import { CreateRewardOperationResponse }           from './reward-operations.service_pb.js'
+import { CreateWithdrawalRequest }                 from './reward-operations.service_pb.js'
+import { CreateWithdrawalResponse }                from './reward-operations.service_pb.js'
 import { ListQuestRewardsRequest }                 from './reward-operations.service_pb.js'
 import { ListQuestRewardsResponse }                from './reward-operations.service_pb.js'
 import { ListRewardOperationsRequest }             from './reward-operations.service_pb.js'
 import { ListRewardOperationsResponse }            from './reward-operations.service_pb.js'
 import { ListRewardsRequest }                      from './reward-operations.service_pb.js'
 import { ListRewardsResponse }                     from './reward-operations.service_pb.js'
+import { ListWithdrawalsRequest }                  from './reward-operations.service_pb.js'
+import { ListWithdrawalsResponse }                 from './reward-operations.service_pb.js'
 
 /**
  * @generated from service tech.monstrs.rewards_system.v1alpha1.RewardOperationsService
@@ -63,6 +67,15 @@ export const RewardOperationsService = {
       kind: MethodKind.Unary,
     },
     /**
+     * @generated from rpc tech.monstrs.rewards_system.v1alpha1.RewardOperationsService.CreateWithdrawal
+     */
+    createWithdrawal: {
+      name: 'CreateWithdrawal',
+      I: CreateWithdrawalRequest,
+      O: CreateWithdrawalResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
      * @generated from rpc tech.monstrs.rewards_system.v1alpha1.RewardOperationsService.ListRewardOperations
      */
     listRewardOperations: {
@@ -87,6 +100,15 @@ export const RewardOperationsService = {
       name: 'ListQuestRewards',
       I: ListQuestRewardsRequest,
       O: ListQuestRewardsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc tech.monstrs.rewards_system.v1alpha1.RewardOperationsService.ListWithdrawals
+     */
+    listWithdrawals: {
+      name: 'ListWithdrawals',
+      I: ListWithdrawalsRequest,
+      O: ListWithdrawalsResponse,
       kind: MethodKind.Unary,
     },
   },

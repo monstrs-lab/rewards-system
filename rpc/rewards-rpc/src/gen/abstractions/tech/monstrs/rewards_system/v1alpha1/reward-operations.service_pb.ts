@@ -190,6 +190,31 @@ export abstract class QuestReward_Source {
 }
 
 /**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.Withdrawal
+ */
+export abstract class Withdrawal {
+  /**
+   * @generated from field: string id = 1;
+   */
+  abstract readonly id: string
+
+  /**
+   * @generated from field: string owner_id = 2;
+   */
+  abstract readonly ownerId: string
+
+  /**
+   * @generated from field: double amount = 3;
+   */
+  abstract readonly amount: number
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 4;
+   */
+  abstract readonly createdAt?: Timestamp
+}
+
+/**
  * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateRewardOperationRequest
  */
 export abstract class CreateRewardOperationRequest {
@@ -467,6 +492,81 @@ export abstract class ListQuestRewardsResponse {
    * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.QuestReward rewards = 1;
    */
   abstract readonly rewards: QuestReward[]
+
+  /**
+   * @generated from field: bool has_next_page = 2;
+   */
+  abstract readonly hasNextPage: boolean
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalRequest
+ */
+export abstract class CreateWithdrawalRequest {
+  /**
+   * @generated from field: string owner_id = 1;
+   */
+  abstract readonly ownerId: string
+
+  /**
+   * @generated from field: double amount = 2;
+   */
+  abstract readonly amount: number
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalResponse
+ */
+export abstract class CreateWithdrawalResponse {
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.Withdrawal result = 1;
+   */
+  abstract readonly result?: Withdrawal
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest
+ */
+export abstract class ListWithdrawalsRequest {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+   */
+  abstract readonly pager?: Query_Pager
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+   */
+  abstract readonly order?: Query_Order
+
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery query = 3;
+   */
+  abstract readonly query?: ListWithdrawalsRequest_WithdrawalsQuery
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery
+ */
+export abstract class ListWithdrawalsRequest_WithdrawalsQuery {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+   */
+  abstract readonly id?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID owner_id = 2;
+   */
+  abstract readonly ownerId?: Query_ID
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsResponse
+ */
+export abstract class ListWithdrawalsResponse {
+  /**
+   * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.Withdrawal withdrawals = 1;
+   */
+  abstract readonly withdrawals: Withdrawal[]
 
   /**
    * @generated from field: bool has_next_page = 2;

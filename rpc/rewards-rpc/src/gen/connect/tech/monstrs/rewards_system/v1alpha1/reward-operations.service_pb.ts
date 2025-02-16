@@ -393,6 +393,64 @@ export class QuestReward_Source extends Message<QuestReward_Source> {
 }
 
 /**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.Withdrawal
+ */
+export class Withdrawal extends Message<Withdrawal> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = ''
+
+  /**
+   * @generated from field: string owner_id = 2;
+   */
+  ownerId = ''
+
+  /**
+   * @generated from field: double amount = 3;
+   */
+  amount = 0
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 4;
+   */
+  createdAt?: Timestamp
+
+  constructor(data?: PartialMessage<Withdrawal>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.rewards_system.v1alpha1.Withdrawal'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'owner_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: 'amount', kind: 'scalar', T: 1 /* ScalarType.DOUBLE */ },
+    { no: 4, name: 'created_at', kind: 'message', T: Timestamp },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Withdrawal {
+    return new Withdrawal().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Withdrawal {
+    return new Withdrawal().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Withdrawal {
+    return new Withdrawal().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Withdrawal | PlainMessage<Withdrawal> | undefined,
+    b: Withdrawal | PlainMessage<Withdrawal> | undefined
+  ): boolean {
+    return proto3.util.equals(Withdrawal, a, b)
+  }
+}
+
+/**
  * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateRewardOperationRequest
  */
 export class CreateRewardOperationRequest extends Message<CreateRewardOperationRequest> {
@@ -1393,5 +1451,287 @@ export class ListQuestRewardsResponse extends Message<ListQuestRewardsResponse> 
     b: ListQuestRewardsResponse | PlainMessage<ListQuestRewardsResponse> | undefined
   ): boolean {
     return proto3.util.equals(ListQuestRewardsResponse, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalRequest
+ */
+export class CreateWithdrawalRequest extends Message<CreateWithdrawalRequest> {
+  /**
+   * @generated from field: string owner_id = 1;
+   */
+  ownerId = ''
+
+  /**
+   * @generated from field: double amount = 2;
+   */
+  amount = 0
+
+  constructor(data?: PartialMessage<CreateWithdrawalRequest>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalRequest'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'owner_id', kind: 'scalar', T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: 'amount', kind: 'scalar', T: 1 /* ScalarType.DOUBLE */ },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): CreateWithdrawalRequest {
+    return new CreateWithdrawalRequest().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): CreateWithdrawalRequest {
+    return new CreateWithdrawalRequest().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): CreateWithdrawalRequest {
+    return new CreateWithdrawalRequest().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: CreateWithdrawalRequest | PlainMessage<CreateWithdrawalRequest> | undefined,
+    b: CreateWithdrawalRequest | PlainMessage<CreateWithdrawalRequest> | undefined
+  ): boolean {
+    return proto3.util.equals(CreateWithdrawalRequest, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalResponse
+ */
+export class CreateWithdrawalResponse extends Message<CreateWithdrawalResponse> {
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.Withdrawal result = 1;
+   */
+  result?: Withdrawal
+
+  constructor(data?: PartialMessage<CreateWithdrawalResponse>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalResponse'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'result', kind: 'message', T: Withdrawal },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): CreateWithdrawalResponse {
+    return new CreateWithdrawalResponse().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): CreateWithdrawalResponse {
+    return new CreateWithdrawalResponse().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): CreateWithdrawalResponse {
+    return new CreateWithdrawalResponse().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: CreateWithdrawalResponse | PlainMessage<CreateWithdrawalResponse> | undefined,
+    b: CreateWithdrawalResponse | PlainMessage<CreateWithdrawalResponse> | undefined
+  ): boolean {
+    return proto3.util.equals(CreateWithdrawalResponse, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest
+ */
+export class ListWithdrawalsRequest extends Message<ListWithdrawalsRequest> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+   */
+  pager?: Query_Pager
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+   */
+  order?: Query_Order
+
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery query = 3;
+   */
+  query?: ListWithdrawalsRequest_WithdrawalsQuery
+
+  constructor(data?: PartialMessage<ListWithdrawalsRequest>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'pager', kind: 'message', T: Query_Pager },
+    { no: 2, name: 'order', kind: 'message', T: Query_Order },
+    { no: 3, name: 'query', kind: 'message', T: ListWithdrawalsRequest_WithdrawalsQuery },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): ListWithdrawalsRequest {
+    return new ListWithdrawalsRequest().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): ListWithdrawalsRequest {
+    return new ListWithdrawalsRequest().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): ListWithdrawalsRequest {
+    return new ListWithdrawalsRequest().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: ListWithdrawalsRequest | PlainMessage<ListWithdrawalsRequest> | undefined,
+    b: ListWithdrawalsRequest | PlainMessage<ListWithdrawalsRequest> | undefined
+  ): boolean {
+    return proto3.util.equals(ListWithdrawalsRequest, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery
+ */
+export class ListWithdrawalsRequest_WithdrawalsQuery extends Message<ListWithdrawalsRequest_WithdrawalsQuery> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+   */
+  id?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID owner_id = 2;
+   */
+  ownerId?: Query_ID
+
+  constructor(data?: PartialMessage<ListWithdrawalsRequest_WithdrawalsQuery>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName =
+    'tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'id', kind: 'message', T: Query_ID },
+    { no: 2, name: 'owner_id', kind: 'message', T: Query_ID },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): ListWithdrawalsRequest_WithdrawalsQuery {
+    return new ListWithdrawalsRequest_WithdrawalsQuery().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): ListWithdrawalsRequest_WithdrawalsQuery {
+    return new ListWithdrawalsRequest_WithdrawalsQuery().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): ListWithdrawalsRequest_WithdrawalsQuery {
+    return new ListWithdrawalsRequest_WithdrawalsQuery().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a:
+      | ListWithdrawalsRequest_WithdrawalsQuery
+      | PlainMessage<ListWithdrawalsRequest_WithdrawalsQuery>
+      | undefined,
+    b:
+      | ListWithdrawalsRequest_WithdrawalsQuery
+      | PlainMessage<ListWithdrawalsRequest_WithdrawalsQuery>
+      | undefined
+  ): boolean {
+    return proto3.util.equals(ListWithdrawalsRequest_WithdrawalsQuery, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsResponse
+ */
+export class ListWithdrawalsResponse extends Message<ListWithdrawalsResponse> {
+  /**
+   * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.Withdrawal withdrawals = 1;
+   */
+  withdrawals: Withdrawal[] = []
+
+  /**
+   * @generated from field: bool has_next_page = 2;
+   */
+  hasNextPage = false
+
+  constructor(data?: PartialMessage<ListWithdrawalsResponse>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsResponse'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'withdrawals', kind: 'message', T: Withdrawal, repeated: true },
+    { no: 2, name: 'has_next_page', kind: 'scalar', T: 8 /* ScalarType.BOOL */ },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): ListWithdrawalsResponse {
+    return new ListWithdrawalsResponse().fromBinary(bytes, options)
+  }
+
+  static fromJson(
+    jsonValue: JsonValue,
+    options?: Partial<JsonReadOptions>
+  ): ListWithdrawalsResponse {
+    return new ListWithdrawalsResponse().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): ListWithdrawalsResponse {
+    return new ListWithdrawalsResponse().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: ListWithdrawalsResponse | PlainMessage<ListWithdrawalsResponse> | undefined,
+    b: ListWithdrawalsResponse | PlainMessage<ListWithdrawalsResponse> | undefined
+  ): boolean {
+    return proto3.util.equals(ListWithdrawalsResponse, a, b)
   }
 }

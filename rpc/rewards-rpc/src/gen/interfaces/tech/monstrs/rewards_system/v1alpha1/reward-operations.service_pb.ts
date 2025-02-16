@@ -190,6 +190,31 @@ export interface QuestReward_Source {
 }
 
 /**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.Withdrawal
+ */
+export interface Withdrawal {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id: string
+
+  /**
+   * @generated from field: string owner_id = 2;
+   */
+  ownerId: string
+
+  /**
+   * @generated from field: double amount = 3;
+   */
+  amount: number
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 4;
+   */
+  createdAt?: Timestamp
+}
+
+/**
  * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateRewardOperationRequest
  */
 export interface CreateRewardOperationRequest {
@@ -467,6 +492,81 @@ export interface ListQuestRewardsResponse {
    * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.QuestReward rewards = 1;
    */
   rewards: QuestReward[]
+
+  /**
+   * @generated from field: bool has_next_page = 2;
+   */
+  hasNextPage: boolean
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalRequest
+ */
+export interface CreateWithdrawalRequest {
+  /**
+   * @generated from field: string owner_id = 1;
+   */
+  ownerId: string
+
+  /**
+   * @generated from field: double amount = 2;
+   */
+  amount: number
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateWithdrawalResponse
+ */
+export interface CreateWithdrawalResponse {
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.Withdrawal result = 1;
+   */
+  result?: Withdrawal
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest
+ */
+export interface ListWithdrawalsRequest {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+   */
+  pager?: Query_Pager
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+   */
+  order?: Query_Order
+
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery query = 3;
+   */
+  query?: ListWithdrawalsRequest_WithdrawalsQuery
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsRequest.WithdrawalsQuery
+ */
+export interface ListWithdrawalsRequest_WithdrawalsQuery {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+   */
+  id?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID owner_id = 2;
+   */
+  ownerId?: Query_ID
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListWithdrawalsResponse
+ */
+export interface ListWithdrawalsResponse {
+  /**
+   * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.Withdrawal withdrawals = 1;
+   */
+  withdrawals: Withdrawal[]
 
   /**
    * @generated from field: bool has_next_page = 2;
