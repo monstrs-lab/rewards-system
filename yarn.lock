@@ -3202,7 +3202,7 @@ __metadata:
     "@nestjs/testing": "npm:^10.2.6"
     "@rewards-system/application-module": "workspace:0.0.1"
     "@rewards-system/domain-module": "workspace:0.0.1"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
     "@types/express": "npm:^4.17.18"
     "@types/node": "npm:^20.6.5"
     "@types/uuid": "npm:^9.0.4"
@@ -3227,7 +3227,7 @@ __metadata:
     "@nestjs/microservices": ^10
     "@rewards-system/application-module": "workspace:0.0.1"
     "@rewards-system/domain-module": "workspace:0.0.1"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
     class-transformer: ^0.5
     class-validator: ^0.14
     reflect-metadata: ^0.1
@@ -3242,7 +3242,7 @@ __metadata:
     "@bufbuild/protobuf": "npm:^1.3.1"
     "@connectrpc/connect": "npm:^1.0.0"
     "@connectrpc/connect-node": "npm:^1.0.0"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
   languageName: unknown
   linkType: soft
 
@@ -3253,7 +3253,7 @@ __metadata:
     "@bufbuild/protobuf": "npm:^1.3.1"
     "@connectrpc/connect": "npm:^1.0.0"
     "@connectrpc/connect-node": "npm:^1.0.0"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
   languageName: unknown
   linkType: soft
 
@@ -3264,7 +3264,7 @@ __metadata:
     "@bufbuild/protobuf": "npm:^1.3.1"
     "@connectrpc/connect": "npm:^1.0.0"
     "@connectrpc/connect-node": "npm:^1.0.0"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
   languageName: unknown
   linkType: soft
 
@@ -3275,11 +3275,11 @@ __metadata:
     "@bufbuild/protobuf": "npm:^1.3.1"
     "@connectrpc/connect": "npm:^1.0.0"
     "@connectrpc/connect-node": "npm:^1.0.0"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
   languageName: unknown
   linkType: soft
 
-"@rewards-system/rewards-rpc@workspace:0.0.3, @rewards-system/rewards-rpc@workspace:rpc/rewards-rpc":
+"@rewards-system/rewards-rpc@workspace:0.0.4, @rewards-system/rewards-rpc@workspace:rpc/rewards-rpc":
   version: 0.0.0-use.local
   resolution: "@rewards-system/rewards-rpc@workspace:rpc/rewards-rpc"
   dependencies:
@@ -3318,7 +3318,7 @@ __metadata:
     "@rewards-system/application-module": "workspace:0.0.1"
     "@rewards-system/domain-module": "workspace:0.0.1"
     "@rewards-system/infrastructure-module": "workspace:0.0.1"
-    "@rewards-system/rewards-rpc": "workspace:0.0.3"
+    "@rewards-system/rewards-rpc": "workspace:0.0.4"
     "@testcontainers/kafka": "npm:^10.2.1"
     "@types/node": "npm:^20.6.5"
     "@types/pg": "npm:^8.10.3"
