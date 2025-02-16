@@ -140,6 +140,56 @@ export abstract class Reward {
 }
 
 /**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.QuestReward
+ */
+export abstract class QuestReward {
+  /**
+   * @generated from field: string id = 1;
+   */
+  abstract readonly id: string
+
+  /**
+   * @generated from field: string recipient_id = 2;
+   */
+  abstract readonly recipientId: string
+
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.RewardOperationStatus status = 3;
+   */
+  abstract readonly status: RewardOperationStatus
+
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.QuestReward.Source source = 4;
+   */
+  abstract readonly source?: QuestReward_Source
+
+  /**
+   * @generated from field: double amount = 5;
+   */
+  abstract readonly amount: number
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 6;
+   */
+  abstract readonly createdAt?: Timestamp
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.QuestReward.Source
+ */
+export abstract class QuestReward_Source {
+  /**
+   * @generated from field: string id = 1;
+   */
+  abstract readonly id: string
+
+  /**
+   * @generated from field: string type = 2;
+   */
+  abstract readonly type: string
+}
+
+/**
  * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateRewardOperationRequest
  */
 export abstract class CreateRewardOperationRequest {
@@ -332,6 +382,91 @@ export abstract class ListRewardsResponse {
    * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.Reward rewards = 1;
    */
   abstract readonly rewards: Reward[]
+
+  /**
+   * @generated from field: bool has_next_page = 2;
+   */
+  abstract readonly hasNextPage: boolean
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateAndConfirmQuestRewardRequest
+ */
+export abstract class CreateAndConfirmQuestRewardRequest {
+  /**
+   * @generated from field: string recipient_id = 1;
+   */
+  abstract readonly recipientId: string
+
+  /**
+   * @generated from field: string source_id = 2;
+   */
+  abstract readonly sourceId: string
+
+  /**
+   * @generated from field: string source_type = 3;
+   */
+  abstract readonly sourceType: string
+
+  /**
+   * @generated from field: double amount = 4;
+   */
+  abstract readonly amount: number
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.CreateAndConfirmQuestRewardResponse
+ */
+export abstract class CreateAndConfirmQuestRewardResponse {
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.QuestReward result = 1;
+   */
+  abstract readonly result?: QuestReward
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListQuestRewardsRequest
+ */
+export abstract class ListQuestRewardsRequest {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+   */
+  abstract readonly pager?: Query_Pager
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+   */
+  abstract readonly order?: Query_Order
+
+  /**
+   * @generated from field: tech.monstrs.rewards_system.v1alpha1.ListQuestRewardsRequest.QuestRewardsQuery query = 3;
+   */
+  abstract readonly query?: ListQuestRewardsRequest_QuestRewardsQuery
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListQuestRewardsRequest.QuestRewardsQuery
+ */
+export abstract class ListQuestRewardsRequest_QuestRewardsQuery {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+   */
+  abstract readonly id?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID recipient_id = 2;
+   */
+  abstract readonly recipientId?: Query_ID
+}
+
+/**
+ * @generated from message tech.monstrs.rewards_system.v1alpha1.ListQuestRewardsResponse
+ */
+export abstract class ListQuestRewardsResponse {
+  /**
+   * @generated from field: repeated tech.monstrs.rewards_system.v1alpha1.QuestReward rewards = 1;
+   */
+  abstract readonly rewards: QuestReward[]
 
   /**
    * @generated from field: bool has_next_page = 2;

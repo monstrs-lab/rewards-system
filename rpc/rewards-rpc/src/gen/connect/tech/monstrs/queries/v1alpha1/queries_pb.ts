@@ -13,6 +13,7 @@ import type { PlainMessage }      from '@bufbuild/protobuf'
 import { Message }                from '@bufbuild/protobuf'
 import { Timestamp }              from '@bufbuild/protobuf'
 import { proto3 }                 from '@bufbuild/protobuf'
+import { protoInt64 }             from '@bufbuild/protobuf'
 
 /**
  * @generated from message tech.monstrs.queries.v1alpha1.Query
@@ -356,6 +357,166 @@ export class Query_StringValues extends Message<Query_StringValues> {
 }
 
 /**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntValue
+ */
+export class Query_IntValue extends Message<Query_IntValue> {
+  /**
+   * @generated from field: int32 value = 1;
+   */
+  value = 0
+
+  constructor(data?: PartialMessage<Query_IntValue>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.IntValue'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'value', kind: 'scalar', T: 5 /* ScalarType.INT32 */ },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_IntValue {
+    return new Query_IntValue().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_IntValue {
+    return new Query_IntValue().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Query_IntValue {
+    return new Query_IntValue().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_IntValue | PlainMessage<Query_IntValue> | undefined,
+    b: Query_IntValue | PlainMessage<Query_IntValue> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_IntValue, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntValues
+ */
+export class Query_IntValues extends Message<Query_IntValues> {
+  /**
+   * @generated from field: repeated int32 values = 1;
+   */
+  values: number[] = []
+
+  constructor(data?: PartialMessage<Query_IntValues>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.IntValues'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'values', kind: 'scalar', T: 5 /* ScalarType.INT32 */, repeated: true },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_IntValues {
+    return new Query_IntValues().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_IntValues {
+    return new Query_IntValues().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Query_IntValues {
+    return new Query_IntValues().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_IntValues | PlainMessage<Query_IntValues> | undefined,
+    b: Query_IntValues | PlainMessage<Query_IntValues> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_IntValues, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Value
+ */
+export class Query_Int64Value extends Message<Query_Int64Value> {
+  /**
+   * @generated from field: int64 value = 1;
+   */
+  value = protoInt64.zero
+
+  constructor(data?: PartialMessage<Query_Int64Value>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.Int64Value'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'value', kind: 'scalar', T: 3 /* ScalarType.INT64 */ },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_Int64Value {
+    return new Query_Int64Value().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_Int64Value {
+    return new Query_Int64Value().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Query_Int64Value {
+    return new Query_Int64Value().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_Int64Value | PlainMessage<Query_Int64Value> | undefined,
+    b: Query_Int64Value | PlainMessage<Query_Int64Value> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_Int64Value, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Values
+ */
+export class Query_Int64Values extends Message<Query_Int64Values> {
+  /**
+   * @generated from field: repeated int64 values = 1;
+   */
+  values: bigint[] = []
+
+  constructor(data?: PartialMessage<Query_Int64Values>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.Int64Values'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'values', kind: 'scalar', T: 3 /* ScalarType.INT64 */, repeated: true },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_Int64Values {
+    return new Query_Int64Values().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_Int64Values {
+    return new Query_Int64Values().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Query_Int64Values {
+    return new Query_Int64Values().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_Int64Values | PlainMessage<Query_Int64Values> | undefined,
+    b: Query_Int64Values | PlainMessage<Query_Int64Values> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_Int64Values, a, b)
+  }
+}
+
+/**
  * @generated from message tech.monstrs.queries.v1alpha1.Query.BooleanValue
  */
 export class Query_BooleanValue extends Message<Query_BooleanValue> {
@@ -654,6 +815,16 @@ export class Query_DateConditions extends Message<Query_DateConditions> {
    */
   exists?: Query_BooleanValue
 
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.DateValue lt = 3;
+   */
+  lt?: Query_DateValue
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.DateValue gt = 4;
+   */
+  gt?: Query_DateValue
+
   constructor(data?: PartialMessage<Query_DateConditions>) {
     super()
     proto3.util.initPartial(data, this)
@@ -664,6 +835,8 @@ export class Query_DateConditions extends Message<Query_DateConditions> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: 'eq', kind: 'message', T: Query_DateValue },
     { no: 2, name: 'exists', kind: 'message', T: Query_BooleanValue },
+    { no: 3, name: 'lt', kind: 'message', T: Query_DateValue },
+    { no: 4, name: 'gt', kind: 'message', T: Query_DateValue },
   ])
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_DateConditions {
@@ -839,5 +1012,198 @@ export class Query_String extends Message<Query_String> {
     b: Query_String | PlainMessage<Query_String> | undefined
   ): boolean {
     return proto3.util.equals(Query_String, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntConditions
+ */
+export class Query_IntConditions extends Message<Query_IntConditions> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntValues in = 1;
+   */
+  in?: Query_IntValues
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntValue eq = 2;
+   */
+  eq?: Query_IntValue
+
+  constructor(data?: PartialMessage<Query_IntConditions>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.IntConditions'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'in', kind: 'message', T: Query_IntValues },
+    { no: 2, name: 'eq', kind: 'message', T: Query_IntValue },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_IntConditions {
+    return new Query_IntConditions().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_IntConditions {
+    return new Query_IntConditions().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): Query_IntConditions {
+    return new Query_IntConditions().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_IntConditions | PlainMessage<Query_IntConditions> | undefined,
+    b: Query_IntConditions | PlainMessage<Query_IntConditions> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_IntConditions, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int
+ */
+export class Query_Int extends Message<Query_Int> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Operator operator = 1;
+   */
+  operator = Query_Operator.AND
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntConditions conditions = 2;
+   */
+  conditions?: Query_IntConditions
+
+  constructor(data?: PartialMessage<Query_Int>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.Int'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'operator', kind: 'enum', T: proto3.getEnumType(Query_Operator) },
+    { no: 2, name: 'conditions', kind: 'message', T: Query_IntConditions },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_Int {
+    return new Query_Int().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_Int {
+    return new Query_Int().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Query_Int {
+    return new Query_Int().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_Int | PlainMessage<Query_Int> | undefined,
+    b: Query_Int | PlainMessage<Query_Int> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_Int, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Conditions
+ */
+export class Query_Int64Conditions extends Message<Query_Int64Conditions> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Values in = 1;
+   */
+  in?: Query_Int64Values
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Value eq = 2;
+   */
+  eq?: Query_Int64Value
+
+  constructor(data?: PartialMessage<Query_Int64Conditions>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.Int64Conditions'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'in', kind: 'message', T: Query_Int64Values },
+    { no: 2, name: 'eq', kind: 'message', T: Query_Int64Value },
+  ])
+
+  static fromBinary(
+    bytes: Uint8Array,
+    options?: Partial<BinaryReadOptions>
+  ): Query_Int64Conditions {
+    return new Query_Int64Conditions().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_Int64Conditions {
+    return new Query_Int64Conditions().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(
+    jsonString: string,
+    options?: Partial<JsonReadOptions>
+  ): Query_Int64Conditions {
+    return new Query_Int64Conditions().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_Int64Conditions | PlainMessage<Query_Int64Conditions> | undefined,
+    b: Query_Int64Conditions | PlainMessage<Query_Int64Conditions> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_Int64Conditions, a, b)
+  }
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64
+ */
+export class Query_Int64 extends Message<Query_Int64> {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Operator operator = 1;
+   */
+  operator = Query_Operator.AND
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Conditions conditions = 2;
+   */
+  conditions?: Query_Int64Conditions
+
+  constructor(data?: PartialMessage<Query_Int64>) {
+    super()
+    proto3.util.initPartial(data, this)
+  }
+
+  static readonly runtime: typeof proto3 = proto3
+  static readonly typeName = 'tech.monstrs.queries.v1alpha1.Query.Int64'
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: 'operator', kind: 'enum', T: proto3.getEnumType(Query_Operator) },
+    { no: 2, name: 'conditions', kind: 'message', T: Query_Int64Conditions },
+  ])
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Query_Int64 {
+    return new Query_Int64().fromBinary(bytes, options)
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Query_Int64 {
+    return new Query_Int64().fromJson(jsonValue, options)
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Query_Int64 {
+    return new Query_Int64().fromJsonString(jsonString, options)
+  }
+
+  static equals(
+    a: Query_Int64 | PlainMessage<Query_Int64> | undefined,
+    b: Query_Int64 | PlainMessage<Query_Int64> | undefined
+  ): boolean {
+    return proto3.util.equals(Query_Int64, a, b)
   }
 }

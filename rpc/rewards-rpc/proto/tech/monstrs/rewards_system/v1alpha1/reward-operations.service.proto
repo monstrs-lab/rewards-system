@@ -9,8 +9,10 @@ service RewardOperationsService {
   rpc CreateRewardOperation(CreateRewardOperationRequest) returns (CreateRewardOperationResponse) {}
   rpc ConfirmRewardOperation(ConfirmRewardOperationRequest) returns (ConfirmRewardOperationResponse) {}
   rpc CreateAndConfirmRewardOperation(CreateAndConfirmRewardOperationRequest) returns (CreateAndConfirmRewardOperationResponse) {}
+  rpc CreateAndConfirmQuestReward(CreateAndConfirmQuestRewardRequest) returns (CreateAndConfirmQuestRewardResponse) {}
   rpc ListRewardOperations(ListRewardOperationsRequest) returns (ListRewardOperationsResponse) {}
   rpc ListRewards(ListRewardsRequest) returns (ListRewardsResponse) {}
+  rpc ListQuestRewards(ListQuestRewardsRequest) returns (ListQuestRewardsResponse) {}
 }
 
 enum RewardOperationStatus {
@@ -45,6 +47,20 @@ message Reward {
   int32 percentage = 8;
   int32 level = 9;
   google.protobuf.Timestamp created_at = 10;
+}
+
+message QuestReward {
+  message Source {
+    string id = 1;
+    string type = 2;
+  }
+
+  string id = 1;
+  string recipient_id = 2;
+  RewardOperationStatus status = 3;
+  Source source = 4;
+  double amount = 5;
+  google.protobuf.Timestamp created_at = 6;
 }
 
 message CreateRewardOperationRequest {
@@ -108,5 +124,32 @@ message ListRewardsRequest {
 
 message ListRewardsResponse {
   repeated Reward rewards = 1;
+  bool has_next_page = 2;
+}
+
+message CreateAndConfirmQuestRewardRequest {
+  string recipient_id = 1;
+  string source_id = 2;
+  string source_type = 3;
+  double amount = 4;
+}
+
+message CreateAndConfirmQuestRewardResponse {
+  QuestReward result = 1;
+}
+
+message ListQuestRewardsRequest {
+  message QuestRewardsQuery {
+    tech.monstrs.queries.v1alpha1.Query.ID id = 1;
+    tech.monstrs.queries.v1alpha1.Query.ID recipient_id = 2;
+  }
+
+  tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
+  tech.monstrs.queries.v1alpha1.Query.Order order = 2;
+  QuestRewardsQuery query = 3;
+}
+
+message ListQuestRewardsResponse {
+  repeated QuestReward rewards = 1;
   bool has_next_page = 2;
 }
