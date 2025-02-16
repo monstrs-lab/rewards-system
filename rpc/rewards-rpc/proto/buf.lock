@@ -4,5 +4,5 @@ deps:
   - remote: buf.build
     owner: monstrs
     repository: queries
-    commit: 6b98a18cce55429eaacfdd1f1db8e9ad
-    digest: shake256:cf71c6ea8447b28be5682f5444d621bdefede85ab8a94ef3c4b768876d27459617facddb386cf46f1b93dcd7b9e79f6ffc7ada6232001dc31182d231956a7605
+    commit: b44cd38ceead4c2188a850bdd99836c9
+    digest: shake256:b2a1cf6db1d08e5f0fd7b055fa4ef5d225e1b0b6b6bd0d92947c2a41abb85a022c7daf3fd17261ea4457f824b48909e25f2f0a3649f74c6f751e6d725cacdee2

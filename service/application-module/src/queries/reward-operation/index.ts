@@ -1,3 +1,7 @@
 export * from './get-reward-operation-by-id.query.js'
 export * from './get-reward-operations.query.js'
 export * from './get-rewards.query.js'
+export * from './get-quest-rewards.query.js'
+export * from './get-quest-reward-by-id.query.js'
+export * from './get-withdrawal-by-id.query.js'
+export * from './get-withdrawals.query.js'

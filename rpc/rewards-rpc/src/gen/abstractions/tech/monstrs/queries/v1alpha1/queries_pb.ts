@@ -116,6 +116,46 @@ export abstract class Query_StringValues {
 }
 
 /**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntValue
+ */
+export abstract class Query_IntValue {
+  /**
+   * @generated from field: int32 value = 1;
+   */
+  abstract readonly value: number
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntValues
+ */
+export abstract class Query_IntValues {
+  /**
+   * @generated from field: repeated int32 values = 1;
+   */
+  abstract readonly values: number[]
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Value
+ */
+export abstract class Query_Int64Value {
+  /**
+   * @generated from field: int64 value = 1;
+   */
+  abstract readonly value: bigint
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Values
+ */
+export abstract class Query_Int64Values {
+  /**
+   * @generated from field: repeated int64 values = 1;
+   */
+  abstract readonly values: bigint[]
+}
+
+/**
  * @generated from message tech.monstrs.queries.v1alpha1.Query.BooleanValue
  */
 export abstract class Query_BooleanValue {
@@ -213,6 +253,16 @@ export abstract class Query_DateConditions {
    * @generated from field: tech.monstrs.queries.v1alpha1.Query.BooleanValue exists = 2;
    */
   abstract readonly exists?: Query_BooleanValue
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.DateValue lt = 3;
+   */
+  abstract readonly lt?: Query_DateValue
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.DateValue gt = 4;
+   */
+  abstract readonly gt?: Query_DateValue
 }
 
 /**
@@ -263,4 +313,64 @@ export abstract class Query_String {
    * @generated from field: tech.monstrs.queries.v1alpha1.Query.StringConditions conditions = 2;
    */
   abstract readonly conditions?: Query_StringConditions
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntConditions
+ */
+export abstract class Query_IntConditions {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntValues in = 1;
+   */
+  abstract readonly in?: Query_IntValues
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntValue eq = 2;
+   */
+  abstract readonly eq?: Query_IntValue
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int
+ */
+export abstract class Query_Int {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Operator operator = 1;
+   */
+  abstract readonly operator: Query_Operator
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntConditions conditions = 2;
+   */
+  abstract readonly conditions?: Query_IntConditions
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Conditions
+ */
+export abstract class Query_Int64Conditions {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Values in = 1;
+   */
+  abstract readonly in?: Query_Int64Values
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Value eq = 2;
+   */
+  abstract readonly eq?: Query_Int64Value
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64
+ */
+export abstract class Query_Int64 {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Operator operator = 1;
+   */
+  abstract readonly operator: Query_Operator
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Conditions conditions = 2;
+   */
+  abstract readonly conditions?: Query_Int64Conditions
 }

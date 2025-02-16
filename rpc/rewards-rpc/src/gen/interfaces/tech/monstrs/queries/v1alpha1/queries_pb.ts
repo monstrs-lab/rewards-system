@@ -116,6 +116,46 @@ export interface Query_StringValues {
 }
 
 /**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntValue
+ */
+export interface Query_IntValue {
+  /**
+   * @generated from field: int32 value = 1;
+   */
+  value: number
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntValues
+ */
+export interface Query_IntValues {
+  /**
+   * @generated from field: repeated int32 values = 1;
+   */
+  values: number[]
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Value
+ */
+export interface Query_Int64Value {
+  /**
+   * @generated from field: int64 value = 1;
+   */
+  value: bigint
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Values
+ */
+export interface Query_Int64Values {
+  /**
+   * @generated from field: repeated int64 values = 1;
+   */
+  values: bigint[]
+}
+
+/**
  * @generated from message tech.monstrs.queries.v1alpha1.Query.BooleanValue
  */
 export interface Query_BooleanValue {
@@ -213,6 +253,16 @@ export interface Query_DateConditions {
    * @generated from field: tech.monstrs.queries.v1alpha1.Query.BooleanValue exists = 2;
    */
   exists?: Query_BooleanValue
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.DateValue lt = 3;
+   */
+  lt?: Query_DateValue
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.DateValue gt = 4;
+   */
+  gt?: Query_DateValue
 }
 
 /**
@@ -263,4 +313,64 @@ export interface Query_String {
    * @generated from field: tech.monstrs.queries.v1alpha1.Query.StringConditions conditions = 2;
    */
   conditions?: Query_StringConditions
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.IntConditions
+ */
+export interface Query_IntConditions {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntValues in = 1;
+   */
+  in?: Query_IntValues
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntValue eq = 2;
+   */
+  eq?: Query_IntValue
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int
+ */
+export interface Query_Int {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Operator operator = 1;
+   */
+  operator: Query_Operator
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.IntConditions conditions = 2;
+   */
+  conditions?: Query_IntConditions
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64Conditions
+ */
+export interface Query_Int64Conditions {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Values in = 1;
+   */
+  in?: Query_Int64Values
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Value eq = 2;
+   */
+  eq?: Query_Int64Value
+}
+
+/**
+ * @generated from message tech.monstrs.queries.v1alpha1.Query.Int64
+ */
+export interface Query_Int64 {
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Operator operator = 1;
+   */
+  operator: Query_Operator
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.Int64Conditions conditions = 2;
+   */
+  conditions?: Query_Int64Conditions
 }

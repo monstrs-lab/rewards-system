@@ -28,6 +28,8 @@ import { RewardOperationRepository }                     from '@rewards-system/d
 import { RewardProgramRepository }                       from '@rewards-system/domain-module'
 import { RewardAgentRepository }                         from '@rewards-system/domain-module'
 import { RewardRepository }                              from '@rewards-system/domain-module'
+import { QuestRewardRepository }                         from '@rewards-system/domain-module'
+import { WithdrawalRepository }                          from '@rewards-system/domain-module'
 
 import * as controllers                                  from '../controllers/index.js'
 import * as entities                                     from '../entities/index.js'
@@ -35,10 +37,12 @@ import * as mappers                                      from '../mappers/index.
 import * as migrations                                   from '../migrations/index.js'
 import { TransactionalRepositoryImpl }                   from '../repositories/index.js'
 import { RewardPointsJournalEntryRepositoryImpl }        from '../repositories/index.js'
+import { WithdrawalRepositoryImpl }                      from '../repositories/index.js'
 import { RewardPointsBalanceRepositoryImpl }             from '../repositories/index.js'
 import { RewardOperationRepositoryImpl }                 from '../repositories/index.js'
 import { RewardProgramRepositoryImpl }                   from '../repositories/index.js'
 import { RewardRepositoryImpl }                          from '../repositories/index.js'
+import { QuestRewardRepositoryImpl }                     from '../repositories/index.js'
 import { RewardAgentRepositoryImpl }                     from '../repositories/index.js'
 import { RewardsSystemInfrastructureModuleConfig }       from './rewards-system-infrastructure.module.config.js'
 import { REWARDS_SYSTEM_INFRASTRUCTURE_MODULE_OPTIONS }  from './rewards-system-infrastructure.module.constants.js'
@@ -87,6 +91,14 @@ export class RewardsSystemInfrastructureModule implements OnApplicationBootstrap
       {
         provide: TransactionalRepository,
         useClass: TransactionalRepositoryImpl,
+      },
+      {
+        provide: QuestRewardRepository,
+        useClass: QuestRewardRepositoryImpl,
+      },
+      {
+        provide: WithdrawalRepository,
+        useClass: WithdrawalRepositoryImpl,
       },
     ]
 
