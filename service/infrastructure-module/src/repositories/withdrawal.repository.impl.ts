@@ -42,7 +42,7 @@ export class WithdrawalRepositoryImpl extends WithdrawalRepository {
       em.persist(this.mapper.toPersistence(aggregate, entity || new WithdrawalEntity()))
 
       if (aggregate.getUncommittedEvents().length > 0) {
-        await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
+        this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
           aggregate.getUncommittedEvents()
         )
       }
