@@ -17,6 +17,7 @@ import { proto3 }                 from '@bufbuild/protobuf'
 import { Query_ID }               from '../../queries/v1alpha1/queries_pb.js'
 import { Query_Order }            from '../../queries/v1alpha1/queries_pb.js'
 import { Query_Pager }            from '../../queries/v1alpha1/queries_pb.js'
+import { Query_String }           from '../../queries/v1alpha1/queries_pb.js'
 
 /**
  * @generated from enum tech.monstrs.rewards_system.v1alpha1.RewardOperationStatus
@@ -1351,6 +1352,16 @@ export class ListQuestRewardsRequest_QuestRewardsQuery extends Message<ListQuest
    */
   recipientId?: Query_ID
 
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID source_id = 3;
+   */
+  sourceId?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.String source_type = 4;
+   */
+  sourceType?: Query_String
+
   constructor(data?: PartialMessage<ListQuestRewardsRequest_QuestRewardsQuery>) {
     super()
     proto3.util.initPartial(data, this)
@@ -1362,6 +1373,8 @@ export class ListQuestRewardsRequest_QuestRewardsQuery extends Message<ListQuest
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: 'id', kind: 'message', T: Query_ID },
     { no: 2, name: 'recipient_id', kind: 'message', T: Query_ID },
+    { no: 3, name: 'source_id', kind: 'message', T: Query_ID },
+    { no: 4, name: 'source_type', kind: 'message', T: Query_String },
   ])
 
   static fromBinary(

@@ -4,6 +4,7 @@ import type { ListQuestRewardsRequest_QuestRewardsQuery } from '@rewards-system/
 import type { ListQuestRewardsRequest }                   from '@rewards-system/rewards-rpc/interfaces'
 
 import { IdQueryPayload }                                 from '@monstrs/rpc-query-payloads'
+import { StringQueryPayload }                             from '@monstrs/rpc-query-payloads'
 import { OrderPayload }                                   from '@monstrs/rpc-query-payloads'
 import { PagerPayload }                                   from '@monstrs/rpc-query-payloads'
 import { IsOptional }                                     from 'class-validator'
@@ -22,6 +23,18 @@ export class ListQuestRewardsQueryPayload {
   @ValidateNested()
   get recipientId(): IdQueryPayload {
     return new IdQueryPayload(this.query.recipientId)
+  }
+
+  @IsOptional()
+  @ValidateNested()
+  get sourceId(): IdQueryPayload {
+    return new IdQueryPayload(this.query.sourceId)
+  }
+
+  @IsOptional()
+  @ValidateNested()
+  get sourceType(): StringQueryPayload {
+    return new StringQueryPayload(this.query.sourceType)
   }
 }
 
