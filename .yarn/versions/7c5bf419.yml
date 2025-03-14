@@ -1,0 +1,6 @@
+releases:
+  "@rewards-system/reward-agents-rpc-client": patch
+  "@rewards-system/reward-operations-rpc-client": patch
+  "@rewards-system/reward-points-rpc-client": patch
+  "@rewards-system/reward-programs-rpc-client": patch
+  "@rewards-system/rewards-rpc": patch
