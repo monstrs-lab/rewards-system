@@ -6,6 +6,8 @@ import type { QuestRewardSource } from '../entities/index.js'
 export interface QuestRewardsQuery {
   id?: Query.IDType
   recipientId?: Query.IDType
+  sourceId?: Query.IDType
+  sourceType?: Query.StringType
 }
 
 export interface FindQuestRewardsByQuery {

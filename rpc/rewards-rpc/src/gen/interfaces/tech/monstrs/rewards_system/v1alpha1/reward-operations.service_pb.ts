@@ -3,11 +3,12 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import type { Timestamp }   from '@bufbuild/protobuf'
+import type { Timestamp }    from '@bufbuild/protobuf'
 
-import type { Query_ID }    from '../../queries/v1alpha1/queries_pb.js'
-import type { Query_Order } from '../../queries/v1alpha1/queries_pb.js'
-import type { Query_Pager } from '../../queries/v1alpha1/queries_pb.js'
+import type { Query_ID }     from '../../queries/v1alpha1/queries_pb.js'
+import type { Query_Order }  from '../../queries/v1alpha1/queries_pb.js'
+import type { Query_Pager }  from '../../queries/v1alpha1/queries_pb.js'
+import type { Query_String } from '../../queries/v1alpha1/queries_pb.js'
 
 /**
  * @generated from enum tech.monstrs.rewards_system.v1alpha1.RewardOperationStatus
@@ -482,6 +483,16 @@ export interface ListQuestRewardsRequest_QuestRewardsQuery {
    * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID recipient_id = 2;
    */
   recipientId?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.ID source_id = 3;
+   */
+  sourceId?: Query_ID
+
+  /**
+   * @generated from field: tech.monstrs.queries.v1alpha1.Query.String source_type = 4;
+   */
+  sourceType?: Query_String
 }
 
 /**

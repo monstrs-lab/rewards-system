@@ -91,6 +91,8 @@ export class QuestRewardRepositoryImpl extends QuestRewardRepository {
     )
       .id('id', query?.id)
       .id('recipientId', query?.recipientId)
+      .id('sourceId', query?.sourceId)
+      .string('sourceType', query?.sourceType)
       .order(order)
       .pager(pager)
       .execute()

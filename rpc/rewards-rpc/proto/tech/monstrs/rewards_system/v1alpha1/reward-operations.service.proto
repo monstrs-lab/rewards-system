@@ -151,6 +151,8 @@ message ListQuestRewardsRequest {
   message QuestRewardsQuery {
     tech.monstrs.queries.v1alpha1.Query.ID id = 1;
     tech.monstrs.queries.v1alpha1.Query.ID recipient_id = 2;
+    tech.monstrs.queries.v1alpha1.Query.ID source_id = 3;
+    tech.monstrs.queries.v1alpha1.Query.String source_type = 4;
   }
 
   tech.monstrs.queries.v1alpha1.Query.Pager pager = 1;
