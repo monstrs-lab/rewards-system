@@ -34,26 +34,14 @@ export class RewardPointsBalanceRepositoryImpl extends RewardPointsBalanceReposi
   async save(aggregate: RewardPointsBalance): Promise<void> {
     const entity = await this.repository.findOne(aggregate.id)
 
-    const em = this.em.fork()
+    await this.em.persistAndFlush(
+      this.mapper.toPersistence(aggregate, entity || new RewardPointsBalanceEntity())
+    )
 
-    await em.begin()
-
-    try {
-      em.persist(this.mapper.toPersistence(aggregate, entity || new RewardPointsBalanceEntity()))
-
-      if (aggregate.getUncommittedEvents().length > 0) {
-        await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
-          aggregate.getUncommittedEvents()
-        )
-      }
-
-      aggregate.commit()
-
-      await em.commit()
-    } catch (error) {
-      await em.rollback()
-
-      throw error
+    if (aggregate.getUncommittedEvents().length > 0) {
+      await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
+        aggregate.getUncommittedEvents()
+      )
     }
   }
 

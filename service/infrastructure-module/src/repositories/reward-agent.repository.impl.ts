@@ -41,26 +41,12 @@ export class RewardAgentRepositoryImpl extends RewardAgentRepository {
       entity.path = parent ? [parent.path, aggregate.code].join('.') : aggregate.code
     }
 
-    const em = this.em.fork()
+    await this.em.persistAndFlush(entity)
 
-    await em.begin()
-
-    try {
-      await em.persist(entity)
-
-      if (aggregate.getUncommittedEvents().length > 0) {
-        await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
-          aggregate.getUncommittedEvents()
-        )
-      }
-
-      aggregate.commit()
-
-      await em.commit()
-    } catch (error) {
-      await em.rollback()
-
-      throw error
+    if (aggregate.getUncommittedEvents().length > 0) {
+      await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
+        aggregate.getUncommittedEvents()
+      )
     }
   }
 
