@@ -35,26 +35,14 @@ export class QuestRewardRepositoryImpl extends QuestRewardRepository {
   async save(aggregate: QuestReward): Promise<void> {
     const entity = await this.repository.findOne(aggregate.id)
 
-    const em = this.em.fork()
+    await this.em.persistAndFlush(
+      this.mapper.toPersistence(aggregate, entity || new QuestRewardEntity())
+    )
 
-    await em.begin()
-
-    try {
-      em.persist(this.mapper.toPersistence(aggregate, entity || new QuestRewardEntity()))
-
-      if (aggregate.getUncommittedEvents().length > 0) {
-        this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
-          aggregate.getUncommittedEvents()
-        )
-      }
-
-      aggregate.commit()
-
-      await em.commit()
-    } catch (error) {
-      await em.rollback()
-
-      throw error
+    if (aggregate.getUncommittedEvents().length > 0) {
+      await this.eventBus.publishAll<IEvent, Promise<Array<RecordMetadata>>>(
+        aggregate.getUncommittedEvents()
+      )
     }
   }
 
